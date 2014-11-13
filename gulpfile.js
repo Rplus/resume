@@ -60,6 +60,17 @@ gulp.task('js', function () {
 
 
 
+gulp.task('js-libs', function () {
+  gulp.src(['bower_components/jquery/dist/*.*'])
+    .pipe(gulp.dest('_publish/js/jquery/'));
+
+  gulp.src(['bower_components/modernizr/modernizr.js'])
+    .pipe($.uglify())
+    .pipe(gulp.dest('_publish/js/modernizr/'));
+});
+
+
+
 gulp.task('server', function () {
   connect.server({
     livereload: true
@@ -77,6 +88,6 @@ gulp.task('deploy', ['build'], function () {
     .pipe($.ghPages());
 });
 
-gulp.task('build', ['html', 'css', 'js']);
+gulp.task('build', ['html', 'css', 'js', 'js-libs']);
 gulp.task('dev', ['server', 'watch']);
 gulp.task('default', ['build']);
