@@ -14,5 +14,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "jquery-1.11.1.min": "http://code.jquery.com/jquery-1.11.1.min.js"
+  }
 }
