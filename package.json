@@ -15,5 +15,16 @@
   "bugs": {
     "url": "https://github.com/Rplus/Portfolio/issues"
   },
-  "homepage": "https://github.com/Rplus/Portfolio"
+  "homepage": "https://github.com/Rplus/Portfolio",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^1.0.1",
+    "gulp-gh-pages": "^0.4.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-load-plugins": "^0.7.1",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-minify-html": "^0.1.6",
+    "gulp-stylus": "^1.3.4",
+    "gulp-uglify": "^1.0.1"
+  }
 }
