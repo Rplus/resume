@@ -53,6 +53,7 @@ gulp.task('js', function () {
     .pipe($.concat('script.js'))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
+    .pipe($.jscs())
     .pipe($.uglify())
     .pipe(gulp.dest(path.buildScript))
     .pipe(connect.reload());
