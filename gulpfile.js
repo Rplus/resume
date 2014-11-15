@@ -105,6 +105,14 @@ gulp.task('styles', function () {
 gulp.task('html', function () {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
+  var svgs = gulp.src(['app/svg/*.svg'])
+                 .pipe($.svgmin([{cleanupIDs: false }]))
+                 .pipe($.svgstore({ prefix: 'inject-icon-', inlineSvg: true }));
+
+  function fileContents (filePath, file) {
+    return file.contents.toString('utf8');
+  }
+
   return gulp.src('app/**/*.html')
     .pipe(assets)
     // Concatenate And Minify JavaScript
@@ -127,6 +135,8 @@ gulp.task('html', function () {
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
     .pipe($.useref())
+    // inject svg icon into html
+    .pipe($.inject(svgs, { transform: fileContents }))
     // Minify Any HTML
     .pipe($.if('*.html', $.minifyHtml()))
     // Output Files
