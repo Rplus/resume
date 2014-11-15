@@ -106,7 +106,7 @@ gulp.task('html', function () {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
   var svgs = gulp.src(['app/images/inject-svg/*.svg'])
-                 .pipe($.svgmin([{cleanupIDs: false }]))
+                 .pipe($.cache($.imagemin()))
                  .pipe($.svgstore({ prefix: 'inject-icon-', inlineSvg: true }));
 
   function fileContents (filePath, file) {
