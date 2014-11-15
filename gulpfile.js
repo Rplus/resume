@@ -51,7 +51,7 @@ gulp.task('jshint', function () {
 
 // Optimize Images
 gulp.task('images', function () {
-  return gulp.src('app/images/**/*')
+  return gulp.src(['app/images/**/*', '!app/images/inject-svg/*.svg'])
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
@@ -105,7 +105,7 @@ gulp.task('styles', function () {
 gulp.task('html', function () {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
-  var svgs = gulp.src(['app/svg/*.svg'])
+  var svgs = gulp.src(['app/images/inject-svg/*.svg'])
                  .pipe($.svgmin([{cleanupIDs: false }]))
                  .pipe($.svgstore({ prefix: 'inject-icon-', inlineSvg: true }));
 
