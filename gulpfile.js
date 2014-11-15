@@ -138,7 +138,7 @@ gulp.task('html', function () {
     // inject svg icon into html
     .pipe($.inject(svgs, { transform: fileContents }))
     // Minify Any HTML
-    .pipe($.if('*.html', $.minifyHtml()))
+    .pipe($.if('*.html', $.minifyHtml({quotes: true})))
     // Output Files
     .pipe(gulp.dest('dist'))
     .pipe($.size({title: 'html'}));
