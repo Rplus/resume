@@ -177,13 +177,19 @@ gulp.task('serve:dist', ['default'], function () {
 });
 
 gulp.task('normalize-scss', function () {
+  var fs = require('fs');
   var folderPath = 'bower_components/normalize-css';
-  return gulp.src(folderPath + '/normalize.css')
-    .pipe($.rename(function (path) {
-      console.log(path);
-      path.extname = ".scss"
-    }))
-    .pipe(gulp.dest(folderPath));;
+  var extraFile = folderPath + '/normalize.scss';
+
+  if( fs.existsSync(extraFile) ) {
+    return;
+  } else {
+    return gulp.src(folderPath + '/normalize.css')
+      .pipe($.rename(function (path) {
+        path.extname = ".scss"
+      }))
+      .pipe(gulp.dest(folderPath));
+  }
 });
 
 // Build Production Files, the Default Task
