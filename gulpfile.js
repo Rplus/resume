@@ -80,7 +80,7 @@ gulp.task('fonts', function () {
 });
 
 // Compile and Automatically Prefix Stylesheets
-gulp.task('styles', function () {
+gulp.task('styles', ['normalize-scss'], function () {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
       'app/styles/*.scss',
@@ -89,7 +89,7 @@ gulp.task('styles', function () {
     .pipe($.changed('styles', {extension: '.scss'}))
     .pipe($.rubySass({
         style: 'expanded',
-        precision: 10
+        loadPath: 'bower_components/normalize-css/'
       })
       .on('error', console.error.bind(console))
     )
@@ -174,6 +174,16 @@ gulp.task('serve:dist', ['default'], function () {
     // https: true,
     server: 'dist'
   });
+});
+
+gulp.task('normalize-scss', function () {
+  var folderPath = 'bower_components/normalize-css';
+  return gulp.src(folderPath + '/normalize.css')
+    .pipe($.rename(function (path) {
+      console.log(path);
+      path.extname = ".scss"
+    }))
+    .pipe(gulp.dest(folderPath));;
 });
 
 // Build Production Files, the Default Task
