@@ -186,7 +186,7 @@ gulp.task('normalize-scss', function () {
   } else {
     return gulp.src(folderPath + '/normalize.css')
       .pipe($.rename(function (path) {
-        path.extname = ".scss"
+        path.extname = '.scss'
       }))
       .pipe(gulp.dest(folderPath));
   }
