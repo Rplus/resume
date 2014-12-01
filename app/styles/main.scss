@@ -1,4 +1,29 @@
-@import 'normalize';
+// @import 'normalize';
+@import "//fonts.googleapis.com/css?family=Courgette";
+
+/**
+ * color
+ *  via: foundation color
+ */
+
+$white     : #fff !default;
+$smoke     : #eee !default;
+$gainsboro : #ddd !default;
+$iron      : #ccc !default;
+$base      : #aaa !default;
+$aluminum  : #999 !default;
+$steel     : #666 !default;
+$oil       : #333 !default;
+$black     : #000 !default;
+
+
+
+/**
+ * variable
+ */
+$shadow-diff: 1px 1px;
+
+
 
 /**
  * functions
@@ -19,4 +44,155 @@
 /**
  * helper
  */
+%font-palatino {
+  font-family: Constantia, "Palatino Linotype", Palatino, Georgia, serif;
+}
 
+
+
+
+/////
+
+* {
+  box-sizing: border-box;
+  margin: 0; // reset all
+}
+
+html {
+  background-color: $iron;
+
+  @media print {
+    background-color: transparent;
+  }
+}
+
+body {
+  margin: 1rem;
+  padding: 5rem 10%;
+  max-width: 64rem;
+  background-color: $white;
+  color: $oil;
+  font-family: Palatino, "Palatino Linotype";
+  font: 100%/1.5 "Segoe UI", Optima, "Hiragino Kaku Gothic Pro", "Apple Gothic", Tahoma, "Helvetica Neue", sans-serif;
+  box-shadow: $shadow-diff 5px 2px rgba($black, .3);
+}
+
+li {
+  list-style-type: square;
+}
+
+hr {
+  width: 85%;
+  margin: 1rem auto;
+  border: 1px dashed $gainsboro;
+}
+
+a {
+  // color: #ccc;
+}
+
+/////
+
+.cv-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hello {
+  max-width: 19rem;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: 'Courgette', cursive;
+
+  .say-hi {
+    padding-left: 1.5rem;
+  }
+
+  small {
+    @extend %font-palatino;
+    display: block;
+    padding: 10px 1.5rem 0;
+    color: $steel;
+    font-size: 65%;
+    font-weight: 100;
+    font-style: italic;
+  }
+}
+
+.avatar {
+  margin: 0 auto 1rem;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px $white,
+              $shadow-diff 10px 2px $aluminum;
+}
+
+.nick-name {
+  vertical-align: -.5em;
+}
+
+
+
+///// svg
+
+svg {
+  display: none;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: bottom;
+  transition: all .3s;
+}
+
+.icon-Rplus {
+  width: 2em;
+  height: 2em;
+  margin-left: .5em;
+
+  &:hover {
+    fill: #d50000;
+  }
+}
+
+.icon-github {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: .5em;
+}
+
+
+
+/////
+
+.wbr {
+  // display: inline-block;
+}
+
+.cv-section {
+  margin-bottom: 3rem;
+
+}
+
+.section-title {
+  @extend %font-palatino;
+  margin-bottom: .5rem;
+  text-transform: capitalize;
+  font-variant: small-caps;
+}
+
+.cv-section--intro p {
+  margin: 1rem 1rem;
+  // font-size: .8em;
+}
+
+.cv-section--experience h4 {
+  font-weight: normal;
+}
+
+.date {
+  @extend %font-palatino;
+  text-transform: capitalize;
+  font-variant: small-caps;
+}
