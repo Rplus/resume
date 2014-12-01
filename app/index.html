@@ -28,32 +28,136 @@
 
     <!-- detects HTML5 and CSS3 features -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-
     <!-- Page styles -->
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
 
-    <header class="app-header">
+    <header class="cv-header">
+      <img class="avatar" src="../images/avatar.jpg" alt="avatar of R+" width="200" height="200">
+
+      <h1 class="hello">
+        <span class="say-hi">
+          Hi, I'm <img class="nick-name" src="//cdn.rawgit.com/Rplus/R-logo/v7/R+.svg" alt="R+" width="100" height="67">
+        </span>
+
+        <small>
+          a web front-end developer living in Taipei Nangang.
+        </small>
+      </h1>
     </header>
 
-    <nav class="navdrawer-container promote-layer">
-      <h4>Navigation</h4>
+    <section class="cv-section cv-section--about">
+      <h3 class="section-title">
+        about
+        <svg class="icon icon-Rplus" title="R+" alt="R+"><use xlink:href="#inject-icon-Rplus" /></svg>
+        (陳宏嘉)
+      </h3>
       <ul>
-        <li><a href="#hello">Hello</a></li>
-        <li><a href="#get-started">Get Started</a></li>
-        <li><a href="styleguide.html">Style Guide</a></li>
+        <li>臺灣大學化學系畢業</li>
+        <li>開朗，好奇心高，喜好探索</li>
+        <li>研習知覺心理學，熱愛色彩及錯覺理論</li>
+        <li>推崇網頁標準，同理心思考</li>
+        <li>語言：中文(精通)、英文(中等)、台語(精通)</li>
       </ul>
-    </nav>
 
-    <main>
-      <h1 id="hello">Hello!</h1>
-      <p>Welcome to Web Starter Kit.</p>
+      <hr>
 
-      <h2 id="get-started">Get Started.</h2>
-      <p>Read how to <a href="http://developers.google.com/web/starter-kit">Get Started</a> or check out the <a href="styleguide.html">Style Guide</a>.</p>
-    </main>
+      <ul>
+        <li>
+          <svg class="icon icon-github" title="github" alt="github"><use xlink:href="#inject-icon-github" /></svg>
+          <a href="//github.com/Rplus">//github.com/Rplus</a>
+        </li>
+      </ul>
+    </section>
 
+    <section class="cv-section cv-section--skill">
+      <h3 class="section-title">skills</h3>
+      <ul>
+        <li>semantic <abbr title="HyperText Markup Language">HTML</abbr>, and simple PHP view part logic</li>
+        <li><abbr title="Cascading Style Sheets">CSS</abbr> with preprocessors(SASS, Compass, Stylus)</li>
+        <li><abbr title="JavaScript, ECMAScript">JS</abbr>, Vanilla JS &amp; jQuery</li>
+        <li><abbr title="responsive web design">RWD</abbr> based on progressive enhancement &amp; graceful degradation</li>
+        <li>automation with Gulp / Grunt</li>
+        <li>develop with Sublime Text + terminal Git in Ubuntu / Windows</li>
+      </ul>
+    </section>
+
+    <section class="cv-section cv-section--experience">
+      <h3 class="section-title">work experience for <abbr title="front-end">F2E</abbr></h3>
+      <ul>
+        <li>
+          <h4><time class="date">2013/11</time> ~ <time class="date">current</time>, PIXNET</h4>
+        </li>
+
+        <li>
+          <h4><time class="date">2012/06</time> ~ <time class="date">2013/08</time>, 台中中佑資訊</h4>
+
+        </li>
+
+        <li>
+          <h4><time class="date">2008/08</time> ~ <time class="date">2009/06</time>, 臺大共同教育中心</h4>
+        </li>
+
+        <li>
+          <h4><time class="date">2007/09</time> ~ <time class="date">2008/06</time>, 臺大學生電視台</h4>
+          <ul>
+            <li>重構社站，並通過 W3C Markup Validation</li>
+            <li>hacks for old browser to fix PNG-32, <code>position: fixed</code> support</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="cv-section cv-section--intro">
+      <h3 class="section-title">intro</h3>
+      <p>
+        <span class="wbr">喜歡做網頁，</span>
+        <span class="wbr">因網頁是現代資訊流通的主要媒介，更是未來普及教育需仰賴的管道。</span>
+        <span class="wbr">堅信網頁設計必須擁有滿滿的創意以及同理心，</span>
+        <span class="wbr">才能在良好介面下仍保有順暢的操作體驗。</span>
+      </p>
+
+      <p>
+        <span class="wbr">對於網站製作習於以平穩退化的方式規劃，</span>
+        <span class="wbr">基本內容以語義化構築，確保在 no-css / no-js 下仍可順利呈現，</span>
+        <span class="wbr">再以 CSS / JS 進行漸進增益；</span>
+        <span class="wbr">而搭配支援度偵測，得以兼顧高效新功能與舊瀏覽器的相容。</span>
+      </p>
+
+      <p>
+        <span class="wbr">深知『利器善事』的著重影響，</span>
+        <span class="wbr">習慣搜集各種能便利操作的小工具，</span>
+        <span class="wbr">從小軟體時代到 batch, macros, shell 等 script，</span>
+        <span class="wbr">對於自動化工具總有滿滿的嚮往，</span>
+        <span class="wbr">目前開發流程中則採用 gulp 來管理各自動化任務。</span>
+      </p>
+
+      <p>
+        <span class="wbr">個人喜於求知涉略，除平日技術新文，亦常藉參與演講以見識一方有為，</span>
+        <span class="wbr">當中最衷意孫中興教授之誠實人生觀，並援引為己身價值操守；</span>
+        <span class="wbr">亦瞭解到人之所知皆屬歷史，恭謙求知方得前輩指引。</span>
+      </p>
+
+      <p>
+        <span class="wbr">工作態度上，一貫秉持認真務實，一旦投入工作便會期許著自己盡早完成；</span>
+        <span class="wbr">於工作上也喜於幫助他人，於同儕間相互學習更豐富的事務及見聞，</span>
+        <span class="wbr">期望未來於人際及智識上皆能更進一步成長！</span>
+      </p>
+    </section>
+
+    <section class="cv-section cv-section--interests">
+      <h3 class="section-title">interests</h3>
+      <ul>
+        <li>dance with POI</li>
+      </ul>
+    </section>
+
+    <section class="cv-section cv-section--contact">
+      <h3 class="section-title">contact</h3>
+    </section>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
@@ -68,8 +172,6 @@
       ga('send', 'pageview');
     </script>
     <!-- Built with love using Web Starter Kit -->
-
-    <svg class="icon"><use xlink:href="#inject-icon-Rplus" /></svg>
 
     <!-- inject svg icon -->
     <!-- inject:svg --><!-- endinject -->
