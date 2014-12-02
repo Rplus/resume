@@ -104,10 +104,11 @@ abbr {
   max-width: 19rem;
   display: inline-block;
   vertical-align: middle;
-  font-family: 'Courgette', cursive;
 
   .say-hi {
     padding-left: 1.5rem;
+    text-shadow: 2px 2px 2px rgba($black, .2);
+    font-family: 'Courgette', cursive;
   }
 
   small {
