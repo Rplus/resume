@@ -44,9 +44,6 @@ $shadow-diff: 1px 1px;
 /**
  * helper
  */
-%font-palatino {
-  font-family: Constantia, "Palatino Linotype", Palatino, Georgia, serif;
-}
 
 
 
@@ -72,8 +69,7 @@ body {
   max-width: 64rem;
   background-color: $white;
   color: $oil;
-  font-family: Palatino, "Palatino Linotype";
-  font: 100%/1.5 "Segoe UI", Optima, "Hiragino Kaku Gothic Pro", "Apple Gothic", Tahoma, "Helvetica Neue", sans-serif;
+  font-family: Constantia, "Palatino Linotype", Palatino, Georgia, serif;
   box-shadow: $shadow-diff 5px 2px rgba($black, .3);
 }
 
@@ -109,7 +105,6 @@ a {
   }
 
   small {
-    @extend %font-palatino;
     display: block;
     padding: 10px 1.5rem 0;
     color: $steel;
@@ -176,7 +171,6 @@ svg {
 }
 
 .section-title {
-  @extend %font-palatino;
   margin-bottom: .5rem;
   text-transform: capitalize;
   font-variant: small-caps;
@@ -192,7 +186,6 @@ svg {
 }
 
 .date {
-  @extend %font-palatino;
   text-transform: capitalize;
   font-variant: small-caps;
 }
