@@ -115,9 +115,11 @@ abbr {
     display: block;
     padding: 10px 1.5rem 0;
     color: $steel;
-    font-size: 65%;
-    font-weight: 100;
+    font-size: 55%;
+    font-weight: lighter;
     font-style: italic;
+    line-height: 1.5;
+    letter-spacing: .5px;
   }
 }
 
