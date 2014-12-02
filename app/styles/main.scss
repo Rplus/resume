@@ -57,6 +57,7 @@ $shadow-diff: 1px 1px;
 
 html {
   background-color: $iron;
+  padding: 0 1rem;
 
   @media print {
     background-color: transparent;
@@ -64,9 +65,9 @@ html {
 }
 
 body {
-  margin: 1rem;
-  padding: 5rem 10%;
-  max-width: 64rem;
+  margin: 1rem auto;
+  padding: 5rem 7%;
+  max-width: 50rem;
   background-color: $white;
   color: $oil;
   font-family: Constantia, "Palatino Linotype", Palatino, Georgia, serif;
