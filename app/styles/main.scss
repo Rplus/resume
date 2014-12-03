@@ -179,6 +179,19 @@ svg {
   display: inline-block;
   list-style-type: none;
   padding-top: 1rem;
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: $iron;
+    fill: $white;
+
+    &:hover {
+      background-color: $oil;
+    }
+  }
 }
 
 
