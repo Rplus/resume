@@ -107,10 +107,15 @@ gulp.task('html', function () {
 
   var svgs = gulp.src(['app/images/inject-svg/*.svg'])
                  .pipe($.cache($.imagemin()))
-                 .pipe($.svgstore({ prefix: 'inject-icon-', inlineSvg: true }));
+                 .pipe($.svgstore({ prefix: 'inject-icon-', inlineSvg: true, transformSvg: transformSvg }));
 
   function fileContents (filePath, file) {
     return file.contents.toString('utf8');
+  }
+
+  function transformSvg ($svg, done) {
+    $svg.attr('style', 'display:none');
+    done(null, $svg);
   }
 
   return gulp.src('app/**/*.html')
