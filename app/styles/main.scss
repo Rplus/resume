@@ -146,7 +146,9 @@ abbr {
 ///// svg
 
 svg {
-  display: none;
+  .inject-svg & {
+    display: none;
+  }
 }
 
 .icon {
