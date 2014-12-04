@@ -209,6 +209,7 @@ svg {
   text-decoration: none;
   white-space: nowrap;
 
+  &:focus::after,
   &:hover::after {
     bottom: 100%;
     max-width: 5em;
@@ -253,6 +254,7 @@ svg {
     box-shadow: $shadow-diff 3px 1px $aluminum;
   }
 
+  &:focus .icon,
   &:hover .icon {
     background-color: $aluminum;
     box-shadow: inset $shadow-diff 3px 1px $steel,
