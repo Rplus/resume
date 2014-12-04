@@ -1,5 +1,4 @@
 {
-
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
     "browser-sync": "^1.3.0",
