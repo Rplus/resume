@@ -251,13 +251,14 @@ svg {
     background-color: $iron;
     fill: $white;
     box-shadow: $shadow-diff 3px 1px $aluminum;
+  }
 
-    &:hover {
-      background-color: $aluminum;
-      box-shadow: inset $shadow-diff 3px 1px $steel,
-                  0   0   0   2px $smoke,
-                  0   0   5px 2px;
-    }
+  &:hover .icon {
+    background-color: $aluminum;
+    box-shadow: inset $shadow-diff 3px 1px $steel,
+                0   0   0   2px $smoke,
+                0   0   5px 2px;
+
   }
 }
 
