@@ -231,11 +231,12 @@ svg {
     border-radius: 50%;
     background-color: $iron;
     fill: $white;
-    box-shadow: inset $shadow-diff 3px 1px $aluminum;
+    box-shadow: $shadow-diff 3px 1px $aluminum;
 
     &:hover {
-      background-color: $steel;
-      box-shadow: 0   0   0   2px $white,
+      background-color: $aluminum;
+      box-shadow: inset $shadow-diff 3px 1px $steel,
+                  0   0   0   2px $smoke,
                   0   0   5px 2px;
     }
   }
