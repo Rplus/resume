@@ -217,6 +217,7 @@ svg {
     background-color: rgba($steel, .2);
   }
 
+  // tooltip
   &::after {
     content: attr(title);
     position: absolute;
@@ -233,6 +234,7 @@ svg {
     overflow: hidden;
     transition: all .3s;
     text-transform: capitalize;
+    pointer-events: none;
 
     @media print {
       position: static;
