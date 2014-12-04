@@ -4,3 +4,8 @@
 node_modules
 bower_components
 _publish
+node_modules
+.sass-cache
+dist
+.tmp
+bower_components

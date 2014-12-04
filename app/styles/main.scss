@@ -1,0 +1,296 @@
+// @import 'normalize';
+@import "//fonts.googleapis.com/css?family=Courgette";
+
+/**
+ * color
+ *  via: foundation color
+ */
+
+$white     : #fff !default;
+$smoke     : #eee !default;
+$gainsboro : #ddd !default;
+$iron      : #ccc !default;
+$base      : #aaa !default;
+$aluminum  : #999 !default;
+$steel     : #666 !default;
+$oil       : #333 !default;
+$black     : #000 !default;
+
+
+
+/**
+ * variable
+ */
+$shadow-diff: 1px 1px;
+
+
+
+/**
+ * functions
+ */
+
+
+
+
+
+/**
+ * Mixin
+ */
+
+
+
+
+
+/**
+ * helper
+ */
+
+
+
+
+/////
+
+* {
+  box-sizing: border-box;
+  margin: 0; // reset all
+}
+
+html {
+  background-color: $iron;
+  padding: 0 1rem;
+
+  @media print {
+    background-color: transparent;
+  }
+}
+
+body {
+  margin: 1rem auto;
+  padding: 5rem 7%;
+  max-width: 50rem;
+  background-color: $white;
+  color: $oil;
+  font-family: Constantia, "Palatino Linotype", Palatino, Georgia, serif;
+  letter-spacing: .5px;
+  box-shadow: $shadow-diff 5px 2px rgba($black, .3);
+}
+
+li {
+  list-style-type: square;
+}
+
+hr {
+  width: 80%;
+  margin: 1rem auto;
+  border: 1px dashed $gainsboro;
+}
+
+a {
+  color: darken(#f00, 10%);
+}
+
+abbr {
+  border-bottom: 1px dotted $aluminum;
+}
+
+/////
+
+.cv-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hello {
+  max-width: 19rem;
+  display: inline-block;
+  vertical-align: middle;
+
+  .say-hi {
+    padding-left: 1.5rem;
+    text-shadow: 2px 2px 2px rgba($black, .2);
+    font-family: 'Courgette', cursive;
+  }
+
+  small {
+    display: block;
+    padding: 10px 1.5rem 0;
+    color: $steel;
+    font-size: 55%;
+    font-weight: lighter;
+    font-style: italic;
+    line-height: 1.5;
+    letter-spacing: .5px;
+  }
+}
+
+.avatar {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 1rem;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: url('../images/avatar.jpg') 50% / cover no-repeat;
+  box-shadow: inset $shadow-diff 1px 0 rgba($black, .1),
+              0   0   0   4px #fff,
+              0   0   1px 4px rgba($black, .2),
+              2px 2px 3px 4px rgba($black, .15);
+}
+
+.nick-name {
+  vertical-align: -.5em;
+}
+
+
+
+///// svg
+
+svg {
+  display: none;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: bottom;
+  transition: all .3s;
+}
+
+.icon-Rplus {
+  width: 2em;
+  height: 2em;
+  margin-left: .5em;
+
+  &:hover {
+    fill: #d50000;
+  }
+}
+
+
+
+/////
+
+.contact {
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+  line-height: 0; // hack for ::after placeholder
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 250px;
+    max-width: 100%;
+  }
+
+  @media print {
+    text-align: left;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.contact-item {
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 1rem;
+  margin-bottom: .5rem;
+
+  @media print {
+    min-width: 45%;
+    // display: block;
+  }
+}
+
+.contact-link {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover::after {
+    bottom: 100%;
+    max-width: 5em;
+    opacity: 1;
+    background-color: rgba($steel, .2);
+  }
+
+  &::after {
+    content: attr(title);
+    position: absolute;
+    border-left: 8px solid rgba($steel, .2);
+    border-bottom: 5px solid transparent;
+    color: #333;
+    padding: 3px 5px 3px 0;
+    background-clip: padding-box;
+    line-height: normal;
+    bottom: 0;
+    left: 75%;
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    transition: all .3s;
+    text-transform: capitalize;
+
+    @media print {
+      position: static;
+      content: attr(href);
+      margin-left: .3rem;
+      border: none;
+      text-transform: none;
+      opacity: 1;
+    }
+  }
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: $iron;
+    fill: $white;
+    box-shadow: $shadow-diff 3px 1px $aluminum;
+
+    &:hover {
+      background-color: $aluminum;
+      box-shadow: inset $shadow-diff 3px 1px $steel,
+                  0   0   0   2px $smoke,
+                  0   0   5px 2px;
+    }
+  }
+}
+
+
+
+/////
+
+.cv-section {
+  margin-bottom: 3rem;
+
+}
+
+.section-title {
+  margin-bottom: .5rem;
+  text-transform: capitalize;
+  font-variant: small-caps;
+}
+
+.cv-section--intro p {
+  margin: 1rem 1rem;
+}
+
+.cv-section--experience h4 {
+  font-weight: normal;
+}
+
+.date {
+  text-transform: capitalize;
+  font-variant: small-caps;
+  font-family: monospace;
+}
+
+.business-card {
+  height: 150px;
+  background: url('//cdn.rawgit.com/Rplus/R-logo/v7/R+.svg') 90% 50% / 201px no-repeat;
+}

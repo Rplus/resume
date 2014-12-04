@@ -5,9 +5,7 @@
   "authors": [
     "Rplus <rplus.tw@gmail.com>"
   ],
-  "description": "Portfolio",
   "license": "MIT",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
@@ -16,7 +14,6 @@
     "tests"
   ],
   "devDependencies": {
-    "jquery": "~1.11.1",
-    "modernizr": "~2.8.3"
+    "normalize-css": "~3.0.2"
   }
 }
