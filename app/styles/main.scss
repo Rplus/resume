@@ -207,20 +207,39 @@ svg {
   position: relative;
   display: block;
   text-decoration: none;
+  white-space: nowrap;
+
+  &:hover::after {
+    bottom: 100%;
+    max-width: 5em;
+    opacity: 1;
+    background-color: rgba($steel, .2);
+  }
 
   &::after {
     content: attr(title);
-    text-transform: capitalize;
     position: absolute;
-    top: 100%;
-    left: 0;
+    border-left: 8px solid rgba($steel, .2);
+    border-bottom: 5px solid transparent;
+    color: #333;
+    padding: 3px 5px 3px 0;
+    background-clip: padding-box;
     line-height: normal;
-    display: none;
+    bottom: 0;
+    left: 75%;
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    transition: all .3s;
+    text-transform: capitalize;
 
     @media print {
       position: static;
       content: attr(href);
+      margin-left: .3rem;
+      border: none;
       text-transform: none;
+      opacity: 1;
     }
   }
 
