@@ -169,10 +169,60 @@ svg {
 
 /////
 
-.contact-icon {
+.contact {
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+  line-height: 0; // hack for ::after placeholder
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 250px;
+    max-width: 100%;
+  }
+
+  @media print {
+    text-align: left;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.contact-item {
   display: inline-block;
   list-style-type: none;
-  padding-top: 1rem;
+  margin-right: 1rem;
+  margin-bottom: .5rem;
+
+  @media print {
+    min-width: 45%;
+    // display: block;
+  }
+}
+
+.contact-link {
+  position: relative;
+  display: block;
+  text-decoration: none;
+
+  &::after {
+    content: attr(title);
+    text-transform: capitalize;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    line-height: normal;
+    display: none;
+
+    @media print {
+      position: static;
+      content: attr(href);
+      text-transform: none;
+    }
+  }
 
   .icon {
     width: 2rem;
@@ -181,9 +231,12 @@ svg {
     border-radius: 50%;
     background-color: $iron;
     fill: $white;
+    box-shadow: inset $shadow-diff 3px 1px $aluminum;
 
     &:hover {
-      background-color: $oil;
+      background-color: $steel;
+      box-shadow: 0   0   0   2px $white,
+                  0   0   5px 2px;
     }
   }
 }
