@@ -192,6 +192,11 @@ gulp.task('normalize-scss', function () {
   }
 });
 
+gulp.task('deploy', function () {
+  return gulp.src('./dist/**/*')
+    .pipe($.ghPages());
+});
+
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
   runSequence('styles', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
