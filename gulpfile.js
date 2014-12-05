@@ -194,7 +194,7 @@ gulp.task('serve:dist', ['default'], function () {
   });
 });
 
-gulp.task('deploy', ['default'], function () {
+gulp.task('deploy', function () {
   return gulp.src('./dist/**/*')
     .pipe($.ghPages());
 });
