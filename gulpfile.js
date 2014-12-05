@@ -80,7 +80,7 @@ gulp.task('fonts', function () {
 });
 
 // Compile and Automatically Prefix Stylesheets
-gulp.task('styles', ['normalize-scss'], function () {
+gulp.task('styles', function () {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
       'app/styles/*.scss',
@@ -179,22 +179,6 @@ gulp.task('serve:dist', ['default'], function () {
     // https: true,
     server: 'dist'
   });
-});
-
-gulp.task('normalize-scss', function () {
-  var fs = require('fs');
-  var folderPath = 'bower_components/normalize-css';
-  var extraFile = folderPath + '/normalize.scss';
-
-  if( fs.existsSync(extraFile) ) {
-    return;
-  } else {
-    return gulp.src(folderPath + '/normalize.css')
-      .pipe($.rename(function (path) {
-        path.extname = '.scss'
-      }))
-      .pipe(gulp.dest(folderPath));
-  }
 });
 
 gulp.task('deploy', ['default'], function () {
