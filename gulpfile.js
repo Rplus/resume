@@ -143,7 +143,7 @@ gulp.task('html', function () {
     // inject svg icon into html
     .pipe($.inject(svgs, { transform: fileContents }))
     // inject css into html inline style
-    .pipe($.inject(gulp.src(['dist/styles/*.min.css', 'dist/scripts/*.min.js']), {
+    .pipe($.inject(gulp.src(['dist/styles/*.css', 'dist/scripts/*.min.js']), {
       starttag: '<!-- inject:head:{{ext}} -->',
       transform: function (filePath, file) {
         // return file contents as string
