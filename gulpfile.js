@@ -142,6 +142,19 @@ gulp.task('html', function () {
     .pipe($.useref())
     // inject svg icon into html
     .pipe($.inject(svgs, { transform: fileContents }))
+    // inject css into html inline style
+    .pipe($.inject(gulp.src(['dist/styles/*.min.css', 'dist/scripts/*.min.js']), {
+      starttag: '<!-- inject:head:{{ext}} -->',
+      transform: function (filePath, file) {
+        // return file contents as string
+        var _ext, tags;
+        _ext= filePath.split('.').reverse()[0];
+
+        tags = ('js' === _ext ? 'script' : 'style');
+
+        return '<' + tags + '>' + file.contents.toString('utf8') + '</' + tags + '>';
+      }
+    }))
     // Minify Any HTML
     .pipe($.if('*.html', $.minifyHtml({quotes: true})))
     // Output Files
