@@ -76,14 +76,13 @@ gulp.task('copy', function () {
 gulp.task('styles', function () {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-      'app/styles/*.scss',
+      'app/styles/*.styl',
       'app/styles/**/*.css'
     ])
-    .pipe($.changed('styles', {extension: '.scss'}))
-    .pipe($.rubySass({
-        style: 'expanded',
-        loadPath: 'bower_components/normalize-css/'
-      })
+    .pipe($.changed('styles', {extension: '.styl'}))
+    .pipe($.stylus({
+      linenos: true
+    })
       .on('error', console.error.bind(console))
     )
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
@@ -170,7 +169,7 @@ gulp.task('serve', ['styles'], function () {
   });
 
   gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
+  gulp.watch(['app/styles/**/*.{styl,css}'], ['styles', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['jshint']);
   gulp.watch(['app/images/**/*'], reload);
 });
