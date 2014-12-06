@@ -56,6 +56,7 @@ gulp.task('images', function () {
       progressive: true,
       interlaced: true
     })))
+    .pipe(gulp.dest('.tmp/images'))
     .pipe(gulp.dest('dist/images'))
     .pipe($.size({title: 'images'}));
 });
@@ -68,7 +69,8 @@ gulp.task('copy', function () {
     'node_modules/apache-server-configs/dist/.htaccess'
   ], {
     dot: true
-  }).pipe(gulp.dest('dist'))
+  }).pipe(gulp.dest('.tmp'))
+    .pipe(gulp.dest('dist'))
     .pipe($.size({title: 'copy'}));
 });
 
@@ -86,9 +88,9 @@ gulp.task('styles', function () {
       .on('error', console.error.bind(console))
     )
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulp.dest('.tmp/styles'))
     // Concatenate And Minify Styles
     .pipe($.if('*.css', $.csso()))
+    .pipe(gulp.dest('.tmp/styles'))
     .pipe(gulp.dest('dist/styles'))
     .pipe($.size({title: 'styles'}));
 });
