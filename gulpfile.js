@@ -203,7 +203,7 @@ gulp.task('deploy', function () {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence('styles', ['jshint', 'html', 'images', 'copy'], cb);
+  runSequence('styles', ['jshint', 'inject-html', 'images', 'copy'], cb);
 });
 
 // Run PageSpeed Insights
