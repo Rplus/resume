@@ -136,6 +136,13 @@ gulp.task('html', function () {
     .pipe($.useref())
     // inject svg icon into html
     .pipe($.inject(svgs, { transform: fileContents }))
+    // Output Files: to .tmp folder
+    .pipe(gulp.dest('.tmp'))
+    .pipe($.size({title: 'html'}));
+});
+
+gulp.task('inject-html', ['html'], function () {
+  return gulp.src('.tmp/**/*.html')
     // inject css into html inline style
     .pipe($.inject(gulp.src(['dist/styles/*.css', 'dist/scripts/*.min.js']), {
       starttag: '<!-- inject:head:{{ext}} -->',
@@ -151,9 +158,9 @@ gulp.task('html', function () {
     }))
     // Minify Any HTML
     .pipe($.if('*.html', $.minifyHtml({quotes: true})))
-    // Output Files
+    // Output Files: to dist folder
     .pipe(gulp.dest('dist'))
-    .pipe($.size({title: 'html'}));
+    .pipe($.size({title: 'inject-html'}));
 });
 
 // Clean Output Directory
