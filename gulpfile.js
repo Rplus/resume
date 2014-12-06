@@ -186,6 +186,7 @@ gulp.task('serve:dist', ['default'], function () {
   });
 });
 
+// deploy dist folder to github branch gh-pages
 gulp.task('deploy', function () {
   return gulp.src('./dist/**/*')
     .pipe($.ghPages());
@@ -203,7 +204,7 @@ gulp.task('pagespeed', pagespeed.bind(null, {
   // free (no API key) tier. You can use a Google
   // Developer API key if you have one. See
   // http://goo.gl/RkN0vE for info key: 'YOUR_API_KEY'
-  url: 'https://example.com',
+  url: 'http://rplus.github.io/resume/',
   strategy: 'mobile'
 }));
 
