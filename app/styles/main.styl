@@ -47,6 +47,9 @@ $page-break-after {
   }
 }
 
+$break-unit {
+  display: inline-block;
+}
 
 
 
@@ -104,8 +107,8 @@ abbr {
 }
 
 .hello {
+  @extend $break-unit;
   max-width: 19rem;
-  display: inline-block;
   vertical-align: middle;
 
   .say-hi {
