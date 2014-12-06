@@ -47,6 +47,10 @@ $page-break-after {
   }
 }
 
+$transition-all {
+  transition: all .3s;
+}
+
 $break-unit {
   display: inline-block;
 }
@@ -132,6 +136,7 @@ abbr {
 .avatar {
   $avatar-src  = '//lh4.googleusercontent.com/-O-6vrPqu3Cc/VHyWdhpZr5I/AAAAAAAAE4Y/FB4KwsWDsGo/s300/1402968_10200777524752764_501037865_o_1_1.jpg';
 
+  @extend $transition-all;
   display: inline-block;
   width: 200px;
   height: @width;
@@ -139,7 +144,7 @@ abbr {
   vertical-align: middle;
   border-radius: 50%;
   background: url($avatar-src) 50% / 200px no-repeat;
-  transition: all .3s cubic-bezier(.5, 3, .8, .8);
+  transition-timing-function: cubic-bezier(.5, 3, .8, .8);
   box-shadow: inset $shadow-diff 1px 0 rgba($black, .1),
               0   0   0   4px #fff,
               0   0   1px 4px rgba($black, .2),
@@ -164,9 +169,9 @@ abbr {
 ///// svg
 
 .icon {
+  @extend $transition-all;
   display: inline-block;
   vertical-align: bottom;
-  transition: all .3s;
 }
 
 .icon-Rplus {
@@ -233,6 +238,7 @@ abbr {
 
   // tooltip
   &::after {
+    @extend $transition-all;
     content: attr(title);
     position: absolute;
     border-left: 8px solid rgba($steel, .2);
@@ -246,7 +252,6 @@ abbr {
     opacity: 0;
     max-width: 0;
     overflow: hidden;
-    transition: all .3s;
     text-transform: capitalize;
     pointer-events: none;
 
