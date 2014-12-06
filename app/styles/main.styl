@@ -41,6 +41,12 @@ $shadow-diff = 1px 1px;
 /**
  * helper
  */
+$page-break-after {
+  @media print {
+    page-break-after: always;
+  }
+}
+
 
 
 
@@ -285,7 +291,12 @@ abbr {
   margin: 1rem 1rem;
 }
 
+.cv-section--skill {
+  @extend $page-break-after;
+}
+
 .cv-section--experience {
+  @extend $page-break-after;
 
   h4 {
     font-weight: normal;
