@@ -122,6 +122,7 @@ abbr {
 
 .avatar {
   $avatar-src  = '//lh4.googleusercontent.com/-O-6vrPqu3Cc/VHyWdhpZr5I/AAAAAAAAE4Y/FB4KwsWDsGo/s300/1402968_10200777524752764_501037865_o_1_1.jpg';
+
   display: inline-block;
   width: 200px;
   height: @width;
@@ -129,10 +130,16 @@ abbr {
   vertical-align: middle;
   border-radius: 50%;
   background: url($avatar-src) 50% / 200px no-repeat;
+  transition: all .3s cubic-bezier(.5, 3, .8, .8);
   box-shadow: inset $shadow-diff 1px 0 rgba($black, .1),
               0   0   0   4px #fff,
               0   0   1px 4px rgba($black, .2),
               2px 2px 3px 4px rgba($black, .15);
+
+  &:hover {
+    background-size: 105%;
+    transform: rotate(-3deg);
+  }
 }
 
 .nick-name {
