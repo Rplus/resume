@@ -167,7 +167,7 @@ gulp.task('inject-html', ['html'], function () {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 // Watch Files For Changes & Reload
-gulp.task('serve', ['styles'], function () {
+gulp.task('serve', ['default'], function () {
   browserSync({
     notify: false,
     // Run as an https by uncommenting 'https: true'
