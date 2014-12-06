@@ -177,9 +177,9 @@ gulp.task('serve', ['default'], function () {
     server: ['.tmp', 'app']
   });
 
-  gulp.watch(['app/**/*.html'], reload);
+  gulp.watch(['app/**/*.html'], ['html'], reload);
   gulp.watch(['app/styles/**/*.{styl,css}'], ['styles', reload]);
-  gulp.watch(['app/scripts/**/*.js'], ['jshint']);
+  gulp.watch(['app/scripts/**/*.js'], ['jshint', 'html'], reload);
   gulp.watch(['app/images/**/*'], reload);
 });
 
