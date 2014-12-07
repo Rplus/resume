@@ -360,8 +360,18 @@ abbr {
 /////
 // partial content
 
+.see-more {
+  display: none;
+}
+
 #card:target {
+
   & ~ {
+
+    .see-more {
+      display: block;
+    }
+
     .cv-section--experience,
     .cv-section--intro,
     .business-card {
