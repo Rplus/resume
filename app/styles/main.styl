@@ -33,8 +33,11 @@ $shadow-diff = 1px 1px;
 /**
  * Mixin
  */
-
-
+vertical-center() {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 
 
@@ -317,33 +320,75 @@ abbr {
   @extend $page-break-after;
 }
 
+
+
+/// exp list
+
 .cv-section--experience {
   @extend $page-break-after;
+  line-height: 1.3;
 
-  h4 {
-    font-weight: normal;
+  ul ul,
+  ul ul ul {
+    padding-left: 5%;
   }
+
+  li {
+    list-style-type: none;
+  }
+}
+
+.exp-items {
+  padding-left: 7%;
 }
 
 .exp-item {
   margin-bottom: 1rem;
+  list-style-type: none;
+}
+
+.exp-item__header {
+  position: relative;
+  font-weight: normal;
+
+  &:last-of-type {
+    margin-bottom: .5rem;
+  }
+
+  &::before {
+    vertical-center();
+    content: '';
+    left: -1rem;
+    width: .5rem;
+    height: 1rem;
+    background-color: $gainsboro;
+  }
 }
 
 .task-list {
-  padding-left: 5%;
   margin-bottom: .5rem;
-  line-height: 1.3;
+  margin-bottom: 1rem;
 
   li {
+    position: relative;
     margin-bottom: .5rem;
+    list-style-type: none;
 
-    li {
-      list-style-type: circle;
+    &::before {
+      content: '';
+      position: absolute;
+      left: -.7rem;
+      top: .5rem;
+      width: 2px;
+      height: 2px;
+      border: 1px solid $aluminum;
+      transform: rotate(45deg)
     }
   }
 }
 
 .task-list__group__title {
+  margin-bottom: .5rem;
   color: lighten($steel, 10%);
 }
 
