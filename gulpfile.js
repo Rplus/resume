@@ -78,8 +78,7 @@ gulp.task('copy', function () {
 gulp.task('styles', function () {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-      'app/styles/*.styl',
-      'app/styles/**/*.css'
+      'app/styles/main.styl'
     ])
     .pipe($.changed('styles', {extension: '.styl'}))
     .pipe($.stylus({
