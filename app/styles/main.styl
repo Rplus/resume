@@ -284,13 +284,14 @@ abbr {
     vertical-align: middle;
     border-radius: 50%;
     background-color: $iron;
-    fill: $white;
+    fill: $page-bgc;
     box-shadow: $shadow-diff 3px 1px $aluminum;
   }
 
   &:active .icon,
   &:focus .icon,
   &:hover .icon {
+    fill: $white;
     background-color: $aluminum;
     box-shadow: inset $shadow-diff 3px 1px $steel,
                 inset -1px -1px 3px -1px rgba($white, .5);
