@@ -104,7 +104,15 @@ hr {
 }
 
 a {
-  color: darken(#f00, 40%);
+  $link-color = darken(#f00, 40%);
+  color: $link-color;
+  border-bottom: 1px solid rgba($link-color, .2);
+  text-decoration: none;
+  transition: all .3s;
+
+  &:hover {
+    border-color: rgba($link-color, .5);
+  }
 
   &[href^="//"] {
     cursor: alias;
@@ -238,6 +246,7 @@ abbr {
 .contact-link {
   position: relative;
   display: block;
+  border: none;
   text-decoration: none;
   white-space: nowrap;
 
