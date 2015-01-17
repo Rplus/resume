@@ -423,22 +423,29 @@ abbr {
 // partial content
 
 .see-more {
-  display: none;
-}
+  @extend $transition-all;
+  margin-bottom: -1rem;
+  visibility: hidden;
+  opacity: 0;
 
-#card:target {
-
-  & ~ {
-
-    .see-more {
-      display: block;
-    }
-
-    .cv-section--experience,
-    .cv-section--intro,
-    .business-card {
-      display: none;
-    }
+  #card:target ~ & {
+    margin-bottom: 0;
+    visibility: visible;
+    opacity: 1;
   }
 }
 
+.cv-section--experience,
+.cv-section--intro,
+.business-card {
+  @extend $transition-all;
+  max-height: 200rem; // magic number: a long height
+  overflow: hidden;
+  opacity: 1;
+
+  #card:target ~ & {
+    max-height: 0;
+    margin-bottom: 0;
+    opacity: 0;
+  }
+}
