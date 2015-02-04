@@ -368,6 +368,17 @@ abbr {
 .exp-item {
   margin-bottom: 1rem;
   list-style-type: none;
+
+  input[type="checkbox"] {
+    display: none;
+
+    &:checked ~ .task-lists,
+    &:checked ~ .task-lists .task-list,
+    &:checked ~ .task-list {
+      @extend $state--show;
+      max-height: 50rem;
+    }
+  }
 }
 
 .exp-item__header {
@@ -388,6 +399,12 @@ abbr {
     height: 1rem;
     background-color: rgba($black, .1);
   }
+}
+
+.task-lists,
+.task-list {
+  @extend $state--hide;
+  transition: all .1s
 }
 
 .task-list {
@@ -424,6 +441,7 @@ abbr {
   font-family: monospace;
   font-size: small;
   color: rgba($black, .5);
+  cursor: pointer;
 }
 
 .business-card {
