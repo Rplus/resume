@@ -58,6 +58,18 @@ $break-unit {
   display: inline-block;
 }
 
+$state--hide {
+  max-height: 0;
+  margin-bottom: 0;
+  opacity: 0;
+}
+
+$state--show {
+  max-height: 200rem; // magic number: a long height
+  overflow: hidden;
+  opacity: 1;
+}
+
 
 .bu {
   @extend $break-unit;
@@ -439,13 +451,9 @@ abbr {
 .cv-section--intro,
 .business-card {
   @extend $transition-all;
-  max-height: 200rem; // magic number: a long height
-  overflow: hidden;
-  opacity: 1;
+  @extend $state--show;
 
   #card:target ~ & {
-    max-height: 0;
-    margin-bottom: 0;
-    opacity: 0;
+    @extend $state--hide;
   }
 }
