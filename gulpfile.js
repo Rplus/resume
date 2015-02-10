@@ -75,26 +75,6 @@ gulp.task('copy', function () {
 });
 
 // Compile and Automatically Prefix Stylesheets
-gulp.task('styles', function () {
-  // For best performance, don't add Sass partials to `gulp.src`
-  return gulp.src([
-      'app/styles/main.styl'
-    ])
-    .pipe($.changed('styles', {extension: '.styl'}))
-    .pipe($.stylus({
-      linenos: true
-    })
-      .on('error', console.error.bind(console))
-    )
-    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    // Concatenate And Minify Styles
-    .pipe($.if('*.css', $.csso()))
-    .pipe(gulp.dest('.tmp/styles'))
-    .pipe(gulp.dest('dist/styles'))
-    .pipe($.size({title: 'styles'}));
-});
-
-// Compile and Automatically Prefix Stylesheets
 gulp.task('libsass', function () {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
