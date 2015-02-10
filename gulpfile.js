@@ -196,7 +196,7 @@ gulp.task('serve', ['default'], function () {
   });
 
   gulp.watch(['app/**/*.html'], ['html'], reload);
-  gulp.watch(['app/styles/**/*.{styl,css}'], ['styles', reload]);
+  gulp.watch(['app/styles/**/*.{scss,css}'], ['libsass', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['jshint', 'html'], reload);
   gulp.watch(['app/images/**/*'], reload);
 });
@@ -221,7 +221,7 @@ gulp.task('deploy', function () {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence('styles', ['jshint', 'inject-html', 'images', 'copy'], cb);
+  runSequence('libsass', ['jshint', 'inject-html', 'images', 'copy'], cb);
 });
 
 // Run PageSpeed Insights
