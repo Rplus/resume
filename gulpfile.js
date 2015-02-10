@@ -75,15 +75,13 @@ gulp.task('copy', function () {
 });
 
 // Compile and Automatically Prefix Stylesheets
-gulp.task('styles', function () {
+gulp.task('libsass', function () {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-      'app/styles/main.styl'
+      'app/styles/main.scss'
     ])
-    .pipe($.changed('styles', {extension: '.styl'}))
-    .pipe($.stylus({
-      linenos: true
-    })
+    .pipe($.changed('libsass', {extension: '.scss'}))
+    .pipe($.sass()
       .on('error', console.error.bind(console))
     )
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
@@ -178,7 +176,7 @@ gulp.task('serve', ['default'], function () {
   });
 
   gulp.watch(['app/**/*.html'], ['html'], reload);
-  gulp.watch(['app/styles/**/*.{styl,css}'], ['styles', reload]);
+  gulp.watch(['app/styles/**/*.{scss,css}'], ['libsass', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['jshint', 'html'], reload);
   gulp.watch(['app/images/**/*'], reload);
 });
@@ -203,7 +201,7 @@ gulp.task('deploy', function () {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence('styles', ['jshint', 'inject-html', 'images', 'copy'], cb);
+  runSequence('libsass', ['jshint', 'inject-html', 'images', 'copy'], cb);
 });
 
 // Run PageSpeed Insights
