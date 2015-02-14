@@ -68,9 +68,21 @@
     }
   };
 
+  RplusFns.ready(function () {
+    var googleFontSource = document.getElementById('js-google-font').firstChild.data.match(/href="(.+?)"/)[1];
+    var googleFontUsed = document.querySelectorAll('.say-hi')[0];
+    var googleFontText = (googleFontUsed.textContent || googleFontUsed.innerText).trim();
+    var iconURL = googleFontSource + '&text=' + encodeURIComponent(googleFontText);
+
+    var _link = document.createElement('link');
+    _link.rel = 'stylesheet';
+    _link.href = iconURL;
+    document.body.insertBefore(_link, document.body.childNodes[0]);
+  });
+
   (function modernizrInit () {
     var htmlClassName = localStorage.getItem('modernizrAllClass');
-    var lastDetectTime = localStorage.getItem('modernizrLastDetectTime') * 1;
+    var lastDetectTime = localStorage.getItem('lastDetectTime') * 1;
     var detectDuration = lastDetectTime ? (new Date().getTime() - lastDetectTime) : false;
 
     if (htmlClassName && detectDuration < 259200000 ) { // 259200000 === 3 days
@@ -84,7 +96,7 @@
     _injectJs.src = '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js';
     _injectJs.addEventListener('load', function () {
       localStorage.setItem('modernizrAllClass', document.documentElement.className);
-      localStorage.setItem('modernizrLastDetectTime', new Date().getTime());
+      localStorage.setItem('lastDetectTime', new Date().getTime());
       initIcons();
     });
     _head.appendChild(_injectJs);
