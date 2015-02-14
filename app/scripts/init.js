@@ -1,6 +1,11 @@
 (function() {
   'use strict';
 
+  // forcely clear all localStorage data
+  if ('#clear' === location.hash) {
+    localStorage.clear();
+  }
+
   var RplusFns = {
     ready: function (fn) {
       if (document.readyState !== 'loading'){
