@@ -51,7 +51,7 @@ gulp.task('jshint', function () {
 
 // Optimize Images
 gulp.task('images', function () {
-  return gulp.src(['app/images/**/*', '!app/images/inject-svg/*.svg'])
+  return gulp.src(['app/images/**/*', '!app/images/inject-svg/icons/*.svg'])
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
@@ -96,19 +96,6 @@ gulp.task('libsass', function () {
 gulp.task('html', function () {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
-  var svgs = gulp.src(['app/images/inject-svg/*.svg'])
-                 .pipe($.cache($.imagemin()))
-                 .pipe($.svgstore({ prefix: 'inject-icon-', inlineSvg: true, transformSvg: transformSvg }));
-
-  function fileContents (filePath, file) {
-    return file.contents.toString('utf8');
-  }
-
-  function transformSvg ($svg, done) {
-    $svg.attr('style', 'display:none');
-    done(null, $svg);
-  }
-
   return gulp.src('app/**/*.html')
     .pipe(assets)
     // Concatenate And Minify JavaScript
@@ -132,8 +119,6 @@ gulp.task('html', function () {
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
     .pipe($.useref())
-    // inject svg icon into html
-    .pipe($.inject(svgs, { transform: fileContents }))
     // Output Files: to .tmp folder
     .pipe(gulp.dest('.tmp'))
     .pipe($.size({title: 'html'}));
@@ -159,6 +144,32 @@ gulp.task('inject-html', ['html'], function () {
     // Output Files: to dist folder
     .pipe(gulp.dest('dist'))
     .pipe($.size({title: 'inject-html'}));
+});
+
+gulp.task('svgicons', function() {
+  function transformSvg ($svg, done) {
+    $svg.attr('style', 'display:none');
+    done(null, $svg);
+  }
+
+  gulp.src('./app/images/inject-svg/icons/*.svg')
+    .pipe($.imagemin({
+      svgoPlugins: [{removeViewBox: false}]
+    }))
+    .pipe($.svgstore({
+       prefix: 'inject-icon-',
+       transformSvg: transformSvg
+    }))
+    .pipe(gulp.dest('.tmp/images/inject-svg/'))
+    .pipe(gulp.dest('dist/images/inject-svg/'));
+
+  $.iconify({
+      src: './app/images/inject-svg/icons/*.svg',
+      pngOutput: './app/images/inject-svg/png',
+      scssOutput: './.tmp/images/inject-svg/scss',
+      cssOutput:  './app/images/inject-svg/css',
+      styleTemplate: './app/styles/_icon_gen.scss.mustache'
+  });
 });
 
 // Clean Output Directory
@@ -200,7 +211,7 @@ gulp.task('deploy', function () {
 });
 
 // Build Production Files, the Default Task
-gulp.task('default', ['clean'], function (cb) {
+gulp.task('default', ['clean', 'svgicons'], function (cb) {
   runSequence('libsass', ['jshint', 'inject-html', 'images', 'copy'], cb);
 });
 

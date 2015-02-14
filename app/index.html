@@ -37,9 +37,19 @@
     <!-- endbuild -->
     <!-- endinject -->
 
+    <noscript id="js-icons-fallback">
+      <link rel="stylesheet" href="./images/inject-svg/css/icons.png.css">
+    </noscript>
+
+    <!-- inject:head:js -->
+    <!-- build:js scripts/init.min.js -->
+    <script src="scripts/init.js"></script>
+    <!-- endbuild -->
+    <!-- endinject -->
+
     <!-- detects HTML5 and CSS3 features -->
     <!--
-    <script async src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     -->
   </head>
   <body>
