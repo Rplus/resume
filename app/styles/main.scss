@@ -264,7 +264,16 @@ abbr {
 
   &:focus::after,
   &:hover::after {
-    bottom: 100%;
+
+    .no-js &,
+    .no-csstransforms & {
+      bottom: 100%;
+    }
+
+    .csstransforms & {
+      transform: translateY(-50%);
+    }
+
     max-width: 5em;
     opacity: 1;
     background-color: rgba($steel, .2);
