@@ -86,10 +86,14 @@
     var detectDuration = lastDetectTime ? (new Date().getTime() - lastDetectTime) : false;
 
     if (htmlClassName && detectDuration < 259200000 ) { // 259200000 === 3 days
+      // render form cached in 3 days
       document.documentElement.className = htmlClassName;
       initIcons();
       return;
     }
+
+    // clear cached
+    localStorage.clear();
 
     var _head = document.getElementsByTagName('head')[0];
     var _injectJs = document.createElement('script');
