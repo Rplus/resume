@@ -34,14 +34,14 @@
   var initIcons = function () {
     RplusFns.ready(function () {
       if (!RplusFns.hasClass(document.documentElement, 'inlinesvg')) {
-        insertInlineSvg();
+        injectInlineSvg();
       } else {
-        insertInlinePng();
+        injectInlinePng();
       }
     });
   };
 
-  var insertInlinePng = function () {
+  var injectInlinePng = function () {
     var inlinePng = localStorage.getItem('inlinePng');
 
     if (inlinePng) {
@@ -56,7 +56,7 @@
     }
   };
 
-  var insertInlineSvg = function () {
+  var injectInlineSvg = function () {
     var inlineSvg = localStorage.getItem('inlineSvg');
 
     if (inlineSvg) {
