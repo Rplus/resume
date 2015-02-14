@@ -24,7 +24,7 @@
         $fn({data: ajax.responseText});
       };
     },
-    injectInline: function (inlineContent) {
+    injectHTML: function (inlineContent) {
       var div = document.createElement('div');
       div.innerHTML = inlineContent;
       document.body.insertBefore(div, document.body.childNodes[0]);
@@ -45,12 +45,12 @@
     var inlinePng = localStorage.getItem('inlinePng');
 
     if (inlinePng) {
-      RplusFns.injectInline(inlinePng);
+      RplusFns.injectHTML(inlinePng);
     } else {
       var pngStylePath = document.getElementById('js-icons-fallback').firstChild.data.match(/href="(.+?)"/)[1];
       RplusFns.ajax(pngStylePath, function (ajaxRespond) {
         var inlinePngContent = '<style>' + ajaxRespond.data + '</sctyle>';
-        RplusFns.injectInline(inlinePngContent);
+        RplusFns.injectHTML(inlinePngContent);
         localStorage.setItem('inlinePng', inlinePngContent);
       });
     }
@@ -60,11 +60,11 @@
     var inlineSvg = localStorage.getItem('inlineSvg');
 
     if (inlineSvg) {
-      RplusFns.injectInline(inlineSvg);
+      RplusFns.injectHTML(inlineSvg);
     } else {
       RplusFns.ajax('./images/inject-svg/svgstore.svg', function (ajaxRespond) {
         var inlineSvgContent = ajaxRespond.data;
-        RplusFns.injectInline(inlineSvgContent);
+        RplusFns.injectHTML(inlineSvgContent);
         localStorage.setItem('inlineSvg', inlineSvgContent);
       });
     }
