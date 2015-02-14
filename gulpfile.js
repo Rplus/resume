@@ -96,19 +96,6 @@ gulp.task('libsass', function () {
 gulp.task('html', function () {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
-  var svgs = gulp.src(['app/images/inject-svg/icons/*.svg'])
-                 .pipe($.cache($.imagemin()))
-                 .pipe($.svgstore({ prefix: 'inject-icon-', inlineSvg: true, transformSvg: transformSvg }));
-
-  function fileContents (filePath, file) {
-    return file.contents.toString('utf8');
-  }
-
-  function transformSvg ($svg, done) {
-    $svg.attr('style', 'display:none');
-    done(null, $svg);
-  }
-
   return gulp.src('app/**/*.html')
     .pipe(assets)
     // Concatenate And Minify JavaScript
@@ -132,8 +119,6 @@ gulp.task('html', function () {
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
     .pipe($.useref())
-    // inject svg icon into html
-    .pipe($.inject(svgs, { transform: fileContents }))
     // Output Files: to .tmp folder
     .pipe(gulp.dest('.tmp'))
     .pipe($.size({title: 'html'}));
