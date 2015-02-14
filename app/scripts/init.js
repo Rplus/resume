@@ -9,28 +9,65 @@
     }
   }
 
-  var insertSvgSprite = function () {
+  function hasClass($ele, $className) {
+    if ($ele.classList) {
+      return $ele.classList.contains($className);
+    } else {
+      return new RegExp('(^| )' + $className + '( |$)', 'gi').test($ele.className);
+    }
+  }
+
+  function $ajax($path, $fn) {
+    var ajax = new XMLHttpRequest();
+    ajax.open('GET', $path, true);
+    ajax.send();
+    ajax.onload = function(e) {
+      $fn({data: ajax.responseText});
+    };
+  }
+
+  var injectInline = function (inlineContent) {
+      var div = document.createElement('div');
+      div.innerHTML = inlineContent;
+      document.body.insertBefore(div, document.body.childNodes[0]);
+  };
+
+  var initIcons = function () {
+    ready(function () {
+      if (!hasClass(document.documentElement, 'inlinesvg')) {
+        insertInlineSvg();
+      } else {
+        insertInlinePng();
+      }
+    });
+  };
+
+  var insertInlinePng = function () {
+    var inlinePng = localStorage.getItem('inlinePng');
+
+    if (inlinePng) {
+      injectInline(inlinePng);
+    } else {
+      var pngStylePath = document.getElementById('js-icons-fallback').firstChild.data.match(/href="(.+?)"/)[1];
+      $ajax(pngStylePath, function (ajaxRespond) {
+        var inlinePngContent = '<style>' + ajaxRespond.data + '</sctyle>';
+        injectInline(inlinePngContent);
+        localStorage.setItem('inlinePng', inlinePngContent);
+      });
+    }
+  };
+
+  var insertInlineSvg = function () {
     var inlineSvg = localStorage.getItem('inlineSvg');
 
-    var injectSvg = function (svgContent) {
-        var div = document.createElement('div');
-        div.innerHTML = svgContent;
-        document.body.insertBefore(div, document.body.childNodes[0]);
-    };
-
     if (inlineSvg) {
-      ready(function () {
-        injectSvg(inlineSvg);
-      });
+      injectInline(inlineSvg);
     } else {
-      var ajax = new XMLHttpRequest();
-      ajax.open('GET', './images/inject-svg/svgstore.svg', true);
-      ajax.send();
-      ajax.onload = function(e) {
-        var inlineSvgContent = ajax.responseText;
-        injectSvg(inlineSvgContent);
+      $ajax('./images/inject-svg/svgstore.svg', function (ajaxRespond) {
+        var inlineSvgContent = ajaxRespond.data;
+        injectInline(inlineSvgContent);
         localStorage.setItem('inlineSvg', inlineSvgContent);
-      };
+      });
     }
   };
 
@@ -41,7 +78,7 @@
 
     if (htmlClassName && detectDuration < 259200000 ) { // 259200000 === 3 days
       document.documentElement.className = htmlClassName;
-      insertSvgSprite();
+      initIcons();
       return;
     }
 
@@ -51,7 +88,7 @@
     _injectJs.addEventListener('load', function () {
       localStorage.setItem('modernizrAllClass', document.documentElement.className);
       localStorage.setItem('modernizrLastDetectTime', new Date().getTime());
-      insertSvgSprite();
+      initIcons();
     });
     _head.appendChild(_injectJs);
   })();
