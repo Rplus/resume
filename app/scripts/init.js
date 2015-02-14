@@ -20,7 +20,7 @@
       var ajax = new XMLHttpRequest();
       ajax.open('GET', $path, true);
       ajax.send();
-      ajax.onload = function(e) {
+      ajax.onload = function () {
         $fn({data: ajax.responseText});
       };
     },
@@ -33,39 +33,32 @@
 
   var initIcons = function () {
     RplusFns.ready(function () {
-      if (!RplusFns.hasClass(document.documentElement, 'inlinesvg')) {
-        injectInlineSvg();
+      if (RplusFns.hasClass(document.documentElement, 'inlinesvg')) {
+        injectInline('svg');
       } else {
-        injectInlinePng();
+        injectInline('png');
       }
     });
   };
 
-  var injectInlinePng = function () {
-    var inlinePng = localStorage.getItem('inlinePng');
+  var injectInline = function (type) {
+    var _isSvgType = (type === 'svg');
+    var _type = (_isSvgType ? 'inlineSvg' : 'inlinePng');
+    var localData = localStorage.getItem(_type);
 
-    if (inlinePng) {
-      RplusFns.injectHTML(inlinePng);
+    if (localData) {
+      RplusFns.injectHTML(localData);
     } else {
-      var pngStylePath = document.getElementById('js-icons-fallback').firstChild.data.match(/href="(.+?)"/)[1];
-      RplusFns.ajax(pngStylePath, function (ajaxRespond) {
-        var inlinePngContent = '<style>' + ajaxRespond.data + '</sctyle>';
-        RplusFns.injectHTML(inlinePngContent);
-        localStorage.setItem('inlinePng', inlinePngContent);
-      });
-    }
-  };
+      var iconSource = (_isSvgType ? './images/inject-svg/svgstore.svg' : document.getElementById('js-icons-fallback').firstChild.data.match(/href="(.+?)"/)[1]);
+      RplusFns.ajax(iconSource, function (response) {
+        var inlineContent = response.data;
 
-  var injectInlineSvg = function () {
-    var inlineSvg = localStorage.getItem('inlineSvg');
+        if (!_isSvgType) {
+          inlineContent = '<style>' + inlineContent + '</sctyle>';
+        }
 
-    if (inlineSvg) {
-      RplusFns.injectHTML(inlineSvg);
-    } else {
-      RplusFns.ajax('./images/inject-svg/svgstore.svg', function (ajaxRespond) {
-        var inlineSvgContent = ajaxRespond.data;
-        RplusFns.injectHTML(inlineSvgContent);
-        localStorage.setItem('inlineSvg', inlineSvgContent);
+        RplusFns.injectHTML(inlineContent);
+        localStorage.setItem(_type, inlineContent);
       });
     }
   };
