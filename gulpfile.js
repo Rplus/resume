@@ -147,6 +147,22 @@ gulp.task('inject-html', ['html'], function () {
 });
 
 gulp.task('svgicons', function() {
+  function transformSvg ($svg, done) {
+    $svg.attr('style', 'display:none');
+    done(null, $svg);
+  }
+
+  gulp.src('./app/images/inject-svg/icons/*.svg')
+    .pipe($.imagemin({
+      svgoPlugins: [{removeViewBox: false}]
+    }))
+    .pipe($.svgstore({
+       prefix: 'inject-icon-',
+       transformSvg: transformSvg
+    }))
+    .pipe(gulp.dest('.tmp/images/inject-svg/'))
+    .pipe(gulp.dest('dist/images/inject-svg/'));
+
   $.iconify({
       src: './app/images/inject-svg/icons/*.svg',
       pngOutput: './app/images/inject-svg/png',
