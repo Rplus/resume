@@ -1,0 +1,14 @@
+.icon {
+  background-repeat: no-repeat; }
+  .icon.icon-Rplus {
+    background-image: url('../../../../app/images/inject-svg/png/Rplus.png'); }
+  .icon.icon-codepen {
+    background-image: url('../../../../app/images/inject-svg/png/codepen.png'); }
+  .icon.icon-facebook {
+    background-image: url('../../../../app/images/inject-svg/png/facebook.png'); }
+  .icon.icon-github {
+    background-image: url('../../../../app/images/inject-svg/png/github.png'); }
+  .icon.icon-gmail {
+    background-image: url('../../../../app/images/inject-svg/png/gmail.png'); }
+  .icon.icon-home {
+    background-image: url('../../../../app/images/inject-svg/png/home.png'); }
