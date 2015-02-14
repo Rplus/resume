@@ -162,13 +162,13 @@ gulp.task('inject-html', ['html'], function () {
 });
 
 gulp.task('svgicons', function() {
-    $.iconify({
-        src: './app/images/inject-svg/icons/*.svg',
-        pngOutput: './app/images/inject-svg/png',
-        scssOutput: './.tmp/images/inject-svg/scss',
-        cssOutput:  './app/images/inject-svg/css',
-        styleTemplate: './app/styles/_icon_gen.scss.mustache'
-    });
+  $.iconify({
+      src: './app/images/inject-svg/icons/*.svg',
+      pngOutput: './app/images/inject-svg/png',
+      scssOutput: './.tmp/images/inject-svg/scss',
+      cssOutput:  './app/images/inject-svg/css',
+      styleTemplate: './app/styles/_icon_gen.scss.mustache'
+  });
 });
 
 // Clean Output Directory
