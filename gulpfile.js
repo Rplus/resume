@@ -212,8 +212,8 @@ gulp.task('deploy', function () {
 });
 
 // Build Production Files, the Default Task
-gulp.task('default', ['clean', 'svgicons'], function (cb) {
-  runSequence('libsass', ['jshint', 'inject-html', 'images', 'copy'], cb);
+gulp.task('default', ['clean'], function (cb) {
+  runSequence('svgicons','libsass',  ['jshint', 'inject-html'], ['images', 'copy'], cb);
 });
 
 // Run PageSpeed Insights
