@@ -73,7 +73,7 @@
 
   RplusFns.injectInline(RplusFns.getFallbackUrl(document.getElementById('js-main-style')));
 
-  (function modernizrInit () {
+  ;(function modernizrInit () {
     var htmlClassName = localStorage.getItem('modernizrAllClass');
     var lastDetectTime = localStorage.getItem('lastDetectTime') * 1;
     var detectDuration = lastDetectTime ? (new Date().getTime() - lastDetectTime) : false;
