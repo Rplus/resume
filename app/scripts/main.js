@@ -2,6 +2,11 @@
 
 var RplusFns = window.RplusFns || {};
 
+RplusFns.removeClass = function (_el, _className) {
+  var _classReg = new RegExp('\\b' + _className + '\\b', 'g');
+  _el.className = _el.className.replace(_classReg, '');
+};
+
 RplusFns.ready(function () {
   (function loadLimitedCharFont() {
     var googleFontSource = document.getElementById('js-google-font').firstChild.data.match(/href="(.+?)"/)[1];
