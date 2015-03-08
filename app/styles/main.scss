@@ -4,15 +4,12 @@
  */
 @import '../../bower_components/google-material-color/dist/palette.scss';
 
-$white     : #fff;
-$smoke     : #eee;
-$gainsboro : #ddd;
+$white     : palette('White');
 $iron      : #ccc;
-$base      : #aaa;
-$aluminum  : #999;
-$steel     : #666;
-$oil       : #333;
-$black     : #000;
+$aluminum  : palette('Grey');
+$steel     : palette('Grey', 700);
+$oil       : palette('Grey', 900);
+$black     : palette('Black');
 
 
 
@@ -238,7 +235,7 @@ abbr {
   margin-left: .5em;
 
   &:hover {
-    fill: #d50000;
+    fill: palette('Red', 'A700');
   }
 }
 
