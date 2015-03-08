@@ -85,4 +85,6 @@ RplusFns.ready(function () {
     }
   })();
 
+  // load avarter image
+  RplusFns.loadImage(document.getElementById('js-avater-image'));
 });
