@@ -21,7 +21,7 @@
         return new RegExp('(^| )' + $className + '( |$)', 'gi').test($ele.className);
       }
     },
-    ajax: function ($path, $fn) {
+    ajaxGet: function ($path, $fn) {
       var ajax = new XMLHttpRequest();
       ajax.open('GET', $path, true);
       ajax.send();
@@ -55,7 +55,7 @@
       RplusFns.injectHTML(localData);
     } else {
       var iconSource = (_isSvgType ? './images/inject-svg/svgstore.svg' : document.getElementById('js-icons-fallback').firstChild.data.match(/href="(.+?)"/)[1]);
-      RplusFns.ajax(iconSource, function (response) {
+      RplusFns.ajaxGet(iconSource, function (response) {
         var inlineContent = response.data;
 
         if (!_isSvgType) {
