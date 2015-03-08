@@ -7,6 +7,47 @@ RplusFns.removeClass = function (_el, _className) {
   _el.className = _el.className.replace(_classReg, '');
 };
 
+RplusFns.imageMIMEType = {
+  jpg: 'image/jpg',
+  png: 'image/png',
+  svg: 'image/svg+xml'
+};
+
+RplusFns.loadImage = function (_img) {
+  var _imageSrc = RplusFns.getFallbackUrl(_img, 'src');
+  var ext = _imageSrc.split('.').reverse()[0];
+
+  // ref: http://stackoverflow.com/a/8022521
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', _imageSrc, true);
+
+
+  xhr.responseType = 'arraybuffer';
+
+  xhr.onload = function(e) {
+    if (this.status === 200) {
+      var uInt8Array = new Uint8Array(this.response);
+      var i = uInt8Array.length;
+      var biStr = new Array(i);
+
+      while (i--) {
+        biStr[i] = String.fromCharCode(uInt8Array[i]);
+      }
+
+      var data = biStr.join('');
+      var base64 = window.btoa(data); // gte IE10
+
+      var img = document.createElement('img');
+      img.src = 'data:' + RplusFns.imageMIMEType[ext] + ';base64,' + base64;
+      img.className = RplusFns.getFallbackUrl(_img, 'class');
+      img.alt = RplusFns.getFallbackUrl(_img, 'alt');
+      _img.parentNode.insertBefore(img, _img);
+    }
+  };
+
+  xhr.send();
+};
+
 RplusFns.ready(function () {
   (function loadLimitedCharFont() {
     var googleFontSource = document.getElementById('js-google-font').firstChild.data.match(/href="(.+?)"/)[1];
