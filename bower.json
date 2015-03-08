@@ -14,6 +14,6 @@
     "tests"
   ],
   "devDependencies": {
-    "normalize-css": "~3.0.2"
+    "google-material-color": "~1.2.0"
   }
 }
