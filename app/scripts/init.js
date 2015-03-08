@@ -70,7 +70,7 @@
 
   var RplusFns = window.RplusFns || {};
 
-  RplusFns.injectInline(RplusFns.getFallbackUrl(document.getElementById('js-maina-style')));
+  RplusFns.injectInline(RplusFns.getFallbackUrl(document.getElementById('js-main-style')));
 
   (function modernizrInit () {
     var htmlClassName = localStorage.getItem('modernizrAllClass');
