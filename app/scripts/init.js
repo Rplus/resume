@@ -68,6 +68,8 @@
 
   var RplusFns = window.RplusFns || {};
 
+  RplusFns.injectInline(RplusFns.getFallbackCssUrl(document.getElementById('js-maina-style')));
+
   (function modernizrInit () {
     var htmlClassName = localStorage.getItem('modernizrAllClass');
     var lastDetectTime = localStorage.getItem('lastDetectTime') * 1;
