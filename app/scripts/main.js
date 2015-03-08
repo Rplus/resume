@@ -35,34 +35,12 @@ RplusFns.ready(function () {
     document.body.insertBefore(_link, document.body.childNodes[0]);
   })();
 
-  var injectInline = function (type) {
-    var _isSvgType = (type === 'svg');
-    var _type = (_isSvgType ? 'inlineSvg' : 'inlinePng');
-    var localData = localStorage.getItem(_type);
-
-    if (localData) {
-      RplusFns.injectHTML(localData);
-    } else {
-      var iconSource = (_isSvgType ? './images/inject-svg/svgstore.svg' : RplusFns.getFallbackCssUrl(document.getElementById('js-icons-fallback')) );
-      RplusFns.ajaxGet(iconSource, function (response) {
-        var inlineContent = response.data;
-
-        if (!_isSvgType) {
-          inlineContent = '<style>' + inlineContent + '</sctyle>';
-        }
-
-        RplusFns.injectHTML(inlineContent);
-        localStorage.setItem(_type, inlineContent);
-      });
-    }
-  };
-
   var initIcons = function () {
     RplusFns.ready(function () {
       if (RplusFns.hasClass(document.documentElement, 'inlinesvg')) {
-        injectInline('svg');
+        RplusFns.injectInline('svg');
       } else {
-        injectInline('png');
+        RplusFns.injectInline('png');
       }
     });
   };
