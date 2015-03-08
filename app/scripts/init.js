@@ -25,9 +25,11 @@
       var ajax = new XMLHttpRequest();
       ajax.open('GET', $path, true);
       ajax.send();
-      ajax.onload = function () {
-        $fn({data: ajax.responseText});
-      };
+      if ('function' === typeof $fn) {
+        ajax.onload = function () {
+          $fn({data: ajax.responseText});
+        };
+      }
     },
     injectHTML: function (inlineContent) {
       var div = document.createElement('div');
