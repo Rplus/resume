@@ -36,6 +36,8 @@
     }
   };
 
+  var RplusFns = window.RplusFns || {};
+
   var initIcons = function () {
     RplusFns.ready(function () {
       if (RplusFns.hasClass(document.documentElement, 'inlinesvg')) {
