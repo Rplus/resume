@@ -30,7 +30,7 @@
     "opn": "^1.0.0",
     "psi": "^0.1.6",
     "require-dir": "^0.1.0",
-    "run-sequence": "^0.3.7"
+    "run-sequence": "^1.0.2"
   },
   "engines": {
     "node": ">=0.10.0"
