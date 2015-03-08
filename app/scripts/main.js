@@ -38,9 +38,9 @@ RplusFns.ready(function () {
   var initIcons = function () {
     RplusFns.ready(function () {
       if (RplusFns.hasClass(document.documentElement, 'inlinesvg')) {
-        RplusFns.injectInline('svg');
+        RplusFns.injectInline('./images/inject-svg/svgstore.svg');
       } else {
-        RplusFns.injectInline('png');
+        RplusFns.injectInline( RplusFns.getFallbackCssUrl(document.getElementById('js-icons-fallback')) );
       }
     });
   };

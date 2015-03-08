@@ -39,16 +39,15 @@
     getFallbackCssUrl: function (_noscriptEle) {
       return _noscriptEle.firstChild.data.match(/href="(.+?)"/)[1];
     },
-    injectInline: function (type) {
-      var _isSvgType = (type === 'svg');
-      var _type = (_isSvgType ? 'inlineSvg' : 'inlinePng');
-      var localData = localStorage.getItem(_type);
+    injectInline: function (_source) {
+      var _isSvgType = (/\.svg$/.test(_source));
+      var _cachedItem = _source.split('/').reverse()[0];
+      var localData = localStorage.getItem(_cachedItem);
 
       if (localData) {
         RplusFns.injectHTML(localData);
       } else {
-        var iconSource = (_isSvgType ? './images/inject-svg/svgstore.svg' : RplusFns.getFallbackCssUrl(document.getElementById('js-icons-fallback')) );
-        RplusFns.ajaxGet(iconSource, function (response) {
+        RplusFns.ajaxGet(_source, function (response) {
           var inlineContent = response.data;
 
           if (!_isSvgType) {
@@ -56,7 +55,7 @@
           }
 
           RplusFns.injectHTML(inlineContent);
-          localStorage.setItem(_type, inlineContent);
+          localStorage.setItem(_cachedItem, inlineContent);
         });
       }
     }
