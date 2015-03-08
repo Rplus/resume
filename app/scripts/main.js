@@ -40,7 +40,7 @@ RplusFns.ready(function () {
       if (RplusFns.hasClass(document.documentElement, 'inlinesvg')) {
         RplusFns.injectInline('./images/inject-svg/svgstore.svg');
       } else {
-        RplusFns.injectInline( RplusFns.getFallbackCssUrl(document.getElementById('js-icons-fallback')) );
+        RplusFns.injectInline( RplusFns.getFallbackUrl(document.getElementById('js-icons-fallback')) );
       }
     });
   };

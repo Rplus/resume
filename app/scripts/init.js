@@ -41,8 +41,10 @@
         document.head.appendChild(div);
       }
     },
-    getFallbackCssUrl: function (_noscriptEle) {
-      return _noscriptEle.firstChild.data.match(/href="(.+?)"/)[1];
+    getFallbackUrl: function (_noscriptEle, _attr) {
+      _attr = _attr || 'href';
+      var _pattern = new RegExp(_attr + '="(.+?)"' , 'i');
+      return _noscriptEle.firstChild.data.match(_pattern)[1];
     },
     injectInline: function (_source) {
       var _isSvgType = (/\.svg$/.test(_source));
@@ -68,7 +70,7 @@
 
   var RplusFns = window.RplusFns || {};
 
-  RplusFns.injectInline(RplusFns.getFallbackCssUrl(document.getElementById('js-maina-style')));
+  RplusFns.injectInline(RplusFns.getFallbackUrl(document.getElementById('js-maina-style')));
 
   (function modernizrInit () {
     var htmlClassName = localStorage.getItem('modernizrAllClass');
