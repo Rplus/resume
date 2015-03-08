@@ -1,3 +1,7 @@
+'use strict';
+
+var RplusFns = window.RplusFns || {};
+
 RplusFns.ready(function () {
   (function loadLimitedCharFont() {
     var googleFontSource = document.getElementById('js-google-font').firstChild.data.match(/href="(.+?)"/)[1];
