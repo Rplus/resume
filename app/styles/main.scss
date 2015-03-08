@@ -187,6 +187,11 @@ abbr {
     background-size: 105%;
     transform: rotate(-3deg);
   }
+
+  &:active {
+    cursor: grabbing;
+    transform: rotate(-5deg);
+  }
 }
 
 .nick-name {
