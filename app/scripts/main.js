@@ -28,10 +28,10 @@ RplusFns.ready(function () {
     var _link = document.createElement('link');
     _link.rel = 'stylesheet';
     _link.href = googleFontURL;
-    _link.onload = function () {
+    _link.addEventListener('load', function () {
       shwoWFText();
       clearTimeout(webfontLoaderTimeout);
-    };
+    });
     document.body.insertBefore(_link, document.body.childNodes[0]);
   })();
 
