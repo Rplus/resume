@@ -34,7 +34,12 @@
     injectHTML: function (inlineContent) {
       var div = document.createElement('div');
       div.innerHTML = inlineContent;
-      document.body.insertBefore(div, document.body.childNodes[0]);
+
+      if (document.readyState !== 'loading') {
+        document.body.insertBefore(div, document.body.childNodes[0]);
+      } else {
+        document.head.appendChild(div);
+      }
     },
     getFallbackCssUrl: function (_noscriptEle) {
       return _noscriptEle.firstChild.data.match(/href="(.+?)"/)[1];
