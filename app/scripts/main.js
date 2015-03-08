@@ -14,7 +14,7 @@ RplusFns.imageMIMEType = {
 };
 
 RplusFns.loadImage = function (_img) {
-  var _imageSrc = RplusFns.getFallbackUrl(_img, 'src');
+  var _imageSrc = RplusFns.getFallbackAttr(_img, 'src');
   var ext = _imageSrc.split('.').reverse()[0];
 
   // ref: http://stackoverflow.com/a/8022521
@@ -39,8 +39,8 @@ RplusFns.loadImage = function (_img) {
 
       var img = document.createElement('img');
       img.src = 'data:' + RplusFns.imageMIMEType[ext] + ';base64,' + base64;
-      img.className = RplusFns.getFallbackUrl(_img, 'class');
-      img.alt = RplusFns.getFallbackUrl(_img, 'alt');
+      img.className = RplusFns.getFallbackAttr(_img, 'class');
+      img.alt = RplusFns.getFallbackAttr(_img, 'alt');
       _img.parentNode.insertBefore(img, _img);
     }
   };
@@ -81,7 +81,7 @@ RplusFns.ready(function () {
     if (RplusFns.hasClass(document.documentElement, 'inlinesvg')) {
       RplusFns.injectInline('./images/inject-svg/svgstore.svg');
     } else {
-      RplusFns.injectInline( RplusFns.getFallbackUrl(document.getElementById('js-icons-fallback')) );
+      RplusFns.injectInline( RplusFns.getFallbackAttr(document.getElementById('js-icons-fallback')) );
     }
   })();
 

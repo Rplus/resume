@@ -42,7 +42,7 @@
         document.head.appendChild(div);
       }
     },
-    getFallbackUrl: function (_noscriptEle, _attr) {
+    getFallbackAttr: function (_noscriptEle, _attr) {
       _attr = _attr || 'href';
       var _pattern = new RegExp(_attr + '="(.+?)"' , 'i');
       return _noscriptEle.firstChild.data.match(_pattern)[1];
@@ -71,7 +71,7 @@
 
   var RplusFns = window.RplusFns || {};
 
-  RplusFns.injectInline(RplusFns.getFallbackUrl(document.getElementById('js-main-style')));
+  RplusFns.injectInline(RplusFns.getFallbackAttr(document.getElementById('js-main-style')));
 
   ;(function modernizrInit () {
     var htmlClassName = localStorage.getItem('modernizrAllClass');
