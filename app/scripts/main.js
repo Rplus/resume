@@ -22,7 +22,7 @@ RplusFns.ready(function () {
     var webfontLoaderTimeout;
 
     (function () {
-      webfontLoaderTimeout = setTimeout(shwoWFText, 1000);
+      webfontLoaderTimeout = setTimeout(shwoWFText, 3000);
     })();
 
     var _link = document.createElement('link');
