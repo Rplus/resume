@@ -35,15 +35,13 @@ RplusFns.ready(function () {
     document.body.insertBefore(_link, document.body.childNodes[0]);
   })();
 
-  var initIcons = function () {
-    RplusFns.ready(function () {
-      if (RplusFns.hasClass(document.documentElement, 'inlinesvg')) {
-        RplusFns.injectInline('./images/inject-svg/svgstore.svg');
-      } else {
-        RplusFns.injectInline( RplusFns.getFallbackUrl(document.getElementById('js-icons-fallback')) );
-      }
-    });
-  };
+  // init svg icons
+  (function initIcons() {
+    if (RplusFns.hasClass(document.documentElement, 'inlinesvg')) {
+      RplusFns.injectInline('./images/inject-svg/svgstore.svg');
+    } else {
+      RplusFns.injectInline( RplusFns.getFallbackUrl(document.getElementById('js-icons-fallback')) );
+    }
+  })();
 
-  initIcons();
 });
