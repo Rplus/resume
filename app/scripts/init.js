@@ -6,7 +6,7 @@
     localStorage.clear();
   }
 
-  var RplusFns = {
+  window.RplusFns = {
     ready: function (fn) {
       if (document.readyState !== 'loading'){
         fn();
