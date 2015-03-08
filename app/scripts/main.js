@@ -13,15 +13,19 @@ RplusFns.imageMIMEType = {
   svg: 'image/svg+xml'
 };
 
-RplusFns.loadImage = function (_img) {
-  var _imageSrc = RplusFns.getFallbackAttr(_img, 'src');
-  var ext = _imageSrc.split('.').reverse()[0];
+RplusFns.injectImg = function (_imgInfo) {
+  var img = document.createElement('img');
+  img.className = _imgInfo.className;
+  img.alt = _imgInfo.alt;
+  img.src = _imgInfo.dataURL;
+  // img.src = 'data:' + imageMIMEType[ext] + ';base64,' + _imgInfo.data_base64;
+  _imgInfo.el.parentNode.insertBefore(img, _imgInfo.el);
+};
 
+RplusFns.getImage = function (_imgInfo, cb) {
   // ref: http://stackoverflow.com/a/8022521
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', _imageSrc, true);
-
-
+  xhr.open('GET', _imgInfo.src, true);
   xhr.responseType = 'arraybuffer';
 
   xhr.onload = function(e) {
@@ -37,15 +41,36 @@ RplusFns.loadImage = function (_img) {
       var data = biStr.join('');
       var base64 = window.btoa(data); // gte IE10
 
-      var img = document.createElement('img');
-      img.src = 'data:' + RplusFns.imageMIMEType[ext] + ';base64,' + base64;
-      img.className = RplusFns.getFallbackAttr(_img, 'class');
-      img.alt = RplusFns.getFallbackAttr(_img, 'alt');
-      _img.parentNode.insertBefore(img, _img);
+      _imgInfo.dataURL = 'data:' + RplusFns.imageMIMEType[_imgInfo.ext] + ';base64,' + base64;
+      // cache data in localStorage
+      localStorage.setItem(_imgInfo.localItem, _imgInfo.dataURL);
+
+      cb(_imgInfo);
     }
   };
 
   xhr.send();
+};
+
+RplusFns.loadImage = function (_img) {
+
+  var _imgInfo = (function (_info) {
+    _info.el = _img;
+    _info.src = RplusFns.getFallbackAttr(_img, 'src');
+    _info.localItem = _info.src.split('/').reverse()[0];
+    _info.ext = _info.localItem.split('.').reverse()[0];
+    _info.alt = RplusFns.getFallbackAttr(_img, 'alt');
+    _info.className = RplusFns.getFallbackAttr(_img, 'class');
+    _info.dataURL = localStorage.getItem(_info.localItem);
+
+    return _info;
+  })({});
+
+  if (_imgInfo.dataURL) {
+    RplusFns.injectImg(_imgInfo);
+  } else {
+    RplusFns.getImage(_imgInfo, RplusFns.injectImg);
+  }
 };
 
 RplusFns.ready(function () {
