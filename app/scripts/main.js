@@ -8,6 +8,9 @@ RplusFns.ready(function () {
     var _link = document.createElement('link');
     _link.rel = 'stylesheet';
     _link.href = googleFontURL;
+    _link.onload = function () {
+      googleFontUsed.className += ' wf-loaded';
+    };
     document.body.insertBefore(_link, document.body.childNodes[0]);
   })();
 });
