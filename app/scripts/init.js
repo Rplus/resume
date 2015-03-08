@@ -33,6 +33,9 @@
       var div = document.createElement('div');
       div.innerHTML = inlineContent;
       document.body.insertBefore(div, document.body.childNodes[0]);
+    },
+    getFallbackCssUrl: function (_noscriptEle) {
+      return _noscriptEle.firstChild.data.match(/href="(.+?)"/)[1];
     }
   };
 

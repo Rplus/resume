@@ -43,7 +43,7 @@ RplusFns.ready(function () {
     if (localData) {
       RplusFns.injectHTML(localData);
     } else {
-      var iconSource = (_isSvgType ? './images/inject-svg/svgstore.svg' : document.getElementById('js-icons-fallback').firstChild.data.match(/href="(.+?)"/)[1]);
+      var iconSource = (_isSvgType ? './images/inject-svg/svgstore.svg' : RplusFns.getFallbackCssUrl(document.getElementById('js-icons-fallback')) );
       RplusFns.ajaxGet(iconSource, function (response) {
         var inlineContent = response.data;
 
