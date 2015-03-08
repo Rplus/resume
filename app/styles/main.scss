@@ -177,22 +177,19 @@ abbr {
 }
 
 .avatar {
-  $avatar-src: '//rplus.github.io/resume/images/avatar.jpg';
-
-  @extend %transition-all;
+  position: relative;
   display: inline-block;
   width: 200px;
   max-width: 100%;
   margin: 0 auto 1rem;
   vertical-align: middle;
   border-radius: 50%;
-  background: url($avatar-src) 50% / 100% no-repeat;
-  transition-timing-function: cubic-bezier(.5, 3, .8, .8);
+  overflow: hidden;
+  opacity: .99;
   box-shadow: inset $shadow-diff 1px 0 rgba($black, .1),
               0   0   0   4px lighten($white, 30%),
               0   0   1px 4px rgba($black, .2),
               2px 2px 3px 4px rgba($black, .15);
-  cursor: grab;
 
   &::after {
     content: "";
@@ -200,14 +197,25 @@ abbr {
     padding-bottom: 100%;
   }
 
-  &:hover {
-    background-size: 105%;
-    transform: rotate(-3deg);
-  }
+  .avatar__image {
+    @extend %transition-all;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%) translateY(-50%);
+    transition-timing-function: cubic-bezier(.5, 3, .8, .8);
+    cursor: grab;
 
-  &:active {
-    cursor: grabbing;
-    transform: rotate(-5deg);
+    &:hover {
+      transform: translateX(-50%) translateY(-50%) rotate(-3deg);
+      width: 105%;
+    }
+
+    &:active {
+      cursor: grabbing;
+      transform: translateX(-50%) translateY(-50%) rotate(-10deg);
+    }
   }
 }
 
