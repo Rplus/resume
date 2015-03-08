@@ -92,6 +92,10 @@ $page-bgc    : rgba($white, .9);
   margin: 0; // reset all
 }
 
+::selection {
+  background-color: rgba($black, .1);
+}
+
 html {
   padding: 0 1rem;
   background-color: $iron;
