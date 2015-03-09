@@ -20,6 +20,10 @@ RplusFns.injectImg = function (_imgInfo) {
   img.src = _imgInfo.dataURL;
   // img.src = 'data:' + imageMIMEType[ext] + ';base64,' + _imgInfo.data_base64;
   _imgInfo.el.parentNode.insertBefore(img, _imgInfo.el);
+
+  if ('js-svg-avatar' === _imgInfo.el.id) {
+    document.querySelector('.business-card').style.backgroundImage = 'url(' + _imgInfo.dataURL + ')';
+  }
 };
 
 RplusFns.getImage = function (_imgInfo, cb) {
