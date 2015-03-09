@@ -112,4 +112,7 @@ RplusFns.ready(function () {
 
   // load avarter image
   RplusFns.loadImage(document.getElementById('js-avater-image'));
+
+  // load nickname svg
+  RplusFns.loadImage(document.getElementById('js-svg-avatar'));
 });
