@@ -40,6 +40,13 @@ var AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
+var plumberOption = {
+      errorHandler: function (err) {
+        console.log(err);
+        this.emit('end');
+      }
+    };
+
 // Lint JavaScript
 gulp.task('jshint', function () {
   return gulp.src('app/scripts/**/*.js')
@@ -80,10 +87,9 @@ gulp.task('libsass', function () {
   return gulp.src([
       'app/styles/main.scss'
     ])
+    .pipe($.plumber(plumberOption))
     .pipe($.changed('libsass', {extension: '.scss'}))
-    .pipe($.sass()
-      .on('error', console.error.bind(console))
-    )
+    .pipe($.sass())
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
     // Concatenate And Minify Styles
     .pipe($.if('*.css', $.csso()))
@@ -97,6 +103,7 @@ gulp.task('html', function () {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
   return gulp.src('app/**/*.html')
+    .pipe($.plumber(plumberOption))
     .pipe(assets)
     // Concatenate And Minify JavaScript
     .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
@@ -127,6 +134,7 @@ gulp.task('html', function () {
 
 gulp.task('inject-html', ['html'], function () {
   return gulp.src('.tmp/**/*.html')
+    .pipe($.plumber(plumberOption))
     // inject css into html inline style
     .pipe($.inject(gulp.src(['.tmp/styles/*.css', '.tmp/scripts/*.min.js']), {
       starttag: '<!-- inject:head:{{ext}} -->',
