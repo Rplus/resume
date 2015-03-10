@@ -75,7 +75,7 @@ $page-bgc    : rgba($white, .9);
 
 // for web font style
 .wf-inactive {
-  .js & {
+  html.js & {
     color: transparent;
     text-shadow: none;
   }
