@@ -12,9 +12,9 @@ window.Rplus.ready(function () {
     }
   };
 
-  Rplus.removeClass = function (_el, _className) {
-    var _classReg = new RegExp('\\b' + _className + '\\b', 'g');
-    _el.className = _el.className.replace(_classReg, '');
+  Rplus.removeClass = function ($el, $className) {
+    var _classReg = new RegExp('\\b' + $className + '\\b', 'g');
+    $el.className = $el.className.replace(_classReg, '');
   };
 
   // load font: limited char
