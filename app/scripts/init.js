@@ -33,6 +33,7 @@
           obj: {
             parentId: $noscriptEle.id,
             oriString: $fbString.trim(),
+            oriAttr: {},
             tag: $fbString.match(/^\s+?<(\w+?)\s/)[1]
           }
         };
@@ -41,7 +42,7 @@
       for (var i = _allAttr.arr.length; i;) {
         i--;
         _allAttr._tmpArr = _allAttr.arr[i].match(/(\w+?)="(.+?)"/);
-        _allAttr.obj[_allAttr._tmpArr[1]] = _allAttr._tmpArr[2];
+        _allAttr.obj.oriAttr[_allAttr._tmpArr[1]] = _allAttr._tmpArr[2];
       }
 
       return _allAttr.obj;
@@ -51,7 +52,7 @@
         link: 'href',
         img: 'src'
       }[$src.tag];
-      $src.sourceUrl = $src[$src.sourceAttr];
+      $src.sourceUrl = $src.oriAttr[$src.sourceAttr];
       $src.ext = $src.sourceUrl.split('.').reverse()[0];
 
       var _cachedItem = $src.sourceUrl.split('/').reverse()[0];

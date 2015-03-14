@@ -35,7 +35,7 @@ window.Rplus.ready(function () {
 
     var _link = document.createElement('link');
     _link.rel = 'stylesheet';
-    _link.href = webFontInfo.href + '&text=' + encodeURIComponent(webFontText);
+    _link.href = webFontInfo.oriAttr.href + '&text=' + encodeURIComponent(webFontText);
     _link.addEventListener('load', function () {
       shwoWFText();
       clearTimeout(webfontLoaderTimeout);
@@ -48,7 +48,9 @@ window.Rplus.ready(function () {
     if ('undefined' !== typeof window.SVGRect) {
       Rplus.injectInline({
         tag: 'img',
-        src: './images/inject-svg/svgstore.svg'
+        oriAttr: {
+          src: './images/inject-svg/svgstore.svg'
+        }
       });
     } else {
       Rplus.injectInline( Rplus.getFBInfo(document.getElementById('js-icons-fallback')) );
