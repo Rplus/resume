@@ -38,10 +38,10 @@
       div.innerHTML = inlineContent;
 
       if (document.readyState !== 'loading') {
-        insertBeforeTarget = insertBeforeTarget || document.body.childNodes[0];
-        document.body.insertBefore(div, insertBeforeTarget);
+        insertBeforeTarget = insertBeforeTarget || Rplus.ele.body.childNodes[0];
+        Rplus.ele.body.insertBefore(div, insertBeforeTarget);
       } else {
-        document.head.appendChild(div);
+        Rplus.ele.head.appendChild(div);
       }
     },
     getFallbackUrl: function (_noscriptEle, _attr) {
