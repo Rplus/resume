@@ -49,6 +49,24 @@
       var _pattern = new RegExp(_attr + '="(.+?)"' , 'i');
       return _noscriptEle.firstChild.data.match(_pattern)[1];
     },
+    getFBInfo: function (noscriptEle$) {
+      var _allAttr = (function (fbString$) {
+        return {
+          arr: fbString$.match(/(?!\s)\w+?=".+?"/g),
+          obj: {
+            tag: fbString$.match(/^\s+?<(\w+?)\s/)[1]
+          }
+        };
+      })(noscriptEle$.firstChild.data);
+
+      for (var i = _allAttr.arr.length; i;) {
+        i--;
+        _allAttr._tmpArr = _allAttr.arr[i].match(/(\w+?)="(.+?)"/);
+        _allAttr.obj[_allAttr._tmpArr[1]] = _allAttr._tmpArr[2];
+      }
+
+      return _allAttr.obj;
+    },
     injectInline: function (_source, _specilTarget) {
       var _isSvgType = (/\.svg$/.test(_source));
       var _cachedItem = _source.split('/').reverse()[0];
