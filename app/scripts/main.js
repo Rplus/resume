@@ -1,13 +1,13 @@
 'use strict';
 
-var RplusFns = window.RplusFns || {};
+var Rplus = window.Rplus || {};
 
-RplusFns.removeClass = function (_el, _className) {
+Rplus.removeClass = function (_el, _className) {
   var _classReg = new RegExp('\\b' + _className + '\\b', 'g');
   _el.className = _el.className.replace(_classReg, '');
 };
 
-RplusFns.ready(function () {
+Rplus.ready(function () {
   (function loadLimitedCharFont() {
     var googleFontSource = document.getElementById('js-google-font').firstChild.data.match(/href="(.+?)"/)[1];
     var googleFontUsed = document.querySelectorAll('.wf-inactive')[0];
@@ -15,7 +15,7 @@ RplusFns.ready(function () {
     var googleFontURL = googleFontSource + '&text=' + encodeURIComponent(googleFontText);
 
     var shwoWFText = function () {
-      RplusFns.removeClass(googleFontUsed, 'wf-inactive');
+      Rplus.removeClass(googleFontUsed, 'wf-inactive');
     };
 
     // for web font load slowly, it'll remove the .wf-inactive class for showing the text
@@ -37,10 +37,10 @@ RplusFns.ready(function () {
 
   // init svg icons
   (function initIcons() {
-    if (RplusFns.hasClass(document.documentElement, 'inlinesvg')) {
-      RplusFns.injectInline('./images/inject-svg/svgstore.svg');
+    if (Rplus.hasClass(document.documentElement, 'inlinesvg')) {
+      Rplus.injectInline('./images/inject-svg/svgstore.svg');
     } else {
-      RplusFns.injectInline( RplusFns.getFallbackUrl(document.getElementById('js-icons-fallback')) );
+      Rplus.injectInline( Rplus.getFallbackUrl(document.getElementById('js-icons-fallback')) );
     }
   })();
 

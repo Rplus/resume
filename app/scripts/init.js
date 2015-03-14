@@ -6,7 +6,7 @@
     localStorage.clear();
   }
 
-  window.RplusFns = {
+  window.Rplus = {
     ready: function (fn) {
       if (document.readyState !== 'loading'){
         fn();
@@ -53,25 +53,25 @@
       var localData = localStorage.getItem(_cachedItem);
 
       if (localData) {
-        RplusFns.injectHTML(localData, _specilTarget);
+        Rplus.injectHTML(localData, _specilTarget);
       } else {
-        RplusFns.ajaxGet(_source, function (response) {
+        Rplus.ajaxGet(_source, function (response) {
           var inlineContent = response.data;
 
           if (!_isSvgType) {
             inlineContent = '<style>' + inlineContent + '</sctyle>';
           }
 
-          RplusFns.injectHTML(inlineContent, _specilTarget);
+          Rplus.injectHTML(inlineContent, _specilTarget);
           localStorage.setItem(_cachedItem, inlineContent);
         });
       }
     }
   };
 
-  var RplusFns = window.RplusFns || {};
+  var Rplus = window.Rplus || {};
 
-  RplusFns.injectInline(RplusFns.getFallbackUrl(document.getElementById('js-main-style')));
+  Rplus.injectInline(Rplus.getFallbackUrl(document.getElementById('js-main-style')));
 
   ;(function modernizrInit () {
     var htmlClassName = localStorage.getItem('modernizrAllClass');
