@@ -33,11 +33,6 @@
         };
       }
     },
-    getFallbackUrl: function (_noscriptEle, _attr) {
-      _attr = _attr || 'href';
-      var _pattern = new RegExp(_attr + '="(.+?)"' , 'i');
-      return _noscriptEle.firstChild.data.match(_pattern)[1];
-    },
     getFBInfo: function (noscriptEle$) {
       var _allAttr = (function (fbString$) {
         return {
