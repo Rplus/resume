@@ -1,11 +1,6 @@
 (function() {
   'use strict';
 
-  // forcely clear all localStorage data
-  if ('#clear' === location.hash) {
-    localStorage.clear();
-  }
-
   window.Rplus = {
     ready: function (fn) {
       if (document.readyState !== 'loading'){
@@ -70,6 +65,21 @@
   };
 
   var Rplus = window.Rplus || {};
+
+  // check cache version
+  ;(function (ele$, lsItem$) {
+    var _latestVersion = ele$.getAttribute('data-' + lsItem$);
+    var _cacheVersion = localStorage.getItem(lsItem$);
+    var _hasCache = (_cacheVersion === _latestVersion);
+
+    if (!_hasCache || '#clear' === location.hash) {
+      // forcely clear all localStorage data
+      localStorage.clear();
+      localStorage.setItem(lsItem$, _latestVersion);
+    }
+
+    Rplus.hasCache = _hasCache;
+  })(document.getElementById('js-version'), 'version');
 
   Rplus.injectInline(Rplus.getFallbackUrl(document.getElementById('js-main-style')));
 
