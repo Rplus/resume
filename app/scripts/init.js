@@ -1,5 +1,8 @@
-(function() {
+(function(win$, doc$) {
   'use strict';
+
+  var document = doc$;
+  var window = win$;
 
   window.Rplus = {
     ready: function (fn) {
@@ -108,3 +111,4 @@
   })();
 
 })();
+})(window, document);
