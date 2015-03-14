@@ -17,6 +17,78 @@ window.Rplus.ready(function () {
     $el.className = $el.className.replace(_classReg, '');
   };
 
+  Rplus.imageMIMEType = {
+    jpg: 'image/jpg',
+    png: 'image/png',
+    svg: 'image/svg+xml'
+  };
+
+  Rplus.injectImage = function ($src) {
+    var img = document.createElement('img');
+    var insertTarget = document.getElementById($src.parentId);
+
+    for (var prop in $src.oriAttr) {
+      if( $src.oriAttr.hasOwnProperty( prop ) ) {
+        img.setAttribute(prop, $src.oriAttr[prop]);
+      }
+    }
+    insertTarget.parentNode.insertBefore(img, insertTarget);
+
+    if ('js-business-image' === $src.parentId) {
+      document.querySelector('.business-card').style.backgroundImage = 'url(' + $src.oriAttr.src + ')';
+    }
+  };
+
+  Rplus.loadImage = function ($src) {
+    $src.ext = $src.oriAttr.src.split('.').reverse()[0];
+
+    var _cachedItem = $src.oriAttr.src.split('/').reverse()[0];
+    var localData = localStorage.getItem(_cachedItem);
+
+    if (Rplus.hasCache && localData) {
+      $src.oldSrc = $src.src;
+      $src.oriAttr.src = localData;
+      Rplus.injectImage($src);
+    } else {
+      // ajax jpg & trans to base64
+      // ref: http://stackoverflow.com/a/8022521
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', $src.oriAttr.src, true);
+      xhr.responseType = 'arraybuffer';
+
+      xhr.onload = function(e) {
+        if (this.status === 200) {
+          var uInt8Array = new Uint8Array(this.response);
+          var i = uInt8Array.length;
+          var biStr = new Array(i);
+
+          while (i--) {
+            biStr[i] = String.fromCharCode(uInt8Array[i]);
+          }
+
+          var data = biStr.join('');
+          var base64 = window.btoa(data); // gte IE10
+
+          $src.oldSrc = $src.src;
+          $src.oriAttr.src = 'data:' + Rplus.imageMIMEType[$src.ext] + ';base64,' + base64;
+
+          // cache data in localStorage
+          localStorage.setItem(_cachedItem, $src.oriAttr.src);
+
+          Rplus.injectImage($src);
+        }
+      };
+
+      xhr.send();
+    }
+  };
+
+  // cache image
+  ;(function () {
+    Rplus.loadImage(Rplus.getFBInfo(document.getElementById('js-avater-image')));
+    Rplus.loadImage(Rplus.getFBInfo(document.getElementById('js-business-image')));
+  })();
+
   // load font: limited char
   ;(function () {
     var webFontInfo = Rplus.getFBInfo(document.getElementById('js-google-font'));
