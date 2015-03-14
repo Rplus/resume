@@ -56,9 +56,15 @@
 
       return _allAttr.obj;
     },
-    injectInline: function (source$, specilTarget$) {
-      var _isSvgType = (/\.svg$/.test(source$));
-      var _cachedItem = source$.split('/').reverse()[0];
+    injectInline: function (src$, specilTarget$) {
+      src$.sourceAttr = {
+        link: 'href',
+        img: 'src'
+      }[src$.tag];
+      src$.sourceUrl = src$[src$.sourceAttr];
+
+      var _cachedItem = src$.sourceUrl.split('/').reverse()[0];
+      var _isSvgType = (/\.svg$/.test(_cachedItem));
       var localData = localStorage.getItem(_cachedItem);
 
       var injectHTML = function (inlineContent) {
@@ -73,10 +79,10 @@
         }
       };
 
-      if (localData) {
+      if (Rplus.hasCache && localData) {
         injectHTML(localData);
       } else {
-        Rplus.ajaxGet(source$, function (response) {
+        Rplus.ajaxGet(src$.sourceUrl, function (response) {
           var inlineContent = response.data;
 
           if (!_isSvgType) {
@@ -112,8 +118,6 @@
     Rplus.hasCache = _hasCache;
   })(document.getElementById('js-version'), 'version');
 
-  Rplus.injectInline(Rplus.getFallbackUrl(document.getElementById('js-main-style')));
-
   // init modernizr class for <html>, from cache or inject script callback
   ;(function (eles$, lsItem$) {
     var htmlClassName = localStorage.getItem(lsItem$);
@@ -133,5 +137,8 @@
       eles$.head.appendChild(_injectJsEle);
     }
   })(Rplus.ele, 'modernizrAllClass');
+
+  // init main style
+  Rplus.injectInline(Rplus.getFBInfo(document.getElementById('js-main-style')));
 
 })(window, document);

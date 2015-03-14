@@ -39,9 +39,12 @@ window.Rplus.ready(function () {
   // init svg icons
   (function initIcons() {
     if (Rplus.hasClass(document.documentElement, 'inlinesvg')) {
-      Rplus.injectInline('./images/inject-svg/svgstore.svg');
+      Rplus.injectInline({
+        tag: 'img',
+        src: './images/inject-svg/svgstore.svg'
+      });
     } else {
-      Rplus.injectInline( Rplus.getFallbackUrl(document.getElementById('js-icons-fallback')) );
+      Rplus.injectInline( Rplus.getFBInfo(document.getElementById('js-icons-fallback')) );
     }
   })();
 
