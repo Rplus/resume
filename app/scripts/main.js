@@ -17,7 +17,8 @@ window.Rplus.ready(function () {
     _el.className = _el.className.replace(_classReg, '');
   };
 
-  (function loadLimitedCharFont() {
+  // load font: limited char
+  (function () {
     var googleFontSource = document.getElementById('js-google-font').firstChild.data.match(/href="(.+?)"/)[1];
     var googleFontUsed = document.querySelectorAll('.wf-inactive')[0];
     var googleFontText = (googleFontUsed.textContent || googleFontUsed.innerText).trim();
@@ -45,7 +46,7 @@ window.Rplus.ready(function () {
   })();
 
   // init svg icons
-  (function initIcons() {
+  (function () {
     if (Rplus.hasClass(Rplus.ele.html, 'inlinesvg')) {
       Rplus.injectInline({
         tag: 'img',
