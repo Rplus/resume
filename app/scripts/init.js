@@ -56,9 +56,9 @@
 
       return _allAttr.obj;
     },
-    injectInline: function (_source, _specilTarget) {
-      var _isSvgType = (/\.svg$/.test(_source));
-      var _cachedItem = _source.split('/').reverse()[0];
+    injectInline: function (source$, specilTarget$) {
+      var _isSvgType = (/\.svg$/.test(source$));
+      var _cachedItem = source$.split('/').reverse()[0];
       var localData = localStorage.getItem(_cachedItem);
 
       var injectHTML = function (inlineContent) {
@@ -66,8 +66,8 @@
         div.innerHTML = inlineContent;
 
         if (document.readyState !== 'loading') {
-          _specilTarget = _specilTarget || Rplus.ele.body.childNodes[0];
-          Rplus.ele.body.insertBefore(div, _specilTarget);
+          specilTarget$ = specilTarget$ || Rplus.ele.body.childNodes[0];
+          Rplus.ele.body.insertBefore(div, specilTarget$);
         } else {
           Rplus.ele.head.appendChild(div);
         }
@@ -76,7 +76,7 @@
       if (localData) {
         injectHTML(localData);
       } else {
-        Rplus.ajaxGet(_source, function (response) {
+        Rplus.ajaxGet(source$, function (response) {
           var inlineContent = response.data;
 
           if (!_isSvgType) {
