@@ -33,12 +33,12 @@ window.Rplus.ready(function () {
       shwoWFText();
       clearTimeout(webfontLoaderTimeout);
     });
-    document.body.insertBefore(_link, document.body.childNodes[0]);
+    Rplus.ele.body.insertBefore(_link, Rplus.ele.body.childNodes[0]);
   })();
 
   // init svg icons
   (function initIcons() {
-    if (Rplus.hasClass(document.documentElement, 'inlinesvg')) {
+    if (Rplus.hasClass(Rplus.ele.html, 'inlinesvg')) {
       Rplus.injectInline({
         tag: 'img',
         src: './images/inject-svg/svgstore.svg'
