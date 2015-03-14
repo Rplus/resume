@@ -53,7 +53,7 @@ gulp.task('js', function () {
     .pipe($.plumber(plumberOption))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.uglify({preserveComments: 'some'}))
+    .pipe($.util.env.type !== 'dev' ? $.uglify({preserveComments: 'some'}) : $.util.noop())
     .pipe(gulp.dest('.tmp/scripts'))
     .pipe(gulp.dest('dist/scripts'))
     .pipe($.size({title: 'images'}));
