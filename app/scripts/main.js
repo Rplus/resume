@@ -57,4 +57,11 @@ window.Rplus.ready(function () {
     }
   })();
 
+  // cache main.css if no-cache
+  (function () {
+    if (!Rplus.hasCache) {
+      Rplus.injectInline(Rplus.getFBInfo(document.getElementById('js-main-style')), {cacheOnly: true});
+    }
+  })();
+
 });
