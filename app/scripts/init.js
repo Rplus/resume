@@ -80,8 +80,13 @@
             inlineContent = '<style>' + inlineContent + '</sctyle>';
           }
 
-          injectHTML(inlineContent);
           localStorage.setItem(_cachedItem, inlineContent);
+
+          if ($specilOption && $specilOption.cacheOnly) {
+            return;
+          }
+
+          injectHTML(inlineContent);
         });
       }
     }
