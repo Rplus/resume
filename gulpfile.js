@@ -47,13 +47,16 @@ var plumberOption = {
       }
     };
 
-// Lint JavaScript
-gulp.task('jshint', function () {
-  return gulp.src('app/scripts/**/*.js')
-    .pipe(reload({stream: true, once: true}))
+// JS task
+gulp.task('js', function () {
+  return gulp.src('app/scripts/*.js')
+    .pipe($.plumber(plumberOption))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
+    .pipe($.uglify({preserveComments: 'some'}))
+    .pipe(gulp.dest('.tmp/scripts'))
+    .pipe(gulp.dest('dist/scripts'))
+    .pipe($.size({title: 'images'}));
 });
 
 // Optimize Images
@@ -136,7 +139,7 @@ gulp.task('inject-html', ['html'], function () {
   return gulp.src('.tmp/**/*.html')
     .pipe($.plumber(plumberOption))
     // inject css into html inline style
-    .pipe($.inject(gulp.src(['.tmp/styles/*.css', '.tmp/scripts/*.min.js']), {
+    .pipe($.inject(gulp.src(['.tmp/styles/*.css', '.tmp/scripts/init.js']), {
       starttag: '<!-- inject:head:{{ext}} -->',
       transform: function (filePath, file) {
         // return file contents as string
@@ -202,9 +205,9 @@ gulp.task('serve', ['default'], function () {
     server: ['.tmp', 'app']
   });
 
-  gulp.watch(['app/**/*.html'], ['html'], reload);
+  gulp.watch(['app/**/*.html'], ['html', reload]);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['libsass', reload]);
-  gulp.watch(['app/scripts/**/*.js'], ['jshint', 'html'], reload);
+  gulp.watch(['app/scripts/**/*.js'], ['js', reload]);
   gulp.watch(['app/images/**/*'], reload);
 });
 
@@ -230,7 +233,7 @@ gulp.task('deploy', function () {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence('svgicons','libsass',  ['jshint', 'inject-html'], ['images', 'copy'], cb);
+  runSequence('svgicons','libsass', 'js', 'inject-html', ['images', 'copy'], cb);
 });
 
 // Run PageSpeed Insights
