@@ -47,7 +47,7 @@ window.Rplus.ready(function () {
 
   // init svg icons
   (function () {
-    if (Rplus.hasClass(Rplus.ele.html, 'inlinesvg')) {
+    if ('undefined' !== typeof window.SVGRect) {
       Rplus.injectInline({
         tag: 'img',
         src: './images/inject-svg/svgstore.svg'
