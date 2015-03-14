@@ -19,30 +19,28 @@ window.Rplus.ready(function () {
 
   // load font: limited char
   (function () {
-    var googleFontSource = document.getElementById('js-google-font').firstChild.data.match(/href="(.+?)"/)[1];
-    var googleFontUsed = document.querySelectorAll('.wf-inactive')[0];
-    var googleFontText = (googleFontUsed.textContent || googleFontUsed.innerText).trim();
-    var googleFontURL = googleFontSource + '&text=' + encodeURIComponent(googleFontText);
+    var webFontInfo = Rplus.getFBInfo(document.getElementById('js-google-font'));
+    var webFontEle = document.querySelectorAll('.wf-inactive')[0];
+    var webFontText = (webFontEle.textContent || webFontEle.innerText).trim();
 
     var shwoWFText = function () {
-      Rplus.removeClass(googleFontUsed, 'wf-inactive');
+      Rplus.removeClass(webFontEle, 'wf-inactive');
     };
 
     // for web font load slowly, it'll remove the .wf-inactive class for showing the text
     var webfontLoaderTimeout;
-
     (function () {
       webfontLoaderTimeout = setTimeout(shwoWFText, 3000);
     })();
 
     var _link = document.createElement('link');
     _link.rel = 'stylesheet';
-    _link.href = googleFontURL;
+    _link.href = webFontInfo.href + '&text=' + encodeURIComponent(webFontText);
     _link.addEventListener('load', function () {
       shwoWFText();
       clearTimeout(webfontLoaderTimeout);
     });
-    Rplus.ele.body.insertBefore(_link, Rplus.ele.body.childNodes[0]);
+    Rplus.ele.head.insertBefore(_link, Rplus.ele.head.lastChild);
   })();
 
   // init svg icons
