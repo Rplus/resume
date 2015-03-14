@@ -16,13 +16,6 @@
         document.addEventListener('DOMContentLoaded', fn);
       }
     },
-    hasClass: function ($ele, $className) {
-      if ($ele.classList) {
-        return $ele.classList.contains($className);
-      } else {
-        return new RegExp('(^| )' + $className + '( |$)', 'gi').test($ele.className);
-      }
-    },
     ajaxGet: function ($path, $fn) {
       var ajax = new XMLHttpRequest();
       ajax.open('GET', $path, true);

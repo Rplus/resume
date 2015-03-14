@@ -4,6 +4,14 @@ window.Rplus.ready(function () {
 
   var Rplus = window.Rplus;
 
+  Rplus.hasClass = function ($ele, $className) {
+    if ($ele.classList) {
+      return $ele.classList.contains($className);
+    } else {
+      return new RegExp('(^| )' + $className + '( |$)', 'gi').test($ele.className);
+    }
+  };
+
   Rplus.removeClass = function (_el, _className) {
     var _classReg = new RegExp('\\b' + _className + '\\b', 'g');
     _el.className = _el.className.replace(_classReg, '');
