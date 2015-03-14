@@ -18,7 +18,7 @@ window.Rplus.ready(function () {
   };
 
   // load font: limited char
-  (function () {
+  ;(function () {
     var webFontInfo = Rplus.getFBInfo(document.getElementById('js-google-font'));
     var webFontEle = document.querySelectorAll('.wf-inactive')[0];
     var webFontText = (webFontEle.textContent || webFontEle.innerText).trim();
