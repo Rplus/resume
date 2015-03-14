@@ -108,12 +108,14 @@
     var _hasCache = (_cacheVersion === _latestVersion);
 
     if (!_hasCache || '#clear' === location.hash) {
+      Rplus.hasCache = false;
+
       // forcely clear all localStorage data
       localStorage.clear();
       localStorage.setItem($lsItem, _latestVersion);
+    } else {
+      Rplus.hasCache = true;
     }
-
-    Rplus.hasCache = _hasCache;
   })(document.getElementById('js-version'), 'version');
 
   // init modernizr class for <html>, from cache or inject script callback
