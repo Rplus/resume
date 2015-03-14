@@ -1,13 +1,14 @@
 'use strict';
 
-var Rplus = window.Rplus;
+window.Rplus.ready(function () {
 
-Rplus.removeClass = function (_el, _className) {
-  var _classReg = new RegExp('\\b' + _className + '\\b', 'g');
-  _el.className = _el.className.replace(_classReg, '');
-};
+  var Rplus = window.Rplus;
 
-Rplus.ready(function () {
+  Rplus.removeClass = function (_el, _className) {
+    var _classReg = new RegExp('\\b' + _className + '\\b', 'g');
+    _el.className = _el.className.replace(_classReg, '');
+  };
+
   (function loadLimitedCharFont() {
     var googleFontSource = document.getElementById('js-google-font').firstChild.data.match(/href="(.+?)"/)[1];
     var googleFontUsed = document.querySelectorAll('.wf-inactive')[0];
