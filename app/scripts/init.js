@@ -5,6 +5,10 @@
   var window = win$;
 
   window.Rplus = {
+    ele: {
+      html: document.documentElement,
+      head: document.head || document.getElementsByTagName('head')[0]
+    },
     ready: function (fn) {
       if (document.readyState !== 'loading'){
         fn();
@@ -68,6 +72,11 @@
   };
 
   var Rplus = window.Rplus || {};
+
+  // init Rplus.ele.body
+  Rplus.ready(function () {
+    Rplus.ele.body = document.body || document.getElementsByTagName('body')[0];
+  });
 
   // check cache version
   ;(function (ele$, lsItem$) {
