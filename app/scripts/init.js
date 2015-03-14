@@ -77,6 +77,8 @@
 
       if (Rplus.hasCache && localData) {
         injectHTML(localData);
+      } else if ($specilOption && $specilOption.insertTag) {
+        injectHTML(src$.oriString);
       } else {
         Rplus.ajaxGet(src$.sourceUrl, function (response) {
           var inlineContent = response.data;
@@ -135,6 +137,6 @@
   })(Rplus.ele, 'modernizrAllClass');
 
   // init main style
-  Rplus.injectInline(Rplus.getFBInfo(document.getElementById('js-main-style')));
+  Rplus.injectInline(Rplus.getFBInfo(document.getElementById('js-main-style')), {insertTag: true});
 
 })(window, document);
