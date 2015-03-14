@@ -1,6 +1,6 @@
 'use strict';
 
-var Rplus = window.Rplus || {};
+var Rplus = window.Rplus;
 
 Rplus.removeClass = function (_el, _className) {
   var _classReg = new RegExp('\\b' + _className + '\\b', 'g');
