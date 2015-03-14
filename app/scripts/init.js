@@ -51,9 +51,10 @@
         img: 'src'
       }[$src.tag];
       $src.sourceUrl = $src[$src.sourceAttr];
+      $src.ext = $src.sourceUrl.split('.').reverse()[0];
 
       var _cachedItem = $src.sourceUrl.split('/').reverse()[0];
-      var _isSvgType = (/\.svg$/.test(_cachedItem));
+      var _isSvgType = ('svg' === $src.ext);
       var localData = localStorage.getItem(_cachedItem);
 
       var injectHTML = function (inlineContent) {
