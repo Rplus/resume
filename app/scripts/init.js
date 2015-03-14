@@ -38,6 +38,7 @@
         return {
           arr: fbString$.match(/(?!\s)\w+?=".+?"/g),
           obj: {
+            oriString: fbString$.trim(),
             tag: fbString$.match(/^\s+?<(\w+?)\s/)[1]
           }
         };
