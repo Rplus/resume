@@ -51,7 +51,7 @@
 
       return _allAttr.obj;
     },
-    injectInline: function (src$, specilTarget$) {
+    injectInline: function (src$, $specilOption) {
       src$.sourceAttr = {
         link: 'href',
         img: 'src'
@@ -67,8 +67,8 @@
         div.innerHTML = inlineContent;
 
         if (document.readyState !== 'loading') {
-          specilTarget$ = specilTarget$ || Rplus.ele.body.childNodes[0];
-          Rplus.ele.body.insertBefore(div, specilTarget$);
+          var _insertBeforeEle = ($specilOption && $specilOption.insertBefore) || Rplus.ele.body.childNodes[0];
+          Rplus.ele.body.insertBefore(div, _insertBeforeEle);
         } else {
           Rplus.ele.head.appendChild(div);
         }
