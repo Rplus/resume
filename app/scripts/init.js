@@ -95,29 +95,24 @@
 
   Rplus.injectInline(Rplus.getFallbackUrl(document.getElementById('js-main-style')));
 
-  ;(function modernizrInit () {
-    var htmlClassName = localStorage.getItem('modernizrAllClass');
-    var lastDetectTime = localStorage.getItem('lastDetectTime') * 1;
-    var detectDuration = lastDetectTime ? (new Date().getTime() - lastDetectTime) : false;
+  // init modernizr class for <html>, from cache or inject script callback
+  ;(function (eles$, lsItem$) {
+    var htmlClassName = localStorage.getItem(lsItem$);
 
-    if (htmlClassName && detectDuration < 259200000 ) { // 259200000 === 3 days
-      // render form cached in 3 days
-      document.documentElement.className = htmlClassName;
-      return;
+    if (Rplus.hasCache && htmlClassName) {
+      // init html class
+      eles$.html.className = htmlClassName;
+    } else {
+      var _injectJsEle = document.createElement('script');
+
+      // save html className into localStorage after script loaded
+      _injectJsEle.src = '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js';
+      _injectJsEle.addEventListener('load', function () {
+        localStorage.setItem(lsItem$, eles$.html.className);
+      });
+
+      eles$.head.appendChild(_injectJsEle);
     }
+  })(Rplus.ele, 'modernizrAllClass');
 
-    // clear cached
-    localStorage.clear();
-
-    var _head = document.getElementsByTagName('head')[0];
-    var _injectJs = document.createElement('script');
-    _injectJs.src = '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js';
-    _injectJs.addEventListener('load', function () {
-      localStorage.setItem('modernizrAllClass', document.documentElement.className);
-      localStorage.setItem('lastDetectTime', new Date().getTime());
-    });
-    _head.appendChild(_injectJs);
-  })();
-
-})();
 })(window, document);
