@@ -119,6 +119,7 @@ gulp.task('html', function () {
       ],
       // CSS Selectors for UnCSS to ignore
       ignore: [
+        /avatar/,
         /.contact-link/,
         /#card/,
         /.navdrawer-container.open/,
