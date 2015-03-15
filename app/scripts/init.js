@@ -34,7 +34,7 @@
             parentId: $noscriptEle.id,
             oriString: $fbString.trim(),
             oriAttr: {},
-            tag: $fbString.match(/^\s+?<(\w+?)\s/)[1]
+            tag: $fbString.match(/^\s*?<(\w+?)\s/)[1]
           }
         };
       })($noscriptEle.firstChild.data);

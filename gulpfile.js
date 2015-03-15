@@ -213,7 +213,7 @@ gulp.task('serve', ['default'], function () {
 });
 
 // Build and serve the output from the dist build
-gulp.task('serve:dist', ['default'], function () {
+gulp.task('serve:dist', function () {
   browserSync({
     browser: 'google-chrome',
     notify: false,
