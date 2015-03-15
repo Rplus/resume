@@ -219,6 +219,14 @@ abbr {
   }
 }
 
+.nick-name--wrapper {
+  display: inline-block;
+  width: 100px;
+  height: 67px;
+  overflow: hidden;
+  vertical-align: text-bottom;
+}
+
 .nick-name {
   vertical-align: -.5em;
 }
