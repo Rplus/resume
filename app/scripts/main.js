@@ -1,10 +1,10 @@
 'use strict';
 
-window.Rplus.ready(function () {
+window.Rplus.ready(function() {
 
   var Rplus = window.Rplus;
 
-  Rplus.hasClass = function ($ele, $className) {
+  Rplus.hasClass = function($ele, $className) {
     if ($ele.classList) {
       return $ele.classList.contains($className);
     } else {
@@ -12,7 +12,7 @@ window.Rplus.ready(function () {
     }
   };
 
-  Rplus.removeClass = function ($el, $className) {
+  Rplus.removeClass = function($el, $className) {
     var _classReg = new RegExp('\\b' + $className + '\\b', 'g');
     $el.className = $el.className.replace(_classReg, '');
   };
@@ -23,12 +23,12 @@ window.Rplus.ready(function () {
     svg: 'image/svg+xml'
   };
 
-  Rplus.injectImage = function ($src) {
+  Rplus.injectImage = function($src) {
     var img = document.createElement('img');
     var insertTarget = document.getElementById($src.parentId);
 
     for (var prop in $src.oriAttr) {
-      if( $src.oriAttr.hasOwnProperty( prop ) ) {
+      if ($src.oriAttr.hasOwnProperty(prop)) {
         img.setAttribute(prop, $src.oriAttr[prop]);
       }
     }
@@ -39,7 +39,7 @@ window.Rplus.ready(function () {
     }
   };
 
-  Rplus.loadImage = function ($src) {
+  Rplus.loadImage = function($src) {
     $src.ext = $src.oriAttr.src.split('.').reverse()[0];
 
     var _cachedItem = $src.oriAttr.src.split('/').reverse()[0];
@@ -84,31 +84,31 @@ window.Rplus.ready(function () {
   };
 
   // cache image
-  ;(function () {
+  ;(function() {
     Rplus.loadImage(Rplus.getFBInfo(document.getElementById('js-avater-image')));
     Rplus.loadImage(Rplus.getFBInfo(document.getElementById('js-business-image')));
   })();
 
   // load font: limited char
-  ;(function () {
+  ;(function() {
     var webFontInfo = Rplus.getFBInfo(document.getElementById('js-google-font'));
     var webFontEle = document.querySelectorAll('.wf-inactive')[0];
     var webFontText = (webFontEle.textContent || webFontEle.innerText).trim();
 
-    var shwoWFText = function () {
+    var shwoWFText = function() {
       Rplus.removeClass(webFontEle, 'wf-inactive');
     };
 
     // for web font load slowly, it'll remove the .wf-inactive class for showing the text
     var webfontLoaderTimeout;
-    (function () {
+    (function() {
       webfontLoaderTimeout = setTimeout(shwoWFText, 3000);
     })();
 
     var _link = document.createElement('link');
     _link.rel = 'stylesheet';
     _link.href = webFontInfo.oriAttr.href + '&text=' + encodeURIComponent(webFontText);
-    _link.addEventListener('load', function () {
+    _link.addEventListener('load', function() {
       shwoWFText();
       clearTimeout(webfontLoaderTimeout);
     });
@@ -116,7 +116,7 @@ window.Rplus.ready(function () {
   })();
 
   // init svg icons
-  (function () {
+  (function() {
     if ('undefined' !== typeof window.SVGRect) {
       Rplus.injectInline({
         tag: 'img',
@@ -125,12 +125,12 @@ window.Rplus.ready(function () {
         }
       });
     } else {
-      Rplus.injectInline( Rplus.getFBInfo(document.getElementById('js-icons-fallback')) );
+      Rplus.injectInline(Rplus.getFBInfo(document.getElementById('js-icons-fallback')));
     }
   })();
 
   // cache main.css if no-cache
-  (function () {
+  (function() {
     if (!Rplus.hasCache) {
       Rplus.injectInline(Rplus.getFBInfo(document.getElementById('js-main-style')), {cacheOnly: true});
     }

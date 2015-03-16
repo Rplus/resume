@@ -41,14 +41,14 @@ var AUTOPREFIXER_BROWSERS = [
 ];
 
 var plumberOption = {
-      errorHandler: function (err) {
+      errorHandler: function(err) {
         console.log(err);
         this.emit('end');
       }
     };
 
 // JS task
-gulp.task('js', function () {
+gulp.task('js', function() {
   return gulp.src('app/scripts/*.js')
     .pipe($.plumber(plumberOption))
     .pipe($.jshint())
@@ -60,7 +60,7 @@ gulp.task('js', function () {
 });
 
 // Optimize Images
-gulp.task('images', function () {
+gulp.task('images', function() {
   return gulp.src(['app/images/**/*', '!app/images/inject-svg/icons/*.svg'])
     .pipe($.cache($.imagemin({
       progressive: true,
@@ -72,7 +72,7 @@ gulp.task('images', function () {
 });
 
 // Copy All Files At The Root Level (app)
-gulp.task('copy', function () {
+gulp.task('copy', function() {
   return gulp.src([
     'app/*',
     '!app/*.html',
@@ -85,7 +85,7 @@ gulp.task('copy', function () {
 });
 
 // Compile and Automatically Prefix Stylesheets
-gulp.task('libsass', function () {
+gulp.task('libsass', function() {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
       'app/styles/main.scss'
@@ -102,7 +102,7 @@ gulp.task('libsass', function () {
 });
 
 // Scan Your HTML For Assets & Optimize Them
-gulp.task('html', function () {
+gulp.task('html', function() {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
   return gulp.src('app/**/*.html')
@@ -136,16 +136,17 @@ gulp.task('html', function () {
     .pipe($.size({title: 'html'}));
 });
 
-gulp.task('inject-html', ['html'], function () {
+gulp.task('inject-html', ['html'], function() {
   return gulp.src('.tmp/**/*.html')
     .pipe($.plumber(plumberOption))
     // inject css into html inline style
     .pipe($.inject(gulp.src(['.tmp/styles/*.css', '.tmp/scripts/init.js']), {
       starttag: '<!-- inject:head:{{ext}} -->',
-      transform: function (filePath, file) {
+      transform: function(filePath, file) {
         // return file contents as string
-        var _ext, tags;
-        _ext= filePath.split('.').reverse()[0];
+        var _ext;
+        var tags;
+        _ext = filePath.split('.').reverse()[0];
 
         tags = ('js' === _ext ? 'script' : 'style');
 
@@ -189,7 +190,7 @@ gulp.task('svgicons', function() {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 // Watch Files For Changes & Reload
-gulp.task('serve', ['default'], function () {
+gulp.task('serve', ['default'], function() {
   browserSync({
     browser: 'google-chrome',
     notify: false,
@@ -213,7 +214,7 @@ gulp.task('serve', ['default'], function () {
 });
 
 // Build and serve the output from the dist build
-gulp.task('serve:dist', function () {
+gulp.task('serve:dist', function() {
   browserSync({
     browser: 'google-chrome',
     notify: false,
@@ -227,14 +228,14 @@ gulp.task('serve:dist', function () {
 });
 
 // deploy dist folder to github branch gh-pages
-gulp.task('deploy', function () {
+gulp.task('deploy', function() {
   return gulp.src('./dist/**/*')
     .pipe($.ghPages());
 });
 
 // Build Production Files, the Default Task
-gulp.task('default', ['clean'], function (cb) {
-  runSequence('svgicons','libsass', 'js', 'inject-html', ['images', 'copy'], cb);
+gulp.task('default', ['clean'], function(cb) {
+  runSequence('svgicons', 'libsass', 'js', 'inject-html', ['images', 'copy'], cb);
 });
 
 // Run PageSpeed Insights

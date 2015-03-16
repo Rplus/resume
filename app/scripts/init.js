@@ -9,25 +9,25 @@
       html: document.documentElement,
       head: document.head || document.getElementsByTagName('head')[0]
     },
-    ready: function (fn) {
-      if (document.readyState !== 'loading'){
+    ready: function(fn) {
+      if (document.readyState !== 'loading') {
         fn();
       } else {
         document.addEventListener('DOMContentLoaded', fn);
       }
     },
-    ajaxGet: function ($path, $fn) {
+    ajaxGet: function($path, $fn) {
       var ajax = new XMLHttpRequest();
       ajax.open('GET', $path, true);
       ajax.send();
       if ('function' === typeof $fn) {
-        ajax.onload = function () {
+        ajax.onload = function() {
           $fn({data: ajax.responseText});
         };
       }
     },
-    getFBInfo: function ($noscriptEle) {
-      var _allAttr = (function ($fbString) {
+    getFBInfo: function($noscriptEle) {
+      var _allAttr = (function($fbString) {
         return {
           arr: $fbString.match(/(?!\s)\w+?=".+?"/g),
           obj: {
@@ -47,7 +47,7 @@
 
       return _allAttr.obj;
     },
-    injectInline: function ($src, $specilOption) {
+    injectInline: function($src, $specilOption) {
       $src.sourceAttr = {
         link: 'href',
         img: 'src'
@@ -59,7 +59,7 @@
       var _isSvgType = ('svg' === $src.ext);
       var localData = localStorage.getItem(_cachedItem);
 
-      var injectHTML = function (inlineContent) {
+      var injectHTML = function(inlineContent) {
         var div = document.createElement('div');
         div.innerHTML = inlineContent;
 
@@ -76,7 +76,7 @@
       } else if ($specilOption && $specilOption.insertTag) {
         injectHTML($src.oriString);
       } else {
-        Rplus.ajaxGet($src.sourceUrl, function (response) {
+        Rplus.ajaxGet($src.sourceUrl, function(response) {
           var inlineContent = response.data;
 
           if (!_isSvgType) {
@@ -98,12 +98,12 @@
   var Rplus = window.Rplus || {};
 
   // init Rplus.ele.body
-  Rplus.ready(function () {
+  Rplus.ready(function() {
     Rplus.ele.body = document.body || document.getElementsByTagName('body')[0];
   });
 
   // check cache version
-  ;(function ($ele, $lsItem) {
+  ;(function($ele, $lsItem) {
     var _latestVersion = $ele.getAttribute('data-' + $lsItem);
     var _cacheVersion = localStorage.getItem($lsItem);
     var _hasCache = (_cacheVersion === _latestVersion);
@@ -120,7 +120,7 @@
   })(document.getElementById('js-version'), 'version');
 
   // init modernizr class for <html>, from cache or inject script callback
-  ;(function ($eles, $lsItem) {
+  ;(function($eles, $lsItem) {
     var htmlClassName = localStorage.getItem($lsItem);
 
     if (Rplus.hasCache && htmlClassName) {
@@ -131,7 +131,7 @@
 
       // save html className into localStorage after script loaded
       _injectJsEle.src = '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js';
-      _injectJsEle.addEventListener('load', function () {
+      _injectJsEle.addEventListener('load', function() {
         localStorage.setItem($lsItem, $eles.html.className);
       });
 
