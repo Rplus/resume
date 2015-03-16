@@ -51,6 +51,7 @@ var plumberOption = {
 gulp.task('js', function() {
   return gulp.src('app/scripts/*.js')
     .pipe($.plumber(plumberOption))
+    .pipe($.jscs())
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
     .pipe($.util.env.type !== 'dev' ? $.uglify({preserveComments: 'some'}) : $.util.noop())
