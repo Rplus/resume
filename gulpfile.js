@@ -52,8 +52,17 @@ gulp.task('js', function() {
   return gulp.src('app/scripts/*.js')
     .pipe($.plumber(plumberOption))
     .pipe($.jscs())
+    .on('error', $.notify.onError(function() {
+      return 'jscs error';
+    }))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
+    .pipe($.notify(function(file) {
+      // ref: https://gist.github.com/rudijs/9148283
+      if (!file.jshint.success) {
+        return 'jshint error';
+      }
+    }))
     .pipe($.util.env.type !== 'dev' ? $.uglify({preserveComments: 'some'}) : $.util.noop())
     .pipe(gulp.dest('.tmp/scripts'))
     .pipe(gulp.dest('dist/scripts'))

@@ -18,6 +18,7 @@
     "gulp-jshint": "^1.6.3",
     "gulp-load-plugins": "^0.5.3",
     "gulp-minify-html": "^0.1.7",
+    "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.0",
     "gulp-rename": "^1.2.0",
     "gulp-replace": "^0.5.0",
