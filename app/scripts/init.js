@@ -63,9 +63,9 @@
         var div = document.createElement('div');
         div.innerHTML = inlineContent;
 
-        if (document.readyState !== 'loading') {
-          var _insertBeforeEle = ($specilOption && $specilOption.insertBefore) || Rplus.ele.body.childNodes[0];
-          Rplus.ele.body.insertBefore(div, _insertBeforeEle);
+        if ('loading' !== document.readyState && 'link' !== $src.tag) {
+          var _insertBeforeEle = ($specilOption && $specilOption.insertBefore) || document.body.childNodes[0];
+          document.body.insertBefore(div, _insertBeforeEle);
         } else {
           Rplus.ele.head.appendChild(div);
         }
