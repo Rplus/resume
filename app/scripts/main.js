@@ -45,6 +45,13 @@ window.Rplus.ready(function() {
     var _cachedItem = $src.oriAttr.src.split('/').reverse()[0];
     var localData = localStorage.getItem(_cachedItem);
 
+    // if browser dont support btoa, it'll inject image external file directly
+    // (btoa: gte IE10)
+    if (!window.btoa) {
+      Rplus.injectImage($src);
+      return;
+    }
+
     if (Rplus.hasCache && localData) {
       $src.oldSrc = $src.src;
       $src.oriAttr.src = localData;
