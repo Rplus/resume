@@ -200,7 +200,7 @@ gulp.task('svgicons', function() {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 // Watch Files For Changes & Reload
-gulp.task('serve', ['default'], function() {
+gulp.task('serve', function() {
   browserSync({
     browser: 'google-chrome',
     notify: false,
