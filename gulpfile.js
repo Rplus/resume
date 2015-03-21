@@ -235,6 +235,11 @@ gulp.task('serve:dist', function() {
     port: 8000,
     server: 'dist'
   });
+
+  gulp.watch(['app/**/*.html'], ['inject-html', reload]);
+  gulp.watch(['app/styles/**/*.{scss,css}'], ['libsass', 'inject-html', reload]);
+  gulp.watch(['app/scripts/**/*.js'], ['js', 'inject-html', reload]);
+  gulp.watch(['app/images/**/*'], reload);
 });
 
 // deploy dist folder to github branch gh-pages
