@@ -1,14 +1,15 @@
 {
-  "version": "1.0.0",
-  "name": "Web Starter Kit",
+  "version": "1.1.1",
+  "name": "resume of R+",
   "launch_path": "/index.html",
-  "description": "A front-end template that helps you build fast, modern mobile web apps.",
+  "description": "resume of R+, a web front-end developer.",
   "icons": {
     "128": "/images/touch/icon-128x128.png"
   },
   "developer": {
-    "name": "",
-    "url": ""
+    "name": "Rplus",
+    "url": "http://rplus.githun.io",
+    "email": "Rplus.tw@gmail.com"
   },
   "installs_allowed_from": [
     "*"
@@ -18,8 +19,12 @@
   },
   "locales": {
     "en": {
-      "name": "Web Starter Kit",
-      "description": "A front-end template that helps you build fast, modern mobile web apps."
+      "name": "resume of R+",
+      "description": "resume of R+, a web front-end developer."
+    },
+    "zh-tw": {
+      "name": "R+ 的簡歷",
+      "description": "R+ 身為網頁前端開發者的簡歷"
     }
   }
 }
