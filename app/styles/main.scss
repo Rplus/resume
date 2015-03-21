@@ -199,8 +199,7 @@ abbr {
 
   .avatar__image {
     $_translate: translate(-50%, -50%);
-    $_scale: scale(1.05);
-    $_scale: '';
+    $_scale: scale(1.03);
     $_rotate1: rotate(-3deg);
     $_rotate2: rotate(-10deg);
 
@@ -216,13 +215,12 @@ abbr {
     cursor: grab;
 
     &:hover {
-      transform: #{$_translate} #{$_scale} #{$_rotate1};
-      width: 105%;
+      transform: #{$_translate} #{$_scale} #{$_scale} #{$_rotate1};
     }
 
     &:active {
       cursor: grabbing;
-      transform: #{$_translate} #{$_scale} #{$_rotate2};
+      transform: #{$_translate} #{$_scale} #{$_scale} #{$_rotate2};
     }
   }
 }
