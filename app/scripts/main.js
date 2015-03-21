@@ -35,7 +35,7 @@ window.Rplus.ready(function() {
     insertTarget.parentNode.insertBefore(img, insertTarget);
 
     if ('js-business-image' === $src.parentId) {
-      document.querySelector('.business-card').style.backgroundImage = 'url(' + $src.oriAttr.src + ')';
+      document.querySelector('.business-card').style.backgroundImage = 'url("' + $src.oriAttr.src + '")';
     }
   };
 
