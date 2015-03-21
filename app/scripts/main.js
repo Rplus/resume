@@ -39,54 +39,68 @@ window.Rplus.ready(function() {
     }
   };
 
+  Rplus.cacheImage = function($src, $imgData, $cachedItem) {
+    $src.oldSrc = $src.src;
+    $src.oriAttr.src = $imgData;
+
+    // cache data in localStorage
+    localStorage.setItem($cachedItem, $imgData);
+    Rplus.injectImage($src);
+  };
+
   Rplus.loadImage = function($src) {
-    $src.ext = $src.oriAttr.src.split('.').reverse()[0];
+    var _srcOriAttr = $src.oriAttr;
+    $src.ext = _srcOriAttr.src.split('.').reverse()[0];
 
-    var _cachedItem = $src.oriAttr.src.split('/').reverse()[0];
+    var _cachedItem = _srcOriAttr.src.split('/').reverse()[0];
     var localData = localStorage.getItem(_cachedItem);
+    var canvas = document.createElement('canvas');
 
-    // if browser dont support btoa, it'll inject image external file directly
-    // (btoa: gte IE10)
-    if (!window.btoa) {
+    // ensure canvas support
+    if (!canvas.getContext) {
+      console.log(3333);
       Rplus.injectImage($src);
       return;
     }
 
     if (Rplus.hasCache && localData) {
       $src.oldSrc = $src.src;
-      $src.oriAttr.src = localData;
+      _srcOriAttr.src = localData;
       Rplus.injectImage($src);
     } else {
-      // ajax jpg & trans to base64
-      // ref: http://stackoverflow.com/a/8022521
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', $src.oriAttr.src, true);
-      xhr.responseType = 'arraybuffer';
+      switch ($src.ext) {
+        case 'png':
+        case 'jpg':
+        case 'jpeg':
+          canvas.width = _srcOriAttr.width;
+          canvas.height = _srcOriAttr.height;
+          var ctx = canvas.getContext('2d');
+          var _img = new Image();
+          _img.onload = function() {
+            ctx.drawImage(_img, 0, 0);
+            var imgData = canvas.toDataURL();
+            Rplus.cacheImage($src, imgData, _cachedItem);
+          };
+          _img.src = _srcOriAttr.src;
+          break;
 
-      xhr.onload = function(e) {
-        if (this.status === 200) {
-          var uInt8Array = new Uint8Array(this.response);
-          var i = uInt8Array.length;
-          var biStr = new Array(i);
+        case 'svg':
+          // XDomainRequest for IE9
+          var xhr = window.XDomainRequest ? new XDomainRequest() : new XMLHttpRequest();
 
-          while (i--) {
-            biStr[i] = String.fromCharCode(uInt8Array[i]);
-          }
+          xhr.onload = function() {
+            var imgData = ('data:' +  Rplus.imageMIMEType[$src.ext] + ',' + encodeURIComponent(xhr.responseText));
+            Rplus.cacheImage($src, imgData, _cachedItem);
+          };
 
-          var data = biStr.join('');
-          var base64 = window.btoa(data); // gte IE10
+          xhr.open('get', _srcOriAttr.src);
 
-          $src.oldSrc = $src.src;
-          $src.oriAttr.src = 'data:' + Rplus.imageMIMEType[$src.ext] + ';base64,' + base64;
+          xhr.send();
+          break;
 
-          // cache data in localStorage
-          localStorage.setItem(_cachedItem, $src.oriAttr.src);
-
-          Rplus.injectImage($src);
-        }
-      };
-
-      xhr.send();
+        default:
+          break;
+      }
     }
   };
 
