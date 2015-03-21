@@ -127,6 +127,9 @@
       // init html class
       $eles.html.className = htmlClassName;
     } else {
+      // pre-set html class for identifyng js-enabled
+      $eles.html.className = $eles.html.className.replace(/\bno-js\b/, 'js');
+
       var _injectJsEle = document.createElement('script');
 
       // save html className into localStorage after script loaded
