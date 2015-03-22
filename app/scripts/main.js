@@ -50,9 +50,9 @@ window.Rplus.ready(function() {
 
   Rplus.loadImage = function($src) {
     var _srcOriAttr = $src.oriAttr;
-    $src.ext = _srcOriAttr.src.split('.').reverse()[0];
+    $src.ext = _srcOriAttr.src.split('.').pop();
 
-    var _cachedItem = _srcOriAttr.src.split('/').reverse()[0];
+    var _cachedItem = _srcOriAttr.src.split('/').pop();
     var localData = localStorage.getItem(_cachedItem);
     var canvas = document.createElement('canvas');
 
