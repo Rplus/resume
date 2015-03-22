@@ -114,7 +114,7 @@ window.Rplus.ready(function() {
   ;(function() {
     var webFontInfo = Rplus.getFBInfo(document.getElementById('js-google-font'));
     var webFontEle = document.querySelectorAll('.wf-inactive')[0];
-    var webFontText = (webFontEle.textContent || webFontEle.innerText).replace(/<[^>]*>/g, '').trim();
+    var webFontText = (webFontEle.textContent || webFontEle.innerText).replace(/<[^>]*>|\s+/g, '');
 
     var shwoWFText = function() {
       Rplus.removeClass(webFontEle, 'wf-inactive');
