@@ -55,6 +55,24 @@ var loadJSON = function(path) {
 
 var RplusConfig = loadJSON('./app/manifest.webapp');
 
+gulp.task('filter-webfont-chars', function() {
+  var rawHtml = fs.readFileSync('./app/index.html', 'utf8');
+  var webFontChars = encodeURIComponent(rawHtml.match(/say\-hi[^>]+?>([^<]+)/).pop().replace(/\s/g, ''));
+
+  var outputPath = ['.tmp', 'dist'];
+  var changeWebFont = function($folder) {
+    gulp.src([
+        $folder + '/index.html'
+      ])
+      .pipe($.replace(/family=Courgette.*?"/, 'family=Courgette&text=' + webFontChars + '"'))
+      .pipe(gulp.dest($folder));
+  };
+
+  for (var i = 0; i < outputPath.length; i++) {
+    changeWebFont(outputPath[i]);
+  }
+});
+
 gulp.task('update-version', function() {
   console.log(RplusConfig.version);
   var regPattern = /data-version="[\.\d]+?"/;
@@ -276,7 +294,7 @@ gulp.task('deploy', function() {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function(cb) {
-  runSequence('svgicons', 'libsass', 'js', 'inject-html', ['images', 'copy'], 'update-version', cb);
+  runSequence('svgicons', 'libsass', 'js', 'inject-html', ['images', 'copy'], 'update-version', 'filter-webfont-chars', cb);
 });
 
 // Run PageSpeed Insights

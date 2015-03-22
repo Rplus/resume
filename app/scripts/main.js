@@ -114,7 +114,6 @@ window.Rplus.ready(function() {
   ;(function() {
     var webFontInfo = Rplus.getFBInfo(document.getElementById('js-google-font'));
     var webFontEle = document.querySelectorAll('.wf-inactive')[0];
-    var webFontText = (webFontEle.textContent || webFontEle.innerText).replace(/<[^>]*>|\s+/g, '');
 
     var shwoWFText = function() {
       Rplus.removeClass(webFontEle, 'wf-inactive');
@@ -128,7 +127,7 @@ window.Rplus.ready(function() {
 
     var _link = document.createElement('link');
     _link.rel = 'stylesheet';
-    _link.href = webFontInfo.oriAttr.href + '&text=' + encodeURIComponent(webFontText);
+    _link.href = webFontInfo.oriAttr.href;
     _link.addEventListener('load', function() {
       shwoWFText();
       clearTimeout(webfontLoaderTimeout);
