@@ -2,12 +2,13 @@ CACHE MANIFEST
 # v1.1.2
 
 CACHE:
+
+# main
 index.html
 styles/main.css
 scripts/main.js
 
 # images
-
 images/avatar.jpg
 //cdn.rawgit.com/Rplus/R-logo/v7/R+.svg
 
@@ -16,9 +17,9 @@ images/inject-svg/svgstore.svg
 ./images/inject-svg/css/icons.png.css
 
 # fonts
-//fonts.googleapis.com/css?family=Courgette
-//fonts.gstatic.com/s/courgette/v4/BHG8ZtTfO0yYnp02--QxqltXRa8TVwTICgirnJhmVJw.woff2
-//fonts.gstatic.com/s/courgette/v4/BHG8ZtTfO0yYnp02--Qxqj8E0i7KZn-EPnyo3HZu7kw.woff
+http://fonts.googleapis.com/css?family=Courgette&text=Hi%2CI%27m
+http://fonts.gstatic.com/l/font?kit=CmmZK1AEMnEIG0QqFFrkEsEqVkJKkIkg7mc9xpkLQb0
+http://fonts.gstatic.com/l/font?kit=nGrbrmiYUHfXnRJ1CcaqUMEqVkJKkIkg7mc9xpkLQb0
 
 NETWORK:
 *
