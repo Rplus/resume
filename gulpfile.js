@@ -21,6 +21,7 @@
 
 // Include Gulp & Tools We'll Use
 var gulp = require('gulp');
+var fs = require('fs');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
 var runSequence = require('run-sequence');
@@ -46,6 +47,31 @@ var plumberOption = {
         this.emit('end');
       }
     };
+
+var loadJSON = function(path) {
+  var data = fs.readFileSync(path, 'utf8');
+  return JSON.parse(data);
+};
+
+var RplusConfig = loadJSON('./app/manifest.webapp');
+
+gulp.task('update-version', function() {
+  console.log(RplusConfig.version);
+  var regPattern = /data-version="[\.\d]+?"/;
+  var outputPath = ['.tmp', 'dist'];
+  var changeVersion = function($folder) {
+    gulp.src([
+        $folder + '/index.html',
+        $folder + '/offline.appcache'
+      ])
+      .pipe($.replace(regPattern, 'data-version="' + RplusConfig.version + '"'))
+      .pipe(gulp.dest($folder));
+  };
+
+  for (var i = 0; i < outputPath.length; i++) {
+    changeVersion(outputPath[i]);
+  }
+});
 
 // JS task
 gulp.task('js', function() {
@@ -250,7 +276,7 @@ gulp.task('deploy', function() {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function(cb) {
-  runSequence('svgicons', 'libsass', 'js', 'inject-html', ['images', 'copy'], cb);
+  runSequence('svgicons', 'libsass', 'js', 'inject-html', ['images', 'copy'], 'update-version', cb);
 });
 
 // Run PageSpeed Insights
