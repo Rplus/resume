@@ -21,5 +21,9 @@ http://fonts.googleapis.com/css?family=Courgette&text=Hi%2CI%27m
 http://fonts.gstatic.com/l/font?kit=CmmZK1AEMnEIG0QqFFrkEsEqVkJKkIkg7mc9xpkLQb0
 http://fonts.gstatic.com/l/font?kit=nGrbrmiYUHfXnRJ1CcaqUMEqVkJKkIkg7mc9xpkLQb0
 
+# cdn
+http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js
+
+
 NETWORK:
 *
