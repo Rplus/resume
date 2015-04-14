@@ -413,6 +413,16 @@ abbr {
   li {
     list-style-type: none;
   }
+
+  @media print {
+    a::after {
+      position: relative;
+      top: .2rem;
+      content: attr(href);
+      font-size: smaller;
+      opacity: .5;
+    }
+  }
 }
 
 .exp-items {
