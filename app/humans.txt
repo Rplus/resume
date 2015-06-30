@@ -8,7 +8,7 @@
     From: Taipei, Taiwan
 
 /* SITE */
-    Last update: 2015/05/26
+    Last update: 2015/06/30
     Language: Chinese (zh-tw)
     Standards: HTML 5, SCSS, ECMAScript
     Components: Modernizr
