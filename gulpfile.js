@@ -225,18 +225,18 @@ gulp.task('svgicons', function() {
       svgoPlugins: [{removeViewBox: false}]
     }))
     .pipe($.svgstore({
-       prefix: 'inject-icon-',
-       transformSvg: transformSvg
+      prefix: 'inject-icon-',
+      transformSvg: transformSvg
     }))
     .pipe(gulp.dest('.tmp/images/inject-svg/'))
     .pipe(gulp.dest('dist/images/inject-svg/'));
 
   $.iconify({
-      src: './app/images/inject-svg/icons/*.svg',
-      pngOutput: './app/images/inject-svg/png',
-      scssOutput: './.tmp/images/inject-svg/scss',
-      cssOutput:  './app/images/inject-svg/css',
-      styleTemplate: './app/styles/_icon_gen.scss.mustache'
+    src: './app/images/inject-svg/icons/*.svg',
+    pngOutput: './app/images/inject-svg/png',
+    scssOutput: './.tmp/images/inject-svg/scss',
+    cssOutput:  './app/images/inject-svg/css',
+    styleTemplate: './app/styles/_icon_gen.scss.mustache'
   });
 });
 
@@ -294,7 +294,14 @@ gulp.task('deploy', function() {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function(cb) {
-  runSequence('svgicons', 'libsass', 'js', 'inject-html', ['images', 'copy'], 'update-version', 'filter-webfont-chars', cb);
+  runSequence('svgicons',
+              'libsass',
+              'js',
+              'inject-html',
+              ['images', 'copy'],
+              'update-version',
+              'filter-webfont-chars',
+              cb);
 });
 
 // Run PageSpeed Insights
