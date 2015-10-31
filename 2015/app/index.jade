@@ -7,6 +7,9 @@ html.no-js(lang=htmlLang)
     title #{meta.title}
     meta(name='description', content='#{meta.title}')
 
+    script
+      include ./scripts/_init.js
+
     link(rel='stylesheet', href='styles/main.css')
     meta#app-version(content='#{appInfo.version}')
 
