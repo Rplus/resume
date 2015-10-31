@@ -9,6 +9,7 @@ module.exports = (gulp, $) => {
     ])
       .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())
+      .pipe($.plumber())
       .pipe($.babel())
       .pipe($.sourcemaps.write())
       .pipe(gulp.dest('.tmp/scripts'))
