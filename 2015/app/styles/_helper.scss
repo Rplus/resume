@@ -1,0 +1,25 @@
+@mixin page-break($pos: 'before') {
+  @media print {
+    page-break-#{$pos}: always;
+  }
+}
+
+%page-break-before {
+  @include page-break;
+}
+
+%transition-all {
+  transition: all .3s;
+}
+
+%state--hide {
+  max-height: 0;
+  margin-bottom: 0;
+  opacity: 0;
+}
+
+%state--show {
+  max-height: 200rem; // magic number: a long height
+  overflow: hidden;
+  opacity: 1;
+}

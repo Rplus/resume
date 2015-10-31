@@ -1,0 +1,99 @@
+.contact {
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+  line-height: 0; // hack for ::after placeholder
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 250px;
+    max-width: 100%;
+  }
+
+  @media print {
+    text-align: left;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.contact-item {
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 1rem;
+  margin-bottom: .5rem;
+
+  @media print {
+    min-width: 45%;
+    // display: block;
+  }
+}
+
+.contact-link {
+  position: relative;
+  display: block;
+  border: none;
+  text-decoration: none;
+  white-space: nowrap;
+  outline: none;
+
+  &:focus::after,
+  &:hover::after {
+    max-width: 5em;
+    opacity: 1;
+    background-color: rgba($steel, .2);
+    transform: translateY(-50%);
+  }
+
+  // tooltip
+  &::after {
+    @extend %transition-all;
+    content: attr(title);
+    position: absolute;
+    border-left: 8px solid rgba($steel, .2);
+    border-bottom: 5px solid transparent;
+    color: $oil;
+    padding: 3px 5px 3px 0;
+    background-clip: padding-box;
+    line-height: normal;
+    bottom: 50%;
+    left: 75%;
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    text-transform: capitalize;
+    pointer-events: none;
+
+    @media print {
+      position: static;
+      content: attr(href);
+      margin-left: .3rem;
+      border: none;
+      text-transform: none;
+      opacity: 1;
+    }
+  }
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: $iron;
+    fill: $page-bgc;
+    box-shadow: $shadow-diff 3px 1px $aluminum;
+  }
+
+  &:active .icon,
+  &:focus .icon,
+  &:hover .icon {
+    fill: $white;
+    background-color: $aluminum;
+    box-shadow: inset $shadow-diff 3px 1px $steel,
+                inset -1px -1px 3px -1px rgba($white, .5);
+
+  }
+}
