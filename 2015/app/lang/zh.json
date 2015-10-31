@@ -3,5 +3,159 @@
   "meta": {
     "title": "resume of R+, 2015",
     "description": "a web version resume of web-developer: R+ / Rplus Chen"
-  }
+  },
+  "header": {
+    "avatarImageAlt": "R+ 大頭照"
+  },
+  "personalities": [
+    "臺灣大學化學系畢業",
+    "開朗好奇，喜好探索",
+    "研習知覺心理，酷愛錯覺理論",
+    "崇尚網頁標準",
+    {"langs": ["中文(母語)", "英文(讀寫)", "台語(母語)"]},
+    "愛好悠閒的 <a href=\"//www.youtube.com/results?q=sock+poi\">POI</a> 表演藝術"
+  ],
+  "icons": [
+    {
+      "name": "github",
+      "link": "//github.com/Rplus"
+    },
+    {
+      "name": "blog",
+      "link": "//Rplus.github.io"
+    },
+    {
+      "name": "codepen",
+      "link": "//codepen.io/Rplus"
+    },
+    {
+      "name": "facebook",
+      "link": "//fb.me/Rplus.tw"
+    },
+    {
+      "name": "mail",
+      "link": "mailto:Rplus.tw@gmail.com"
+    }
+  ],
+  "skills": [
+    "semantic <abbr title=\"HyperText Markup Language\">HTML</abbr>, and simple PHP view part logic",
+    "<abbr title=\"Cascading Style Sheets\">CSS</abbr> with preprocessors (<abbr title=\"Syntactically Awesome Style Sheets\">Sass</abbr>, Compass, Stylus)",
+    "<abbr title=\"JavaScript, ECMAScript\">JS</abbr>, Vanilla JS &amp; jQuery",
+    "<abbr title=\"responsive web design\">RWD</abbr> based on progressive enhancement &amp; graceful degradation",
+    "automated workflow with Gulp / Grunt",
+    "develop with Sublime Text + terminal Git in Ubuntu / Windows"
+  ],
+  "seeMore": "see more",
+  "f2eExps": [
+    {
+      "info": [
+        {
+          "title": "<a href=\"//fb.com/groups/f2e.tw\"><abbr title=\"internet community: Front-End Developers Taiwan\">F2E.TW</abbr></a> group",
+          "time": {
+            "start": "2014",
+            "end": null
+          }
+        }
+      ],
+      "tasks": [
+        {
+          "type": "all",
+          "lists": [
+            "be a volunteer",
+            "lightning talk with SVG topic: <a href=\"//rplus.github.io/blog/2014/09/25/f2e-svg-icon-lighting-talk/\" title=\"F2E.TW party 12: RWD icons\">伸縮自在的愛</a>."
+          ]
+        }
+      ]
+    },
+    {
+      "info": [
+        {
+          "title": "PIXNET",
+          "time": {
+            "start": "2013-11",
+            "end": "2015-08"
+          }
+        }
+      ],
+      "tasks": [
+        {
+          "type": "團隊貢獻",
+          "lists": [
+            "協助制定 <a href=\"//pixnet.github.io/frontend-guideline/\" title=\"PIXNET F2E CSS guideline\">CSS guideline</a>",
+            "公司內短講：<a href=\"http://rplus.github.io/use-svg-icon/\">use SVG icon</a>"
+          ]
+        },
+        {
+          "type": "專案",
+          "lists": [
+            "<a href=\"//movie1314.pixnet.net/coblog/tag/2015\">共筆</a>系統前台：<span class=\"bu\">respond image size</span> &amp; <span class=\"bu\">progressive enhancement</span> from no-js",
+            "站內搜尋關鍵字自動建議功能",
+            "<a href=\"//help.pixnet.tw/index/qa?faq_id=348\">部落格工具列</a>：extend jQuery.support to detect css3 feature support",
+            "<a href=\"//appmarket.pixnet.tw/\">appmarket</a> layout with custom bootstrap",
+            "新後台 style framework (base on foundation)"
+          ]
+        }
+      ]
+    },
+    {
+      "info": [
+        {
+          "title": "台中中佑資訊",
+          "time": {
+            "start": "2012-06",
+            "end": "2013-08"
+          }
+        }
+      ],
+      "tasks": [
+        {
+          "type": "團隊貢獻",
+          "lists": [
+            "組內短講(4hr)：<a href=\"//goo.gl/dQF63p\">jQuery intro &amp; more effective</a>，jQuery 高效應用方針。",
+            "建立常用程式碼片段，藉此分享前端技巧，強化團隊實力。",
+            "匯整工作流程文件，協助新人上手。",
+            "改寫站台資訊索引頁及介面重構：加速團隊工作流程。",
+            "時常分享相關技術性文章，帶動組內求知氣氛。"
+          ]
+        },
+        {
+          "type": "專案",
+          "lists": [
+            "即時表單訊息：Ajax 應用(<abbr title=\"create, read, update and delete\">CRUD</abbr>)",
+            "於既有圖片輪播 plugin 擴充 parallax 效果"
+          ]
+        }
+      ]
+    },
+    {
+      "info": [
+        {
+          "title": "臺大共同教育中心",
+          "time": {
+            "start": "2008-08",
+            "end": "2009-06"
+          }
+        },
+        {
+          "title": "臺大學生電視台",
+          "time": {
+            "start": "2007-09",
+            "end": "2008-06"
+          }
+        }
+      ],
+      "tasks": [
+        {
+          "type": "團隊貢獻",
+          "lists": [
+            "重構網站，並通過 W3C Markup Validation(xhtml 1.0 strict)",
+            "建置<a href=\"//freshman-seminar.blog.ntu.edu.tw/\">新生專題課程</a>專屬網站，首次體驗網站建置流程<br>企劃協商(目標確認、成效驗證)、介面設計、程式規劃編寫…",
+            "將既有靜態網站轉移至 WordPress 系統，以利資料更新",
+            "hacks for old browser to fix PNG-32, <code>position: fixed</code> support"
+          ]
+        }
+      ]
+    }
+  ]
+
 }

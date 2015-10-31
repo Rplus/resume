@@ -80,7 +80,7 @@ gulp.task('serve', ['scripts', 'styles'], () => {
     server: ['.tmp', 'app']
   });
 
-  gulp.watch(['app/**/*.jade'], ['html', reload]);
+  gulp.watch(['app/**/*.jade', 'app/lang/*.json'], ['html', reload]);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['jshint', 'scripts']);
   gulp.watch(['app/images/**/*'], reload);
