@@ -77,9 +77,15 @@ abbr {
 }
 
 // for web-font style
-.wf-inactive {
+.webfont {
+  transition: opacity .3s;
+
   html.js & {
-    color: transparent;
-    text-shadow: none;
+    opacity: 0;
+  }
+
+  html.js.wf-active &,
+  html.js.wf-inactive & {
+    opacity: 1;
   }
 }

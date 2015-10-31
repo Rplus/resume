@@ -11,6 +11,8 @@ html.no-js(lang=htmlLang)
       include ./scripts/_init.js
 
     link(rel='stylesheet', href='styles/main.css')
+    noscript#js-google-font
+      link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Courgette&text=#{encodeURIComponent(header.sayHi)}')
     meta#app-version(content='#{appInfo.version}')
 
     include ./template/_meta.jade
@@ -23,8 +25,8 @@ html.no-js(lang=htmlLang)
         img.avatar__image(src='images/avatar.jpg', alt='#{header.avatarImageAlt}', width='200', height='200')
 
       h1.hello
-        span.say-hi.wf-inactive
-          | Hi, I'm
+        span.say-hi
+          span.webfont #{header.sayHi}
           span.nick-name--wrapper
             img.nick-name(src='//cdn.rawgit.com/Rplus/R-logo/v7/R+.svg', title='R+', alt='R+', width='100', height='67')
         small

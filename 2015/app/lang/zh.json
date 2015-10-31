@@ -5,7 +5,8 @@
     "description": "a web version resume of web-developer: R+ / Rplus Chen"
   },
   "header": {
-    "avatarImageAlt": "R+ 大頭照"
+    "avatarImageAlt": "R+ 大頭照",
+    "sayHi": "Hi, I'm"
   },
   "personalities": [
     "臺灣大學化學系畢業",

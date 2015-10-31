@@ -5,6 +5,7 @@ module.exports = (gulp, $) => {
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
       './app/scripts/*.js',
+      './node_modules/webfontloader/webfontloader.js',
       '!./app/scripts/_init.js'
     ])
       .pipe($.newer('.tmp/scripts'))
@@ -12,8 +13,8 @@ module.exports = (gulp, $) => {
       .pipe($.plumber())
       .pipe($.babel())
       .pipe($.sourcemaps.write())
-      .pipe(gulp.dest('.tmp/scripts'))
       .pipe($.concat('main.js'))
+      .pipe(gulp.dest('.tmp/scripts'))
       .pipe($.uglify({preserveComments: 'some'}))
       // Output files
       .pipe($.size({title: 'scripts'}))
