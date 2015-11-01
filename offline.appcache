@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# data-version="1.1.6"
+# data-version="1.0.0"
 
 CACHE:
 
@@ -10,19 +10,15 @@ scripts/main.js
 
 # images
 images/avatar.jpg
+images/icons.svg
 //cdn.rawgit.com/Rplus/R-logo/v7/R+.svg
-
-# icons
-images/inject-svg/svgstore.svg
-./images/inject-svg/css/icons.png.css
 
 # fonts
 http://fonts.googleapis.com/css?family=Courgette&text=Hi%2CI%27m
-http://fonts.gstatic.com/l/font?kit=CmmZK1AEMnEIG0QqFFrkEsEqVkJKkIkg7mc9xpkLQb0
-http://fonts.gstatic.com/l/font?kit=nGrbrmiYUHfXnRJ1CcaqUMEqVkJKkIkg7mc9xpkLQb0
+
+# icons
 
 # cdn
-http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js
 
 
 NETWORK:

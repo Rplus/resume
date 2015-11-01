@@ -1,0 +1,134 @@
+<!doctype html>
+html.no-js(lang=htmlLang, manifest='offline.appcache')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title #{meta.title}
+    meta(name='description', content='#{meta.title}')
+
+    script
+      include ./scripts/_init.js
+
+    link(rel='stylesheet', href='styles/main.css')
+    noscript#js-google-font
+      link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Courgette&text=#{encodeURIComponent(header.sayHi)}')
+    meta#app-version(content='#{appInfo.version}')
+
+    include ./template/_meta.jade
+    include ./template/_social-meta.jade
+  body
+    span#card
+
+    header.cv-header
+      .avatar
+        img.avatar__image(src='images/avatar.jpg', alt='#{header.avatarImageAlt}', width='200', height='200')
+
+      h1.hello
+        span.say-hi
+          span.webfont #{header.sayHi}
+          span.nick-name--wrapper
+            img.nick-name(src='//cdn.rawgit.com/Rplus/R-logo/v7/R+.svg', title='R+', alt='R+', width='100', height='67')
+        small
+          | a front-end web developer living in Taipei Nangang
+
+    section.cv-section.cv-section--about
+      h3.section-title about
+        svg.icon.icon-Rplus
+          title R+
+          use(xlink:href='images/icons.svg#inject-icon-Rplus')
+        | (陳宏嘉)
+      ul
+        - each personality in personalities
+          li
+            if personality.langs
+              != personality.langs.map( (lang,v)=> { return `<span class="bu">${lang}</span>`; }).join('、')
+            else
+              != personality
+      hr
+      ul.contact
+        - each icon in icons
+          li.contact-item
+            a.contact-link(href='#{icon.link}', title='#{icon.name}')
+              svg.icon(class='icon-#{icon.name}')
+                title #{icon.name}
+                use(xlink:href='images/icons.svg#inject-icon-#{icon.name}')
+
+    section.cv-section.cv-section--skill
+      h3.section-title skills
+      ul
+        - each skill in skills
+          li!= skill
+
+    div.see-more
+      a(href="###") #{seeMore}
+
+    section.cv-section.cv-section--experience
+      h3.section-title
+        | work experience of <abbr title="front-end">F2E</abbr>
+      ul.exp-items
+        - each f2eExp, index in f2eExps
+
+          li.exp-item
+            input(type='checkbox', checked='', id="exp-input--#{index}")
+
+            - each info in f2eExp.info
+              h4.exp-item__header
+                label.date(for="exp-input--#{index}")
+                  time(datetime="#{info.time.start}")= info.time.start
+                  | ~
+                  time(datetime="#{info.time.end || new Date().toLocaleDateString()}")= info.time.end || 'current'
+                != info.title
+
+            //- tasks lists
+            if f2eExp.tasks.length > 1
+              ul.task-lists
+                - each taskType in f2eExp.tasks
+                  li.task-list__group
+                    .task-list__group__title= taskType.type
+                    ul.task-list
+                      - each list in taskType.lists
+                        li!= list
+            else
+              ul.task-list
+                - each list in f2eExp.tasks[0].lists
+                  li!= list
+
+    section.cv-section.cv-section--intro
+      h3.section-title intro
+
+      p
+        | 喜歡做網頁，
+        | 因網頁是現代資訊流通的主要媒介，更是未來普及教育需仰賴的管道。
+        | 堅信網頁設計必須擁有滿滿的創意以及同理心，
+        | 才能在良好介面下仍保有順暢的操作體驗。
+
+      p
+        | 對於網站製作習於以漸進增益的方式規劃；
+        | 基本內容以語義化構築，確保在 no-css / no-js 下仍可順利呈現，
+        | 再以 CSS / JS 增益；
+        | 而搭配支援度偵測，以兼顧高效新功能與舊瀏覽器的相容。
+
+      p
+        | 深知『<abbr title="『工欲善其事，必先利其器』-- 《論語・衛靈公第十五》">利器善事</abbr>』的著重影響，
+        | 習慣搜集各種能便利操作的小工具，
+        | 從小軟體時代到 batch, macros, shell 等 script，
+        | 對於自動化工具總有滿滿的嚮往，
+        | 目前開發流程中則採用 gulp 來管理各自動化任務。
+
+      p
+        | 個人喜於求知涉略，除平日技術新文，亦常藉參與演講以見識一方有為，
+        | 當中最鍾意孫中興教授之誠實人生觀，並援引為己身價值操守；
+        | 亦瞭解到人之所知皆屬歷史，恭謙求知方得前輩指引。
+
+      p
+        | 工作態度上，一貫秉持認真務實，一旦投入工作便會期許著自己盡早完成；
+        | 於工作上也喜於幫助他人，於同儕間相互學習更豐富的事務及見聞，
+        | 期望未來於人際及智識上皆能更進一步成長！
+
+    .business-card
+      img(src="//cdn.rawgit.com/Rplus/R-logo/v7/R+.svg", alt="business card of R+", width='210', height='140')
+
+    script(src='scripts/main.js')
+
+    include ./template/_ga.jade

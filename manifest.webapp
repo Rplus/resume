@@ -1,30 +1,30 @@
 {
-  "version": "1.1.6",
-  "name": "resume of R+",
+  "version": "1.0.0",
+  "name": "resume of R+, 2015",
   "launch_path": "/index.html",
-  "description": "resume of R+, a web front-end developer.",
+  "description": "a web version resume of web-developer: R+ / Rplus Chen",
   "icons": {
     "128": "/images/touch/icon-128x128.png"
   },
   "developer": {
-    "name": "Rplus",
+    "name": "Rplus, R+",
     "url": "http://rplus.githun.io",
     "email": "Rplus.tw@gmail.com"
   },
   "installs_allowed_from": [
     "*"
   ],
-  "default_locale": "en",
+  "default_locale": "zh",
   "permissions": {
   },
   "locales": {
     "en": {
-      "name": "resume of R+",
-      "description": "resume of R+, a web front-end developer."
+      "name": "resume of R+, 2015",
+      "description": "a web version resume of web-developer: R+ / Rplus Chen"
     },
-    "zh-tw": {
-      "name": "R+ 的簡歷",
-      "description": "R+ 身為網頁前端開發者的簡歷"
+    "zh": {
+      "name": "resume of R+, 2015",
+      "description": "a web version resume of web-developer: R+ / Rplus Chen"
     }
   }
 }
