@@ -8,6 +8,7 @@
     "babel-core": "^6.0.12",
     "babel-preset-es2015": "^6.0.14",
     "browser-sync": "^2.9.11",
+    "css-mqpacker": "^4.0.0",
     "del": "^2.0.2",
     "git-rev-sync": "^1.4.0",
     "gulp": "^3.9.0",

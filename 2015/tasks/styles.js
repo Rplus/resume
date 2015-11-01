@@ -24,7 +24,8 @@ module.exports = (gulp, $) => {
         precision: 10
       }).on('error', $.sass.logError))
       .pipe($.postcss([
-        require('autoprefixer')(/*AUTOPREFIXER_BROWSERS*/)
+        require('autoprefixer')(/*AUTOPREFIXER_BROWSERS*/),
+        require("css-mqpacker")()
       ]))
       .pipe($.sourcemaps.write())
       .pipe(gulp.dest('.tmp/styles'))
