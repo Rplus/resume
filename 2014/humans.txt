@@ -1,0 +1,17 @@
+/* TEAM */
+    Developer: Rplus(陳宏嘉)
+    Twitter: @RplusTW
+    Facebook: //fb.me/Rplus.tw
+    Codepen: //codepen.io/Rplus
+    Site: //Rplus.github.io
+    Contact: Rplus.tw [at] gmail [dot] com
+    From: Taipei, Taiwan
+
+/* SITE */
+    Last update: 2015/06/30
+    Language: Chinese (zh-tw)
+    Standards: HTML 5, SCSS, ECMAScript
+    Components: Modernizr
+    Tools: Sublime Text 3, gulpjs, git, [OS] xUbuntu 14.04 LTS
+    Repository: https://github.com/Rplus/resume
+    Hosted on: Github page
