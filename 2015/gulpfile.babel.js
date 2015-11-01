@@ -140,10 +140,31 @@ gulp.task('pagespeed', cb =>
 
 
 // deploy
-gulp.task('deploy', cb => {
-  return gulp.src('./dist/**/*')
-    .pipe($.ghPages());
+gulp.task('deploy', cb =>
+  gulp.src('./dist/**/*')
+    .pipe($.ghPages({
+      cacheDir: '.tmp/.pusblish'
+    }))
+);
+
+
+gulp.task('deploy-with-2014', cb => {
+  runSequence(
+    'copy-2014',
+    'deploy',
+    cb
+  )
 });
+
+// Copy all files at the root level (app)
+gulp.task('copy-2014', () =>
+  gulp.src([
+    '../dist/**/*'
+  ], {
+    dot: true
+  }).pipe(gulp.dest('dist/2014'))
+    .pipe($.size({title: 'copy-2014'}))
+);
 
 
 // Load custom tasks from the `tasks` directory
