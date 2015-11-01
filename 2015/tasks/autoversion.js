@@ -1,12 +1,10 @@
 module.exports = (gulp, $) => {
 
-  var fs = require('fs');
-  var appInfo = JSON.parse(fs.readFileSync('./app/manifest.webapp', 'utf8'));
+  let lastGitHash = require('git-rev-sync').short();
 
   return () => {
     gulp.src('app/offline.appcache')
-      .pipe($.data(appInfo))
-      .pipe($.replace(/(data-version=)\"[^"]+?\"/, `$1"${appInfo.version}"`))
+      .pipe($.replace(/(data-version=)\"[^"]+?\"/, `$1"${lastGitHash}"`))
       .pipe(gulp.dest('.tmp/'))
       .pipe(gulp.dest('dist/'));
   };
