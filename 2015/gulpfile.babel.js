@@ -139,5 +139,12 @@ gulp.task('pagespeed', cb =>
 );
 
 
+// deploy
+gulp.task('deploy', cb => {
+  return gulp.src('./dist/**/*')
+    .pipe($.ghPages());
+});
+
+
 // Load custom tasks from the `tasks` directory
 try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
