@@ -7,6 +7,15 @@ module.exports = (gulp, $) => {
       './app/scripts/*.js',
       '!./app/scripts/_init.js'
     ])
+
+      // add jscs
+      .pipe($.jscs({configPath: './.jscsrc'}))
+      .pipe($.jscs.reporter())
+      .pipe($.jscs.reporter('fail'))
+        .on('error', $.notify.onError(function() {
+          return 'jscs error';
+        }))
+
       .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())
       .pipe($.plumber())
