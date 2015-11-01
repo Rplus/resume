@@ -30,6 +30,9 @@ gulp.task('scripts', getTask('scripts'));
 gulp.task('html', getTask('html'));
 
 
+gulp.task('svg', getTask('svg'));
+
+
 // Lint JavaScript
 gulp.task('jshint', () =>
   gulp.src('app/scripts/**/*.js')
@@ -113,7 +116,7 @@ gulp.task('serve:dist', ['default'], () =>
 gulp.task('default', ['clean'], cb =>
   runSequence(
     'styles',
-    ['jshint', 'html', 'scripts', 'images', 'copy'],
+    ['jshint', 'html', 'scripts', 'images', 'copy', 'svg'],
     cb
   )
 );

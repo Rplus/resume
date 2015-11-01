@@ -36,7 +36,7 @@ html.no-js(lang=htmlLang)
       h3.section-title about
         svg.icon.icon-Rplus
           title R+
-          use(xlink:href='#inject-icon-Rplus')
+          use(xlink:href='images/icons.svg#inject-icon-Rplus')
         | (陳宏嘉)
       ul
         - each personality in personalities
@@ -52,7 +52,7 @@ html.no-js(lang=htmlLang)
             a.contact-link(href='#{icon.link}', title='#{icon.name}')
               svg.icon(class='icon-#{icon.name}')
                 title #{icon.name}
-                use(xlink:href='#inject-icon-#{icon.name}')
+                use(xlink:href='images/icons.svg#inject-icon-#{icon.name}')
 
     section.cv-section.cv-section--skill
       h3.section-title skills
