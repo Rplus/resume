@@ -159,7 +159,7 @@ gulp.task('deploy-with-2014', cb => {
 // Copy all files at the root level (app)
 gulp.task('copy-2014', () =>
   gulp.src([
-    '../dist/**/*'
+    '../2014/dist/**/*'
   ], {
     dot: true
   }).pipe(gulp.dest('dist/2014'))
