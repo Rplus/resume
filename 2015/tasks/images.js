@@ -8,6 +8,8 @@ module.exports = (gulp, $) => {
         progressive: true,
         interlaced: true
       })))
+      .pipe($.if('*.jpg', $.webp()))
+      .pipe(gulp.dest('.tmp/images'))
       .pipe(gulp.dest('dist/images'))
       .pipe($.size({title: 'images'}))
   };
