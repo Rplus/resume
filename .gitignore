@@ -3,5 +3,5 @@ node_modules
 dist
 .tmp
 bower_components
-app/images/inject-svg/png
-app/images/inject-svg/css
+2014/app/images/inject-svg/png
+2014/app/images/inject-svg/css

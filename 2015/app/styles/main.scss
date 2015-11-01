@@ -1,0 +1,40 @@
+// @import '../../node_modules/google-material-color/dist/palette.scss';
+
+@import 'function';
+@import 'colors';
+@import 'variable';
+@import 'helper';
+@import 'base';
+
+@import 'c-header';
+@import 'c-icons';
+@import 'c-sections';
+@import 'c-footer';
+
+
+
+// partial content
+
+.see-more {
+  @extend %transition-all;
+  margin-bottom: -1rem;
+  visibility: hidden;
+  opacity: 0;
+
+  #card:target ~ & {
+    margin-bottom: 0;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.cv-section--experience,
+.cv-section--intro,
+.business-card {
+  @extend %transition-all;
+  @extend %state--show;
+
+  #card:target ~ & {
+    @extend %state--hide;
+  }
+}
