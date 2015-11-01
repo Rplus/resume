@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# data-version="cae4ca0"
+# data-version="14578d8"
 
 CACHE:
 
@@ -10,6 +10,7 @@ scripts/main.js
 
 # images
 images/avatar.jpg
+images/avatar.webp
 images/icons.svg
 //cdn.rawgit.com/Rplus/R-logo/v7/R+.svg
 
@@ -19,7 +20,7 @@ http://fonts.googleapis.com/css?family=Courgette&text=Hi%2CI%27m
 # icons
 
 # cdn
-
+https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js
 
 NETWORK:
 *
