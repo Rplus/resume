@@ -21,8 +21,10 @@ html.no-js(lang=htmlLang, manifest='offline.appcache')
     span#card
 
     header.cv-header
-      .avatar
-        img.avatar__image(src='images/avatar.jpg', alt='#{header.avatarImageAlt}', width='200', height='200')
+      figure.avatar
+        picture
+          source(type="image/webp", src='images/avatar.webp', alt='#{header.avatarImageAlt}', width='200', height='200')
+          img.avatar__image(src='images/avatar.jpg', alt='#{header.avatarImageAlt}', width='200', height='200')
 
       h1.hello
         span.say-hi
