@@ -1,0 +1,25 @@
+CACHE MANIFEST
+# data-version="0.0.0"
+
+CACHE:
+
+# main
+index.html
+styles/main.css
+scripts/main.js
+
+# images
+images/avatar.jpg
+images/icons.svg
+//cdn.rawgit.com/Rplus/R-logo/v7/R+.svg
+
+# fonts
+http://fonts.googleapis.com/css?family=Courgette&text=Hi%2CI%27m
+
+# icons
+
+# cdn
+
+
+NETWORK:
+*

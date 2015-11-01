@@ -80,7 +80,7 @@ abbr {
 .webfont {
   transition: opacity .3s;
 
-  html.js & {
+  html.js:not(.offline) & {
     opacity: 0;
   }
 
