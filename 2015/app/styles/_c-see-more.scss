@@ -4,20 +4,21 @@
   visibility: hidden;
   opacity: 0;
 
+  & ~ div,
+  & ~ section {
+    @extend %state--show;
+    transition: opacity .3s, max-height .2s;
+    will-change: opacity, max-height;
+  }
+
   #card:target ~ & {
     margin-bottom: 0;
     visibility: visible;
     opacity: 1;
-  }
-}
 
-.cv-section--experience,
-.cv-section--intro,
-.business-card {
-  @extend %transition-all;
-  @extend %state--show;
-
-  #card:target ~ & {
-    @extend %state--hide;
+    & ~ div,
+    & ~ section {
+      @extend %state--hide;
+    }
   }
 }
