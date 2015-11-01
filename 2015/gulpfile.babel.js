@@ -79,7 +79,7 @@ gulp.task('serve', ['scripts', 'styles'], () => {
       forms: false
     },
     scrollThrottle: 500,
-    logPrefix: 'WSK',
+    logPrefix: 'R+',
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
@@ -106,7 +106,7 @@ gulp.task('serve:dist', ['default'], () =>
       forms: false
     },
     scrollThrottle: 500,
-    logPrefix: 'WSK',
+    logPrefix: 'R+',
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
