@@ -43,7 +43,7 @@ gulp.task('jshint', () =>
 
 
 // auto update version for offline appcache manifest
-gulp.task('autoverstion', getTask('autoverstion'));
+gulp.task('autoversion', getTask('autoversion'));
 
 
 // Optimize images
@@ -121,7 +121,7 @@ gulp.task('default', ['clean'], cb =>
   runSequence(
     'styles',
     ['jshint', 'html', 'scripts', 'images', 'copy', 'svg'],
-    'autoverstion',
+    'autoversion',
     cb
   )
 );
