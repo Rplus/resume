@@ -5,7 +5,6 @@ module.exports = (gulp, $) => {
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
       './app/scripts/*.js',
-      './node_modules/webfontloader/webfontloader.js',
       '!./app/scripts/_init.js'
     ])
       .pipe($.newer('.tmp/scripts'))
