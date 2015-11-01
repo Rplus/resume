@@ -4,8 +4,7 @@ module.exports = (gulp, $) => {
       // Note: Since we are not using useref in the scripts build pipeline,
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
-      './app/scripts/*.js',
-      '!./app/scripts/_init.js'
+      'app/scripts/*.js',
     ])
 
       // add jscs
@@ -15,6 +14,8 @@ module.exports = (gulp, $) => {
         .on('error', $.notify.onError(function() {
           return 'jscs error';
         }))
+
+      .pipe($.filter(['*', '!_init.js']))
 
       .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())
