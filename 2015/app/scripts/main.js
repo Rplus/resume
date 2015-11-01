@@ -12,7 +12,8 @@
     }
   };
 
-  let wf = doc.createElement('script'), s = doc.scripts[0];
+  let wf = doc.createElement('script');
+  let s = doc.scripts[0];
   wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
   s.parentNode.insertBefore(wf, s);
 
