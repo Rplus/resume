@@ -54,7 +54,7 @@ gulp.task('images', getTask('images'));
 gulp.task('copy', () =>
   gulp.src([
     'app/*',
-    '!app/*.html',
+    '!app/*.{jade,html}',
     'node_modules/apache-server-configs/dist/.htaccess'
   ], {
     dot: true
