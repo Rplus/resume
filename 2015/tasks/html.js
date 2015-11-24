@@ -7,6 +7,8 @@ module.exports = (gulp, $) => {
   strs.lang = lang;
   strs.appInfo = JSON.parse(fs.readFileSync('./app/manifest.webapp', 'utf8'));
 
+  strs.appInfo.version += +new Date();
+
   return () => {
     gulp.src('app/index.jade')
       .pipe($.data(strs))
