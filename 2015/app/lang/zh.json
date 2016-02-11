@@ -72,6 +72,25 @@
         }
       ]
     },
+
+    {
+      "info": [
+        {
+          "title": "KKTIX",
+          "time": {
+            "start": "2015-09",
+            "end": "2015-11"
+          }
+        }
+      ],
+      "tasks": [
+        {
+          "lists": [
+            "體驗 remote workflow"
+          ]
+        }
+      ]
+    },
     {
       "info": [
         {
