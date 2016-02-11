@@ -78,7 +78,7 @@ html.no-js(lang=htmlLang, manifest='offline.appcache')
               h4.exp-item__header
                 label.date(for="exp-input--#{index}")
                   time(datetime="#{info.time.start}")= info.time.start
-                  | ~
+                  |  ~
                   time(datetime="#{info.time.end || new Date().toLocaleDateString()}")= info.time.end || 'current'
                 != info.title
 
