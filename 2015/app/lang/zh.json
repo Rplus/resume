@@ -47,7 +47,7 @@
     "<abbr title=\"Cascading Style Sheets\">CSS</abbr> with processors (<abbr title=\"Syntactically Awesome Style Sheets\">Sass</abbr>, Compass, Stylus, PostCSS)",
     "<abbr title=\"JavaScript, ECMAScript\">JS</abbr>, Vanilla JS &amp; jQuery",
     "<abbr title=\"responsive web design\">RWD</abbr> based on progressive enhancement &amp; graceful degradation",
-    "automated workflow with Gulp / Grunt",
+    "automated workflow with Gulp",
     "develop with Sublime Text + terminal Git in Ubuntu / Windows"
   ],
   "seeMore": "see more",
