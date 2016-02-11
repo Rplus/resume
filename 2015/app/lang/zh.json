@@ -18,20 +18,20 @@
   ],
   "icons": [
     {
-      "name": "github",
-      "link": "//github.com/Rplus"
-    },
-    {
-      "name": "blog",
-      "link": "//Rplus.github.io"
-    },
-    {
       "name": "codepen",
       "link": "//codepen.io/Rplus"
     },
     {
+      "name": "github",
+      "link": "//github.com/Rplus"
+    },
+    {
       "name": "facebook",
       "link": "//fb.me/Rplus.tw"
+    },
+    {
+      "name": "blog",
+      "link": "//Rplus.github.io"
     },
     {
       "name": "gmail",
