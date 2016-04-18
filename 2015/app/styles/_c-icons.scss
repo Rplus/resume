@@ -28,7 +28,7 @@
 
   @media print {
     min-width: 45%;
-    // display: block;
+    display: block;
   }
 }
 
@@ -86,6 +86,12 @@
     fill: $page-bgc;
     filter: opacity(1);
     box-shadow: $shadow-diff 3px 1px $aluminum;
+
+    @media print {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: .25rem;
+    }
   }
 
   &:active .icon,
@@ -97,4 +103,12 @@
                 inset -1px -1px 3px -1px rgba($white, .5);
 
   }
+}
+
+@page {
+  size: A4 portrait;
+}
+
+@page :first {
+  margin: 0;
 }
