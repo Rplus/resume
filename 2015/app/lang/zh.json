@@ -11,15 +11,14 @@
   "personalities": [
     "臺灣大學化學系畢業",
     "開朗好奇，喜好探索",
-    "研習知覺心理，酷愛錯覺理論",
-    "崇尚網頁標準",
+    "崇尚網頁標準，酷愛錯覺理論",
     {"langs": ["中文(母語)", "英文(讀寫)", "台語(母語)"]},
     "愛好悠閒的 <a href=\"//www.youtube.com/results?q=sock+poi\">POI</a> 表演藝術"
   ],
   "icons": [
     {
       "name": "codepen",
-      "link": "//codepen.io/Rplus"
+      "link": "https://codepen.io/Rplus"
     },
     {
       "name": "github",
@@ -45,7 +44,7 @@
   "skills": [
     "semantic <abbr title=\"HyperText Markup Language\">HTML</abbr>, and simple PHP view part logic",
     "<abbr title=\"Cascading Style Sheets\">CSS</abbr> with processors (<abbr title=\"Syntactically Awesome Style Sheets\">Sass</abbr>, Compass, Stylus, PostCSS)",
-    "<abbr title=\"JavaScript, ECMAScript\">JS</abbr>, Vanilla JS &amp; jQuery",
+    "Vanilla <abbr title=\"JavaScript, ECMAScript\">JS</abbr> &amp; jQuery",
     "<abbr title=\"responsive web design\">RWD</abbr> based on progressive enhancement &amp; graceful degradation",
     "automated workflow with Gulp",
     "develop with Sublime Text + terminal Git in Ubuntu / Windows"
@@ -106,13 +105,13 @@
           "type": "團隊貢獻",
           "lists": [
             "協助制定 <a href=\"//pixnet.github.io/frontend-guideline/\" title=\"PIXNET F2E CSS guideline\">CSS guideline</a>",
-            "公司內短講：<a href=\"http://rplus.github.io/use-svg-icon/\">use SVG icon</a>"
+            "公司內短講：<a href=\"http://rplus.github.io/use-svg-icon/\">use SVG icon</a> (2015-09 Modern Web)"
           ]
         },
         {
           "type": "專案",
           "lists": [
-            "<a href=\"//movie1314.pixnet.net/coblog/tag/2015\">共筆</a>系統前台：<span class=\"bu\">respond image size</span> &amp; <span class=\"bu\">progressive enhancement</span> from no-js",
+            "<a href=\"//movie1314.pixnet.net/coblog/tag/2015\">共筆</a>系統前台：<span class=\"bu\">RWD image</span> &amp; <span class=\"bu\">progressive enhancement</span> from no-js",
             "站內搜尋關鍵字建議 & 自動完成功能",
             "<a href=\"//help.pixnet.tw/index/qa?faq_id=348\">部落格工具列</a>：extend jQuery.support to detect css3 feature support",
             "<a href=\"//appmarket.pixnet.tw/\">appmarket</a> layout with custom bootstrap",
@@ -170,10 +169,9 @@
         {
           "type": "團隊貢獻",
           "lists": [
-            "重構網站，並通過 W3C Markup Validation(xhtml 1.0 strict)",
-            "建置<a href=\"//freshman-seminar.blog.ntu.edu.tw/\">新生專題課程</a>專屬網站，首次體驗網站建置流程",
-            "將既有靜態網站轉移至 WordPress 系統，以利資料更新",
-            "hacks for legend browser, PNG-32, <code>position: fixed</code>…etc"
+            "重構並通過 W3C Markup Validation(xhtml 1.0 strict)",
+            "建置<a href=\"//freshman-seminar.blog.ntu.edu.tw/\">新生專題課程</a>專屬網站",
+            "將既有靜態網站轉移至 WordPress 系統，以利資料更新"
           ]
         }
       ]
