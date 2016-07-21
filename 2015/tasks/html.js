@@ -2,16 +2,26 @@ module.exports = (gulp, $) => {
 
   var fs = require('fs');
   var path = require('path');
-  var lang = 'zh'
-  var strs = require(`../app/lang/${lang}.json`);
-  strs.lang = lang;
-  strs.appInfo = JSON.parse(fs.readFileSync('./app/manifest.webapp', 'utf8'));
+  var lang = 'zh';
+  var strsSrc = `../app/lang/${lang}.json`;
+  var appInfo = JSON.parse(fs.readFileSync('./app/manifest.webapp', 'utf8'));
 
-  strs.appInfo.version += +new Date();
+  function requireUncached ($module) {
+    delete require.cache[require.resolve($module)];
+    return require($module);
+  }
+
+  function addAppInfo () {
+    var strs = requireUncached(strsSrc);
+    strs.lang = lang;
+    strs.appInfo = appInfo;
+    strs.appInfo.version += +new Date();
+    return strs;
+  }
 
   return () => {
     gulp.src('app/index.jade')
-      .pipe($.data(strs))
+      .pipe($.data(addAppInfo))
       .pipe($.jade({
         pretty: true
       })).on('error', function(err) {
