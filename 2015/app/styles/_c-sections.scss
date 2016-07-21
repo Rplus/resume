@@ -38,7 +38,7 @@
     a::after {
       position: relative;
       top: .2rem;
-      content: attr(href);
+      // content: attr(href);
       font-size: smaller;
       color: $aluminum;
     }
