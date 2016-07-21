@@ -12,15 +12,15 @@
   }
 
   @media not print {
-  #card:target ~ & {
-    margin-bottom: 0;
-    visibility: visible;
-    opacity: 1;
+    #card:target ~ & {
+      margin-bottom: 0;
+      visibility: visible;
+      opacity: 1;
 
-    & ~ div,
-    & ~ section {
-      @include state--hide;
+      & ~ div,
+      & ~ section {
+        @include state--hide;
+      }
     }
-  }
   }
 }
