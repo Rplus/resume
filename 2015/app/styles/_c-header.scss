@@ -109,3 +109,25 @@
     fill: palette('Red', 'A700');
   }
 }
+
+.pdf-link {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: .8em 1em;
+  border: none;
+  font-size: smaller;
+  text-shadow: 1px 1px 0 $page-bgc;
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(to right bottom, transparent 50%, rgba($aluminum, .7) 50%),
+    linear-gradient(to right bottom, transparent 10%, rgba($aluminum, .3) 10%);
+  background-position: 0 0;
+  background-size: 20% 20%, 100% 100%;
+  opacity: .5;
+
+  &:focus,
+  &:hover {
+    opacity: 1;
+  }
+}

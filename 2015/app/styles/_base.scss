@@ -89,3 +89,9 @@ abbr {
     opacity: 1;
   }
 }
+
+.hide-on-print {
+  @media print {
+    display: none;
+  }
+}
