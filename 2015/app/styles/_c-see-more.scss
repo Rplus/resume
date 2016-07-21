@@ -11,6 +11,7 @@
     will-change: opacity, max-height;
   }
 
+  @media not print {
   #card:target ~ & {
     margin-bottom: 0;
     visibility: visible;
@@ -18,7 +19,8 @@
 
     & ~ div,
     & ~ section {
-      @extend %state--hide;
+      @include state--hide;
     }
+  }
   }
 }
