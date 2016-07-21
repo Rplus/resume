@@ -15,6 +15,8 @@ html.no-js(lang=htmlLang, manifest='offline.appcache')
       link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Courgette&text=#{encodeURIComponent(header.sayHi)}')
     meta#app-version(content='#{appInfo.version}')
 
+    link(rel="alternate", href="./resume-of-Rplus.pdf", type="application/pdf", title="PDF version of #{meta.title}")
+
     include ./template/_meta.jade
     include ./template/_social-meta.jade
   body
