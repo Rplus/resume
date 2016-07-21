@@ -4,6 +4,20 @@
   }
 }
 
+@mixin state--show() {
+  max-height: 200rem; // magic number: a long height
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+}
+
+@mixin state--hide() {
+  max-height: 0;
+  margin-bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
 %page-break-before {
   @include page-break;
 }
@@ -13,15 +27,9 @@
 }
 
 %state--hide {
-  max-height: 0;
-  margin-bottom: 0;
-  opacity: 0;
-  visibility: hidden;
+  @include state--hide;
 }
 
 %state--show {
-  max-height: 200rem; // magic number: a long height
-  overflow: hidden;
-  opacity: 1;
-  visibility: visible;
+  @include state--show;
 }
