@@ -54,7 +54,7 @@
     {
       "info": [
         {
-          "title": "<a href=\"//fb.com/groups/f2e.tw\"><abbr title=\"internet community: Front-End Developers Taiwan\">F2E.TW</abbr></a> group",
+          "title": "<a href=\"//fb.com/groups/f2e.tw\"><abbr title=\"internet community: Front-End Developers Taiwan\">F2E.TW</abbr></a> group volunteer",
           "time": {
             "start": "2014",
             "end": null
@@ -63,10 +63,18 @@
       ],
       "tasks": [
         {
-          "type": "all",
+          "type": "Lightning Talk",
           "lists": [
-            "be a volunteer",
-            "lightning talk with SVG topic: <a href=\"//rplus.github.io/blog/2014/09/25/f2e-svg-icon-lighting-talk/\" title=\"F2E.TW party 12: RWD icons\">伸縮自在的愛</a>."
+            "SVG > Font: <a href=\"//rplus.github.io/blog/2014/09/25/f2e-svg-icon-lighting-talk/\" title=\"F2E.TW party 12: RWD icons\">伸縮自在的愛</a> (<time datetime=\"2014-09\">2014-09</time>)"
+          ]
+        },
+        {
+          "type": "專案",
+          "lists": [
+            "<a href=\"//github.com/f2etw/weekly-collection\">weekly-collection</a>: 簡介 FB 社團每週熱門貼文",
+            "<a href=\"//github.com/f2etw/TubeTogether\">TubeTogether</a>: 線上一起看研討會 YouTube 影片清單",
+            "<a href=\"//github.com/f2etw/jobs/issues\">F2E jobs</a>: 提供專屬前端的徵才求才空間",
+            "<a href=\"//github.com/f2etw/f2e-notes/issues\">F2E-notes</a>: 收集前端共筆"
           ]
         }
       ]
@@ -134,8 +142,8 @@
         {
           "type": "團隊貢獻",
           "lists": [
-            "以程式碼片段分享前端技巧、匯整工作流程文件、改寫站台資訊索引頁，強化團隊效率。",
-            "時常分享相關技術性文章，帶動組內求知氣氛。",
+            "匯整工作流程文件、改寫站台資訊索引頁，強化團隊效率。",
+            "分享前端技巧程式碼片段、相關技術性文章，帶動組內求知氣氛。",
             "公司內短講：<a href=\"//goo.gl/dQF63p\">jQuery intro &amp; more effective</a>，jQuery 高效應用方針。"
           ]
         },
