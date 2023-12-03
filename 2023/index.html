@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <!-- <script type="module" src="/main.js"></script> -->
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      :root {
+        line-height: 1.5;
+        /* font-family: serif; */
+        background-color: #525659;
+      }
+      body {
+        margin: 0em auto;
+        padding: 1em 3em 1em;
+        max-width: 55em;
+
+        background-color: #fff;
+        font-size: 15px;
+        font-family: monospace;
+      }
+      a {
+        color: #13AB67;
+        text-decoration: none;
+      }
+      .header-link a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      dd {
+        margin: 0;
+        margin-bottom: 1.25rem;
+        padding-left: 0.25rem;
+      }
+
+      dt {
+        margin-left: -0.75em;
+        padding-left: 0.5em;
+        font-weight: 700;
+
+        &::before {
+          content: '= ';
+        }
+      }
+      dl {
+      }
+      h3 {
+        margin: 0;
+      }
+      section {
+        margin-bottom: 1.25em;
+      }
+      .colx2 {
+        gap: 3em;
+
+        & > div {
+          width: 50%;
+        }
+      }
+      .com {
+        font-size: larger;
+        font-weight: 800;
+      }
+      .time {
+        position: relative;
+        flex-grow: 1;
+        text-align: end;
+        /* background-color: #f001; */
+        margin-left: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+
+        &::before {
+          position: absolute;
+          content: '............................................................................................................................................................................................................';
+          font-size: smaller;
+          padding-right: 1rem;
+          bottom: 0;
+          right: 10em;
+          opacity: 0.3;
+        }
+      }
+      ul {
+        padding: 0 0 0 2em;
+      }
+      ul li {
+        padding-bottom: 1em;
+        list-style: square;
+      }
+      ul li > div {
+        display: flex;
+        align-items: baseline;
+
+        & + div {
+          padding-left: 0.5em;
+        }
+      }
+    </style>
+    <script src="https://cdn.master.co/css"></script>
+  </head>
+  <body>
+    <div id="cv">
+
+      <section class="flex gap:24 align-items:flex-start padding:16|8">
+
+        <img src="https://github.com/Rplus/R-logo/raw/master/R+.svg" alt="" class="margin-top:8" width="100">
+
+        <header class="">
+          <h1 class="font-family:monospace margin:0|0|8 font-size:2.25em">Rplus Chen</h1>
+          <h2 class="margin:0|0|8 font-size:1rem font-weight:normal">網⾴前端開發者</h2>
+
+          <div class="display:flex header-link margin-bottom:24 gap:88 font-family:monospace">
+            <a href="mailto:Rplus.tw@gmail.com">
+              <i class="far fa-envelope"></i>
+              Rplus.tw@Gmail.com
+            </a>
+            <a href="https://GitHub.com/Rplus">
+              <i class="fab fa-github"></i>
+              Rplus
+            </a>
+            <a href="https://Codepen.io/Rplus">
+              <i class="fab fa-codepen"></i>
+              Rplus
+            </a>
+          </div>
+
+          <div class="font-size:13 line-height:1.7">
+            閒暇時喜歡從遊戲裡尋找靈感，<br>
+            透過這些以⾃⾝需求的⼩作品，與其他⼈分享的歷程中，時有所感：<br>
+            ⽣活中能有所幫助的⼯具，其實不⼀定需要很艱深的程式，實作與分享才是。
+          </div>
+        </header>
+      </section>
+
+      <section class="colx2 flex">
+        <div>
+          <h3>技能</h3>
+
+          <dl>
+            <dt>HTML</dt>
+            <dd>
+              平常習慣停⽤ JS，會較留意語義與漸進增益
+            </dd>
+
+            <dt>CSS</dt>
+            <dd>
+              個⼈鍾愛。慣以 SCSS 撰寫與管理專案樣式 <br>
+              亦編寫過 PostCSS plugin: <a href="https://github.com/Rplus/postcss-simple-trig">postcss-simple-trig</a><br>
+              ⼼⾎來潮會在 CodePen 上練習⼀些有趣的實作
+            </dd>
+
+            <dt>JavaScript</dt>
+            <dd>
+              較常撰寫標準原⽣ API <br>
+              會以⼩專案練習 JS framework
+            </dd>
+
+            <dt>Task Manager</dt>
+            <dd>
+              個⼈專案習慣以 makefile + npm script 管理<br>
+              也會搭配撰寫簡單 sh 協助 & 調整
+            </dd>
+          </dl>
+        </div>
+
+        <div>
+          <h3>社群活動</h3>
+
+          <dl>
+            <dt><a href="https://github.com/Happy-CSSer/">Happy CSSer 活動</a></dt>
+            <dd>
+              2016~2018 兩年間，每兩三週⼀次的⼩型線下聚會 <br>
+              著重於現場 CSS 實作與分享討論
+            </dd>
+
+            <dt>Frontend Taiwan 社團管理</dt>
+            <dd>
+              2014 年開始協助社團活動 <br>
+              ⽬前幫忙分類管理 f2e.tw/jobs 徵才訊息
+            </dd>
+
+            <dt>JSDC 2017 講者</dt>
+            <dd>
+              主題：「<a href="https://www.youtube.com/watch?v=r3k9xQaZYjk">變數握⼿ CSS、JS 樂無窮</a>」<br>
+              分享 CSS variables & JS 的互動⽅式與實作經驗
+            </dd>
+
+            <dt>Lighting Talks</dt>
+            <dd class="font-family:monospace">
+              <div>
+                * 2016-08, <a href="https://hackmd.io/@RplusTW/SJAl7UPY?type=slide#/">CSS ANIMATION ⼊⾨</a>
+              </div>
+              <div>
+                * 2015-09, <a href="https://rplus.github.io/use-svg-icon/">Use SVG icon</a> @Modern Web
+              </div>
+              <div>
+                * 2014-09, <a href="https://www.youtube.com/watch?v=y70Dhas6T18&list=PLmP3eZx_aWyq-r9su-QQg-mFGlYi-BESJ">伸縮⾃在的(SVG > Font)</a>
+              </div>
+            </dd>
+
+          </dl>
+        </div>
+      </section>
+
+
+      <section>
+        <h3>⼯作經歷</h3>
+
+        <ul>
+          <li>
+            <div>
+              <div class="com">SoundOn</div>
+              <div class="time">2020/04 ~ 2021/03</div>
+            </div>
+            <div>
+              Podcast webplayer 維護 & 管理後台元件開發 (React & Ant Design UI)
+            </div>
+          </li>
+
+          <li>
+            <div>
+              <div class="com">KaiOS Technologies, Inc.</div>
+              <div class="time">2016/09 ~ 2018/06</div>
+            </div>
+            <div>
+              傳統按鍵式⼿機系統 NOKIA 8110 4G Launcher 介⾯ (React)
+            </div>
+          </li>
+
+          <li>
+            <div>
+              <div class="com">KKTIX</div>
+              <div class="time">2015/09 ~ 2015/11</div>
+            </div>
+            <div>
+              同事們都相當強⼤！ remote work 體驗很有趣~
+            </div>
+          </li>
+
+          <li>
+            <div>
+              <div class="com">PIXNET</div>
+              <div class="time">2013/09 ~ 2015/08</div>
+            </div>
+            <div>
+              共筆系統前台：不影響後端開發的前提下完成簡易 PJAX 以增益瀏覽體驗。
+            </div>
+          </li>
+
+          <li>
+            <div>
+              <div class="com">中佑資訊</div>
+              <div class="time">2012/06 ~ 2013/08</div>
+            </div>
+            <div>
+              公司內短講，jQuery ⾼效應⽤⽅針：jQuery intro & more effective。
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+
+      <section>
+        <h3 class="border-bottom:1px|solid|#0003 margin-bottom:.5em">Side Project</h3>
+        <ul class="margin-left:.5em">
+          <li>
+            <a href="https://codepen.io/Rplus">Rplus @ Codepen</a>
+            <br>
+            Codepen 這邊會擺一些較偏 UI 的 demo (CSS / Layout / Animation)
+          </li>
+          <li>
+            自己開發的一些小⼯具及其簡介 <br>
+            <a href="https://www.cakeresume.com/me/RplusTW/portfolios">https://www.cakeresume.com/me/RplusTW/portfolios</a>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </body>
+</html>
